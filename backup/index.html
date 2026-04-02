@@ -225,21 +225,6 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .unlock-flash{position:fixed;inset:0;background:rgba(26,188,156,.12);z-index:9999;pointer-events:none;animation:ufl .8s ease forwards;}
 @keyframes ufl{0%{opacity:0;}30%{opacity:1;}100%{opacity:0;}}
 @media(max-width:500px){.opts{grid-template-columns:1fr;}.home-stats{grid-template-columns:repeat(2,1fr);}}
-/* ── TOMBOL RESET PER TAHAP ── */
-.btn-reset-stage{background:none;border:1px solid rgba(231,76,60,.35);color:#e74c3c;border-radius:6px;padding:4px 9px;font-size:.58rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap;}
-.btn-reset-stage:hover{background:rgba(231,76,60,.1);border-color:#e74c3c;}
-
-/* ── KONFIRMASI POPUP ── */
-.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:600;display:none;align-items:center;justify-content:center;padding:20px;}
-.confirm-overlay.open{display:flex;animation:fadeUp .2s ease;}
-.confirm-box{background:#fff;border-radius:16px;padding:24px 22px;max-width:320px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);}
-.confirm-icon{font-size:2.2rem;margin-bottom:10px;}
-.confirm-title{font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:6px;}
-.confirm-msg{font-size:.75rem;color:var(--text-mid);line-height:1.7;margin-bottom:18px;}
-.confirm-btns{display:flex;gap:8px;}
-.confirm-yes{flex:1;padding:11px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;}
-.confirm-no{flex:1;padding:11px;background:#fff;border:2px solid var(--sky3);color:var(--text-mid);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;}
-
 /* ── FURIGANA RUBY ── */
 ruby{display:inline-flex;flex-direction:column-reverse;align-items:center;line-height:1.1;vertical-align:bottom;}
 rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-align:center;letter-spacing:.02em;}
@@ -713,10 +698,6 @@ function renderHome(){
     const card=document.createElement('div');
     card.className='stage-card'+(locked?' locked':'');
     card.style.setProperty('--lv-color',s.color);
-    const hasProgress = p.studied || p.att > 0 || p.ok;
-    const resetBtn = hasProgress
-      ? `<button class="btn-reset-stage" onclick="event.stopPropagation();confirmReset(${s.id},'${s.title}')">↺ Reset</button>`
-      : '';
     card.innerHTML=`<div class="sc-inner">
       <div class="sc-badge${p.ok?' done-badge':(!locked&&!p.ok)?' active-badge':''}" style="--lv-color:${s.color}">${s.icon}</div>
       <div class="sc-info">
@@ -728,7 +709,6 @@ function renderHome(){
       <div class="sc-right">${stat}
         <div class="sc-mini"><div class="sc-mini-fill" style="width:${mini}%;background:${s.color}"></div></div>
         ${p.att>0?`<div class="sc-att">${p.att}x percobaan</div>`:''}
-        ${resetBtn}
       </div>
     </div>`;
     if(!locked)card.onclick=()=>enterStage(s.id);
@@ -786,46 +766,6 @@ function closeRiset(){
 }
 function closeRisetOutside(e){
   if(e.target.id==='riset-overlay')closeRiset();
-}
-
-// ── RESET PROGRESS ──
-let _resetTargetId = null;
-function confirmReset(stageId, stageName){
-  _resetTargetId = stageId;
-  document.getElementById('confirm-title').textContent = `Reset Tahap ${stageId} — ${stageName}?`;
-  document.getElementById('confirm-msg').innerHTML =
-    `Semua progress tahap ini akan dihapus:<br>
-    <strong style="color:#e74c3c">• Status belajar & kuis<br>
-    • Jumlah percobaan<br>
-    • XP dari tahap ini</strong><br><br>
-    Tahap sesudahnya yang bergantung pada tahap ini juga akan terkunci ulang.`;
-  document.getElementById('confirm-yes-btn').onclick = ()=>doReset(_resetTargetId);
-  document.getElementById('confirm-overlay').classList.add('open');
-}
-function closeConfirm(){
-  document.getElementById('confirm-overlay').classList.remove('open');
-  _resetTargetId = null;
-}
-function doReset(stageId){
-  // Reset tahap yang dipilih
-  PROG[stageId] = {studied:false, att:0, best:0, ok:false, xp:0};
-  // Reset juga semua tahap sesudahnya (karena bergantung)
-  STAGES.forEach(s=>{
-    if(s.id > stageId){
-      PROG[s.id] = {studied:false, att:0, best:0, ok:false, xp:0};
-    }
-  });
-  saveP();
-  closeConfirm();
-  // Update header XP
-  document.getElementById('hdr-xp').textContent = getTotalXP();
-  // Flash notifikasi
-  const fl = document.createElement('div');
-  fl.style.cssText = 'position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1a2744;color:#fff;padding:10px 20px;border-radius:20px;font-size:.75rem;font-weight:600;z-index:700;animation:fadeUp .3s ease';
-  fl.textContent = `✓ Tahap ${stageId} berhasil direset`;
-  document.body.appendChild(fl);
-  setTimeout(()=>fl.remove(), 2500);
-  renderHome();
 }
 
 renderHome();}
