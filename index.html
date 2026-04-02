@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sakura Anki N3 – さくらアンキ N3</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Poppins:wght@400;500;600;700&family=Zen+Antique+Soft&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2744;--navy2:#223060;--navy3:#1d2d5a;
+  --sakura:#f9b8c8;--sakura2:#f4739a;--sakura3:#e8507a;
+  --sky:#e8f4fd;--sky2:#d0eaf8;--sky3:#b8ddf5;
+  --white:#ffffff;--offwhite:#f8fbff;
+  --gold:#d4a017;--jade:#1abc9c;--correct:#27ae60;--wrong:#e74c3c;
+  --text-dark:#1a2744;--text-mid:#4a5a7a;--text-light:#8a9ab8;
+  --lv1:#3498db;--lv2:#1abc9c;--lv3:#2ecc71;--lv4:#f39c12;
+  --lv5:#e67e22;--lv6:#e74c3c;--lv7:#9b59b6;
+  --shadow:0 4px 20px rgba(26,39,68,0.12);
+  --shadow-lg:0 8px 40px rgba(26,39,68,0.18);
+  /* Legacy aliases */
+  --bg:var(--sky);--surface:#fff;--card:#fff;--border:var(--sky3);
+  --text:var(--text-dark);--muted:var(--text-light);
+  --amber:var(--gold);--cobalt:#2980b9;--crimson:var(--sakura3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--sky);color:var(--text-dark);font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradient(160deg,rgba(232,244,253,.8) 0%,rgba(248,251,255,1) 100%);pointer-events:none;}
+
+.wrap{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 0 80px;}
+.site-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--navy3) 100%);padding:0 24px;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100;}.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo-kanji{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--gold);animation:glow 4s ease-in-out infinite;}
+@keyframes glow{0%,100%{text-shadow:0 0 18px rgba(212,160,23,.4);}50%{text-shadow:0 0 32px rgba(212,160,23,.75);}}.logo-title{font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em;line-height:1.2;}.logo-subtitle{font-family:'Noto Serif JP',serif;font-size:.62rem;color:var(--sakura);letter-spacing:.1em;}.logo-svg-wrap{width:48px;height:48px;flex-shrink:0;}.logo-wrap{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-sub{font-size:.58rem;letter-spacing:.22em;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.header-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+.xp-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;font-size:.65rem;color:#fff;font-weight:500;display:flex;align-items:center;gap:5px;}
+.level-badge{background:var(--sakura2);color:#fff;font-size:.6rem;letter-spacing:.15em;padding:5px 12px;border-radius:20px;text-transform:uppercase;font-weight:600;}
+.screen{display:none;animation:fadeUp .35s ease;}
+.screen.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+/* HOME */
+.home-hero{text-align:center;padding:20px 0 26px;}
+.hero-jp{font-family:'Zen Antique Soft',serif;font-size:clamp(2.5rem,8vw,4.5rem);line-height:1.1;margin-bottom:6px;text-shadow:3px 3px 0 rgba(155,89,182,.2);}
+.hero-title{font-family:'Kaisei Decol',serif;font-size:clamp(1rem,3vw,1.5rem);color:var(--amber);margin-bottom:6px;}
+.hero-desc{font-size:.68rem;color:var(--muted);line-height:1.8;}
+.overall-prog{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:22px;}
+.op-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.op-label{font-size:.6rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;}
+.op-val{font-size:.85rem;color:var(--amber);font-weight:600;}
+.op-track{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
+.op-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cobalt),var(--jade),var(--amber));transition:width .8s ease;}
+.op-stages{display:flex;justify-content:space-between;margin-top:10px;}
+.op-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);transition:all .4s;}
+.op-dot.done{background:var(--jade);border-color:var(--jade);box-shadow:0 0 6px var(--jade);}
+.op-dot.active-dot{background:var(--amber);border-color:var(--amber);transform:scale(1.3);box-shadow:0 0 8px var(--amber);}
+.stage-list{display:flex;flex-direction:column;gap:0;}
+.stage-connector{width:2px;height:22px;background:var(--border);margin:0 auto;}
+.stage-connector.done-line{background:var(--jade);}
+.stage-card{background:var(--white);border:2px solid var(--sky2);border-radius:14px;padding:16px 18px;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.stage-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--lv-color,var(--border));border-radius:4px 0 0 4px;}
+.stage-card.locked{cursor:not-allowed;opacity:.55;filter:grayscale(.3);}
+.stage-card:not(.locked):hover{border-color:var(--lv-color);transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.sc-inner{display:flex;align-items:center;gap:12px;}
+.sc-badge{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(255,255,255,.05);border:1px solid var(--border);flex-shrink:0;}
+.sc-badge.done-badge{background:rgba(39,174,96,.15);border-color:rgba(39,174,96,.35);}
+.sc-badge.active-badge{border-color:var(--lv-color);animation:badge-p 2s ease-in-out infinite;}
+@keyframes badge-p{0%,100%{box-shadow:0 0 0 0 transparent;}50%{box-shadow:0 0 0 5px transparent;}}
+.sc-info{flex:1;min-width:0;}
+.sc-num{font-size:.55rem;font-weight:600;letter-spacing:.18em;color:var(--text-light);text-transform:uppercase;margin-bottom:2px;}
+.sc-name{font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:2px;}
+.sc-jp{font-size:.62rem;color:var(--text-light);margin-bottom:6px;}
+.sc-desc{font-size:.62rem;color:var(--text-mid);line-height:1.5;}
+.sc-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
+.sc-status{font-size:.56rem;padding:3px 9px;border-radius:10px;white-space:nowrap;}
+.s-locked{background:rgba(255,255,255,.06);color:var(--muted);}
+.s-ready{background:rgba(212,160,23,.15);color:var(--amber);animation:ps 2s ease-in-out infinite;}
+.s-quiz{background:rgba(41,128,185,.15);color:#5dade2;animation:ps 2s ease-in-out infinite;}
+.s-done{background:rgba(39,174,96,.15);color:var(--jade);}
+@keyframes ps{0%,100%{opacity:1;}50%{opacity:.6;}}
+.sc-mini{width:68px;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.sc-mini-fill{height:100%;border-radius:2px;transition:width .5s;}
+.sc-att{font-size:.55rem;color:var(--text-light);}
+.home-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px;}
+.hstat{background:var(--white);border:1px solid var(--sky2);border-radius:12px;padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
+.hstat-num{font-size:1.3rem;font-weight:700;color:var(--navy);}
+.hstat-lbl{font-size:.55rem;font-weight:500;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
+
+/* STUDY */
+.study-header{background:var(--white);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--sky2);box-shadow:var(--shadow);}
+.btn-back{background:var(--sky);border:2px solid var(--sky3);color:var(--text-dark);font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.btn-back:hover{background:var(--sky2);}
+.study-info{text-align:center;}
+.study-stage-name{font-family:'Kaisei Decol',serif;font-size:.98rem;}
+.study-stage-sub{font-size:.58rem;color:var(--muted);margin-top:2px;}
+.phase-banner{border-radius:12px;padding:12px 16px;margin:14px 20px;display:flex;align-items:flex-start;gap:10px;font-size:.7rem;line-height:1.7;background:linear-gradient(135deg,rgba(26,39,68,.06),rgba(26,39,68,.03));border:1px solid var(--sky3);color:var(--text-mid);}
+.phase-icon{font-size:1.15rem;flex-shrink:0;}
+.prog-bar{width:100%;height:6px;background:var(--sky2);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--navy2),var(--sakura2));transition:width .5s ease;}
+.card-dots{display:flex;justify-content:center;gap:7px;margin-bottom:14px;}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--border);border:1px solid rgba(255,255,255,.1);transition:all .3s;}
+.cdot.done{background:var(--jade);}
+.cdot.current{transform:scale(1.45);border-color:var(--text);}
+.card-scene{perspective:1100px;height:285px;margin-bottom:14px;cursor:pointer;}
+.card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.card-3d.flipped{transform:rotateY(180deg);}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 20px;text-align:center;}
+.card-front{background:linear-gradient(145deg,var(--navy) 0%,var(--navy2) 100%);border:2px solid rgba(255,255,255,.1);box-shadow:0 16px 48px rgba(26,39,68,.35),inset 0 1px 0 rgba(255,255,255,.08);}
+.card-back{transform:rotateY(180deg);box-shadow:0 16px 48px rgba(0,0,0,.5);}
+.card-type-badge{position:absolute;top:11px;right:11px;font-size:.52rem;letter-spacing:.15em;padding:3px 9px;border-radius:10px;text-transform:uppercase;}
+.badge-kanji{background:rgba(212,160,23,.22);color:var(--amber);}
+.badge-grammar{background:rgba(41,128,185,.22);color:#5dade2;}
+.badge-vocab{background:rgba(192,57,43,.22);color:#e74c3c;}
+.badge-mixed{background:rgba(155,89,182,.22);color:#c39bd3;}
+.card-num{position:absolute;top:11px;left:11px;font-size:.53rem;color:var(--muted);}
+.card-jp{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,3.5rem);margin-bottom:7px;color:#fff;}
+.card-read{font-family:'Noto Serif JP',serif;font-size:.93rem;color:var(--sakura);margin-bottom:4px;}
+.card-hint{font-size:.58rem;color:rgba(255,255,255,.2);margin-top:12px;letter-spacing:.08em;}
+.card-meaning{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:8px;color:var(--text-dark);}
+.card-example{font-family:'Zen Antique Soft',serif;font-size:.78rem;color:rgba(232,228,218,.6);line-height:1.9;margin-bottom:5px;}
+.card-ex-id{font-size:.66rem;color:var(--text-light);font-style:italic;}
+.card-mnemonic{margin-top:9px;padding:8px 12px;background:rgba(212,160,23,.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:.63rem;color:var(--text-mid);text-align:left;width:100%;line-height:1.6;}
+.card-actions{display:flex;gap:10px;margin-bottom:12px;}
+.btn-flip{flex:1;padding:12px;background:var(--white);border:2px solid var(--sky3);border-radius:10px;color:var(--text-mid);font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-flip:hover{background:var(--sky2);border-color:var(--sky3);}
+.btn-next-card{flex:2;padding:12px;background:linear-gradient(135deg,var(--navy2),var(--sakura3));border:none;border-radius:10px;color:#fff;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 4px 14px rgba(26,39,68,.25);}
+.btn-next-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(26,188,156,.4);}
+
+/* GATE */
+.gate-wrap{text-align:center;padding:28px 0;}
+.gate-kanji{font-family:'Zen Antique Soft',serif;font-size:4.5rem;color:var(--amber);text-shadow:0 0 28px rgba(212,160,23,.5);margin-bottom:8px;animation:glow 3s ease-in-out infinite;}
+.gate-title{font-family:'Kaisei Decol',serif;font-size:1.7rem;margin-bottom:7px;}
+.gate-sub{font-size:.7rem;color:var(--muted);line-height:1.8;margin-bottom:22px;}
+.gate-att{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.2);border-radius:6px;padding:9px 13px;font-size:.66rem;color:var(--wrong);margin-bottom:14px;}
+.gate-att span{color:#fff;font-weight:700;}
+.gate-learned{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:20px;text-align:left;}
+.gl-title{font-size:.56rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:11px;}
+.gl-item{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);font-size:.7rem;}
+.gl-item:last-child{border-bottom:none;}
+.gl-jp{font-family:'Zen Antique Soft',serif;font-size:.98rem;min-width:75px;color:var(--amber);}
+.gl-meaning{color:var(--muted);}
+
+/* QUIZ */
+.quiz-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.q-cat{font-size:.58rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
+.q-ctr{font-size:.7rem;color:var(--amber);font-weight:600;}
+.timer-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:16px;overflow:hidden;}
+.timer-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--jade),var(--amber));transition:width .1s linear,background .5s;}
+.timer-fill.danger{background:var(--wrong);}
+.qdots{display:flex;justify-content:center;gap:8px;margin-bottom:16px;}
+.qdot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;border:1px solid rgba(255,255,255,.1);}
+.qdot.current{transform:scale(1.4);border-color:var(--text);}
+.qdot.qc{background:var(--correct);border-color:var(--correct);}
+.qdot.qw{background:var(--wrong);border-color:var(--wrong);}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 20px 20px;margin-bottom:14px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.q-tag{position:absolute;top:-1px;right:15px;font-size:.5rem;letter-spacing:.15em;padding:3px 9px;border-radius:0 0 6px 6px;text-transform:uppercase;}
+.q-num{font-size:.58rem;color:var(--muted);margin-bottom:7px;}
+.q-jp{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,5.5vw,2.4rem);line-height:1.3;margin-bottom:5px;color:var(--text-dark);}
+.q-furi{font-family:'Noto Serif JP',serif;font-size:.87rem;color:var(--navy2);margin-bottom:4px;font-weight:600;}
+.q-prompt{font-size:.71rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:8px;margin-top:8px;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px;}
+.opt{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 10px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.5;}
+.opt::before{content:attr(data-l);display:inline-block;width:19px;height:19px;border-radius:3px;text-align:center;line-height:19px;font-size:.57rem;font-weight:700;margin-right:7px;background:var(--oc,rgba(255,255,255,.1));color:#fff;}
+.opt[data-l="A"]{--oc:rgba(192,57,43,.5);}
+.opt[data-l="B"]{--oc:rgba(212,160,23,.5);}
+.opt[data-l="C"]{--oc:rgba(26,188,156,.45);}
+.opt[data-l="D"]{--oc:rgba(41,128,185,.5);}
+.opt:hover:not(:disabled){background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);transform:translateY(-1px);}
+.opt.correct{background:rgba(39,174,96,.18);border-color:var(--correct);animation:cf .4s;}
+.opt.wrong{background:rgba(231,76,60,.18);border-color:var(--wrong);animation:sk .4s;}
+.opt:disabled{cursor:default;}
+@keyframes cf{0%,100%{transform:none;}50%{transform:scale(1.02);}}
+@keyframes sk{0%,100%{transform:none;}20%,60%{transform:translateX(-4px);}40%,80%{transform:translateX(4px);}}
+.exp-box{background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.2);border-radius:8px;padding:12px 14px;font-size:.69rem;line-height:1.8;color:rgba(232,228,218,.8);margin-bottom:12px;display:none;animation:fadeUp .3s ease;}
+.exp-lbl{font-size:.55rem;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:4px;display:block;}
+.btn-nq{display:none;width:100%;padding:12px;background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.09em;cursor:pointer;transition:all .2s;}
+.btn-nq:hover{background:rgba(255,255,255,.07);border-color:var(--amber);color:var(--amber);}
+
+/* RESULT */
+.result-wrap{max-width:500px;margin:0 auto;padding:24px 0;text-align:center;}
+.score-ring{position:relative;width:170px;height:170px;margin:0 auto 16px;}
+.score-svg{transform:rotate(-90deg);overflow:visible;}
+.s-bg{fill:none;stroke:var(--sky2);stroke-width:10;}
+.s-arc{fill:none;stroke-width:10;stroke-linecap:round;stroke-dasharray:471;stroke-dashoffset:471;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1) .3s,stroke .5s ease .3s;}
+.score-lbl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-big{font-size:2.4rem;font-weight:700;color:var(--navy);}
+.score-sub{font-size:.58rem;letter-spacing:.18em;color:var(--muted);margin-top:2px;text-transform:uppercase;}
+.r-verdict{font-family:'Zen Antique Soft',serif;font-size:1.9rem;margin-bottom:5px;}
+.r-msg{font-size:.7rem;color:var(--muted);line-height:1.8;margin-bottom:18px;}
+.perfect-box{background:linear-gradient(135deg,rgba(39,174,96,.12),rgba(26,188,156,.08));border:1px solid rgba(39,174,96,.28);border-radius:10px;padding:20px;margin-bottom:18px;animation:fadeUp .5s ease .2s both;}
+.pb-kanji{font-family:'Zen Antique Soft',serif;font-size:3.2rem;color:var(--jade);text-shadow:0 0 24px rgba(26,188,156,.5);margin-bottom:6px;animation:cel 1s ease .5s both;}
+.pb-title{font-family:'Kaisei Decol',serif;font-size:1.2rem;color:var(--jade);margin-bottom:4px;}
+.pb-sub{font-size:.66rem;color:rgba(232,228,218,.5);}
+.pb-next{margin-top:12px;padding:9px 14px;background:rgba(26,188,156,.15);border:1px solid rgba(26,188,156,.3);border-radius:6px;font-size:.68rem;color:var(--jade);}
+@keyframes cel{0%{transform:scale(.8);opacity:0;}60%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}}
+.retry-box{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.22);border-radius:10px;padding:16px;margin-bottom:16px;text-align:left;}
+.rb-hdr{font-size:.56rem;letter-spacing:.2em;color:var(--wrong);text-transform:uppercase;margin-bottom:10px;}
+.rb-row{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid rgba(231,76,60,.1);font-size:.69rem;line-height:1.6;}
+.rb-row:last-child{border-bottom:none;}
+.rb-jp{font-family:'Zen Antique Soft',serif;font-size:.95rem;min-width:48px;color:var(--wrong);}
+.rb-ans{color:var(--correct);}
+.rb-note{font-size:.6rem;color:var(--muted);margin-top:2px;}
+.att-bar{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.2);border-radius:6px;padding:8px 13px;font-size:.64rem;color:var(--wrong);margin-bottom:12px;}
+.att-bar span{color:#fff;font-weight:700;}
+.rev-list{text-align:left;margin-bottom:18px;}
+.rev-item{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:7px;margin-bottom:6px;font-size:.68rem;line-height:1.6;}
+.rev-c{border-left:3px solid var(--correct);}
+.rev-w{border-left:3px solid var(--wrong);}
+.rev-q{color:var(--muted);font-size:.6rem;}
+.btn-a{display:block;width:100%;padding:14px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:all .25s;border:none;margin-bottom:10px;}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;box-shadow:0 4px 16px rgba(26,39,68,.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,39,68,.4);}
+.btn-jade-a{background:linear-gradient(135deg,var(--jade),#16a085);color:#fff;box-shadow:0 4px 16px rgba(26,188,156,.25);}
+.btn-jade-a:hover{transform:translateY(-2px);}
+.btn-ghost{background:var(--white);border:2px solid var(--sky3)!important;color:var(--text-mid);font-weight:600;}
+.btn-ghost:hover{background:var(--sky);color:var(--text-dark);}
+.unlock-flash{position:fixed;inset:0;background:rgba(26,188,156,.12);z-index:9999;pointer-events:none;animation:ufl .8s ease forwards;}
+@keyframes ufl{0%{opacity:0;}30%{opacity:1;}100%{opacity:0;}}
+@media(max-width:500px){.opts{grid-template-columns:1fr;}.home-stats{grid-template-columns:repeat(2,1fr);}}
+</style>
+<script src="data/kanji.js"></script>
+<script src="data/grammar.js"></script>
+<script src="data/vocabulary.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap" onclick="goHome()">
+      <div class="logo-svg-wrap">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+          <circle cx="50" cy="50" r="48" fill="#1a2744"/>
+          <circle cx="50" cy="50" r="44" fill="none" stroke="#f4739a" stroke-width="1.5"/>
+          <circle cx="22" cy="72" r="4" fill="#f9b8c8" opacity="0.6"/>
+          <circle cx="78" cy="72" r="4" fill="#f9b8c8" opacity="0.6"/>
+          <circle cx="15" cy="60" r="3" fill="#f9b8c8" opacity="0.4"/>
+          <circle cx="85" cy="60" r="3" fill="#f9b8c8" opacity="0.4"/>
+          <ellipse cx="50" cy="58" rx="18" ry="20" fill="#f5e6c8"/>
+          <ellipse cx="50" cy="58" rx="14" ry="16" fill="#e8d5a8"/>
+          <ellipse cx="32" cy="56" rx="10" ry="14" fill="#c8a86a" transform="rotate(-15 32 56)"/>
+          <ellipse cx="68" cy="56" rx="10" ry="14" fill="#c8a86a" transform="rotate(15 68 56)"/>
+          <ellipse cx="50" cy="38" rx="16" ry="15" fill="#c8a86a"/>
+          <polygon points="38,26 35,18 42,24" fill="#a07840"/>
+          <polygon points="62,26 65,18 58,24" fill="#a07840"/>
+          <circle cx="43" cy="37" r="7" fill="white"/>
+          <circle cx="57" cy="37" r="7" fill="white"/>
+          <circle cx="43" cy="37" r="5" fill="#1a2744"/>
+          <circle cx="57" cy="37" r="5" fill="#1a2744"/>
+          <circle cx="44.5" cy="35.5" r="1.5" fill="white"/>
+          <circle cx="58.5" cy="35.5" r="1.5" fill="white"/>
+          <circle cx="43" cy="37" r="7" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+          <circle cx="57" cy="37" r="7" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+          <polygon points="50,42 46,46 54,46" fill="#d4a017"/>
+          <rect x="23" y="44" width="14" height="10" rx="2" fill="white" opacity="0.9"/>
+          <text x="30" y="52" text-anchor="middle" font-size="7" fill="#1a2744" font-family="serif" font-weight="bold">あ</text>
+          <rect x="63" y="42" width="10" height="14" rx="2" fill="#2980b9" opacity="0.9"/>
+          <rect x="64" y="44" width="8" height="9" rx="1" fill="#7ec8f0"/>
+          <text x="14" y="42" font-size="7" fill="#f9b8c8" opacity="0.8">★</text>
+          <text x="80" y="42" font-size="7" fill="#f9b8c8" opacity="0.8">★</text>
+          <rect x="33" y="76" width="34" height="13" rx="4" fill="#f4739a"/>
+          <text x="50" y="86" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="bold">JLPT N3</text>
+        </svg>
+      </div>
+      <div>
+        <div style="font-family:Poppins,sans-serif;font-weight:700;font-size:.95rem;color:#fff;line-height:1.2">Sakura Anki N3</div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:.6rem;color:#f9b8c8;letter-spacing:.1em">さくらアンキ N3</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="xp-badge">⚡ <span id="hdr-xp">0</span> XP</div>
+      <div class="level-badge">🌸 N3</div>
+    </div>
+  </div>
+</header>
+
+<!-- HOME -->
+<div class="screen active" id="s-home">
+
+  <!-- HERO SAKURA BANNER -->
+  <div style="background:linear-gradient(135deg,#1a2744 0%,#223060 55%,#1d2d5a 100%);padding:26px 22px 30px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-20px;right:-20px;width:180px;height:180px;border-radius:50%;background:rgba(244,115,154,0.08);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-30px;left:-30px;width:140px;height:140px;border-radius:50%;background:rgba(249,184,200,0.05);pointer-events:none;"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1;">
+      <div style="flex:1">
+        <div style="font-size:.65rem;letter-spacing:.18em;color:#f9b8c8;text-transform:uppercase;font-weight:600;margin-bottom:5px;">🌸 Selamat Datang！</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(1.3rem,4vw,1.9rem);color:#fff;margin-bottom:3px;">Belajar JLPT N3</div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:.78rem;color:rgba(249,184,200,.78);margin-bottom:14px;">（日本語能力試験 N3）</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <span style="background:#f4739a;border-radius:20px;padding:4px 12px;font-size:.62rem;color:#fff;font-weight:600;">🎯 7 Tahap</span>
+          <span style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.62rem;color:#fff;">📖 Anki SRS</span>
+          <span style="background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.62rem;color:#fff;">⚡ Harus 100%</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0;">
+        <div style="position:relative;width:88px;height:88px;">
+          <svg style="transform:rotate(-90deg);overflow:visible" width="88" height="88" viewBox="0 0 88 88">
+            <circle fill="none" stroke="rgba(255,255,255,.13)" stroke-width="7" cx="44" cy="44" r="37"/>
+            <circle fill="none" stroke="#f9b8c8" stroke-width="7" stroke-linecap="round" cx="44" cy="44" r="37" id="prog-arc" stroke-dasharray="232" stroke-dashoffset="232" style="transition:stroke-dashoffset 1s ease .4s"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <span style="font-size:1.25rem;font-weight:700;color:#fff;line-height:1" id="prog-pct">0%</span>
+            <span style="font-size:.46rem;color:#f9b8c8;letter-spacing:.04em;text-align:center;margin-top:2px;line-height:1.4">N3<br>Selesai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div style="padding:18px 20px 0;">
+
+    <!-- Overall Progress Card -->
+    <div style="background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 4px 20px rgba(26,39,68,.1);margin-bottom:18px;border:2px solid #d0eaf8;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;">
+        <span style="font-size:.63rem;font-weight:600;color:#8a9ab8;letter-spacing:.13em;text-transform:uppercase;">Progress Keseluruhan</span>
+        <span style="font-size:.85rem;font-weight:700;color:#1a2744" id="op-val">0 / 7 Tahap</span>
+      </div>
+      <div style="height:8px;background:#d0eaf8;border-radius:4px;overflow:hidden;margin-bottom:10px;">
+        <div id="op-fill" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#223060,#f4739a);transition:width .8s ease;width:0%"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;" id="op-stages"></div>
+    </div>
+
+    <!-- Stage Map -->
+    <div style="font-size:.63rem;font-weight:700;letter-spacing:.2em;color:#8a9ab8;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+      Peta Belajar &nbsp;学習マップ
+      <div style="flex:1;height:1px;background:#b8ddf5;"></div>
+    </div>
+    <div class="stage-list" id="stage-list"></div>
+
+    <!-- Stats Grid -->
+    <div class="home-stats">
+      <div class="hstat"><div class="hstat-num" id="hs-done">0</div><div class="hstat-lbl">Tahap Selesai</div></div>
+      <div class="hstat"><div class="hstat-num" id="hs-xp">0</div><div class="hstat-lbl">Total XP</div></div>
+      <div class="hstat"><div class="hstat-num" id="hs-att">0</div><div class="hstat-lbl">Total Kuis</div></div>
+      <div class="hstat"><div class="hstat-num" id="hs-acc">—</div><div class="hstat-lbl">Akurasi</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STUDY -->
+<div class="screen" id="s-study">
+  <div class="study-header">
+    <button class="btn-back" onclick="goHome()">← Kembali</button>
+    <div class="study-info">
+      <div class="study-stage-name" id="st-name">Tahap 1</div>
+      <div class="study-stage-sub" id="st-sub">Kartu 1 / 6</div>
+    </div>
+    <div style="font-size:.6rem;color:#8a9ab8;font-weight:500" id="st-loop"></div>
+  </div>
+  <div class="phase-banner">
+    <span class="phase-icon">📖</span>
+    <div><strong style="color:#1a2744">Fase Belajar (学習フェーズ)</strong><br>Tap kartu untuk balik & lihat arti + contoh + mnemonic. Setelah semua kartu selesai, kuis akan terbuka!</div>
+  </div>
+  <div class="prog-bar"><div class="prog-fill" id="st-prog" style="width:0%"></div></div>
+  <div class="card-dots" id="card-dots"></div>
+  <div class="card-scene" onclick="flipCard()">
+    <div class="card-3d" id="fc3d">
+      <div class="card-face card-front">
+        <span class="card-type-badge badge-kanji" id="fc-tag-f">漢字</span>
+        <div class="card-num" id="fc-num">1/6</div>
+        <div class="card-jp" id="fc-jp-f">学</div>
+        <div class="card-read" id="fc-read">がく</div>
+        <div class="card-hint">↻ Tap untuk lihat arti</div>
+      </div>
+      <div class="card-face card-back" id="fc-back" style="background:linear-gradient(145deg,rgba(212,160,23,.12),rgba(192,57,43,.08));border:1px solid rgba(212,160,23,.22)">
+        <span class="card-type-badge badge-kanji" id="fc-tag-b">漢字</span>
+        <div class="card-meaning" id="fc-meaning">Belajar</div>
+        <div class="card-example" id="fc-example">例文</div>
+        <div class="card-ex-id" id="fc-ex-id">contoh</div>
+        <div class="card-mnemonic" id="fc-mnemonic">💡 mnemonic</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;padding:0 20px;margin-bottom:14px;">
+    <button class="btn-flip" onclick="flipCard()">↻ Balik Kartu</button>
+    <button class="btn-next-card" onclick="nextCard()">✓ Mengerti → Lanjut</button>
+  </div>
+</div>
+
+<!-- GATE -->
+<div class="screen" id="s-gate">
+  <div class="gate-wrap">
+    <div class="gate-kanji" id="gt-k">準備OK</div>
+    <div class="gate-title" id="gt-t">Kuis Siap!</div>
+    <div class="gate-sub" id="gt-s">Semua kartu dipelajari. Waktunya kuis!</div>
+    <div id="gt-att"></div>
+    <div class="gate-learned">
+      <div class="gl-title">📚 Materi yang Sudah Dipelajari</div>
+      <div id="gl-items"></div>
+    </div>
+    <button class="btn-a btn-jade-a" onclick="startQuiz()">📝 Mulai Kuis Tahap Ini</button>
+    <button class="btn-a btn-ghost" onclick="startStudy(true)">↩ Pelajari Ulang Kartu</button>
+    <button class="btn-a btn-ghost" style="margin-top:4px" onclick="goHome()">← Kembali ke Peta</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="screen" id="s-quiz">
+  <div class="quiz-topbar">
+    <span class="q-cat" id="qz-cat">Tahap 1</span>
+    <span class="q-ctr" id="qz-ctr">1/5</span>
+  </div>
+  <div class="timer-bar"><div class="timer-fill" id="t-fill" style="width:100%"></div></div>
+  <div class="qdots" id="qdots"></div>
+  <div class="q-card">
+    <span class="q-tag badge-kanji" id="qz-tag">漢字</span>
+    <div class="q-num" id="qz-num">問題 1</div>
+    <div class="q-jp" id="qz-jp"></div>
+    <div class="q-furi" id="qz-furi"></div>
+    <div class="q-prompt" id="qz-prompt"></div>
+  </div>
+  <div class="opts" id="opts"></div>
+  <div class="exp-box" id="exp-box"><span class="exp-lbl">📚 Penjelasan</span><div id="exp-txt"></div></div>
+  <button class="btn-nq" id="btn-nq" onclick="nextQ()">次へ → Soal Berikutnya</button>
+</div>
+
+<!-- RESULT -->
+<div class="screen" id="s-result">
+  <div class="result-wrap">
+    <div class="score-ring">
+      <svg class="score-svg" width="170" height="170" viewBox="0 0 170 170">
+        <circle class="s-bg" cx="85" cy="85" r="75"/>
+        <circle class="s-arc" id="s-arc" cx="85" cy="85" r="75"/>
+      </svg>
+      <div class="score-lbl">
+        <span class="score-big" id="r-pct">0%</span>
+        <span class="score-sub" id="r-frac">0/5</span>
+      </div>
+    </div>
+    <div class="r-verdict" id="r-verdict"></div>
+    <div class="r-msg" id="r-msg"></div>
+    <div id="r-perfect" style="display:none"></div>
+    <div id="r-retry" style="display:none"></div>
+    <div class="rev-list" id="r-review"></div>
+    <div id="r-btns"></div>
+  </div>
+</div>
+</div>
+
+<script>
+const STAGES=[
+  {id:1,title:"Pemula",titleJp:"初心者",jp:"一",icon:"🌱",color:"var(--lv1)",
+   desc:"Kanji N3 paling dasar & paling sering muncul",
+   badgeClass:"badge-kanji",typeLabel:"漢字",xp:100,
+   cards:[
+     {jp:"改善",read:"かいぜん",meaning:"Perbaikan / Kaizen",example:"計画を改善しましょう。",exampleId:"Mari perbaiki rencananya.",mnemonic:"改=perbaiki + 善=baik → 'kaizen' terkenal di seluruh dunia!"},
+     {jp:"判断",read:"はんだん",meaning:"Penilaian / Keputusan",example:"正しく判断してください。",exampleId:"Tolong buat keputusan yang benar.",mnemonic:"判=stempel keputusan + 断=memotong → memutuskan dengan tegas"},
+     {jp:"情報",read:"じょうほう",meaning:"Informasi / Data",example:"最新の情報が必要だ。",exampleId:"Butuh informasi terbaru.",mnemonic:"情=kondisi + 報=laporan → laporan kondisi = informasi"},
+     {jp:"記憶",read:"きおく",meaning:"Ingatan / Memori",example:"幼い頃の記憶がある。",exampleId:"Punya kenangan masa kecil.",mnemonic:"記=tulis + 憶=ingat → ingatan yang tercatat dalam pikiran"},
+     {jp:"能力",read:"のうりょく",meaning:"Kemampuan",example:"語学能力を高めたい。",exampleId:"Ingin meningkatkan kemampuan bahasa.",mnemonic:"能=mampu + 力=kekuatan → kekuatan untuk mampu"},
+     {jp:"経験",read:"けいけん",meaning:"Pengalaman",example:"海外経験が役に立った。",exampleId:"Pengalaman di luar negeri berguna.",mnemonic:"経=melewati + 験=ujian → ujian yang sudah dilewati = pengalaman"},
+   ],
+   questions:[
+     {jp:"この計画は___の余地がある。",furi:"かいぜん",prompt:"Kanji untuk かいぜん (perbaikan):",opts:["改善","回線","解説","会見"],ans:0,exp:"改善(かいぜん) = perbaikan. 改=perbaiki, 善=baik. Terkenal sebagai 'kaizen' di dunia manajemen."},
+     {jp:"正しく___してください。",furi:"はんだん",prompt:"Kanji untuk はんだん (penilaian):",opts:["判断","反断","半段","版断"],ans:0,exp:"判断(はんだん) = penilaian, keputusan. 判=menilai, 断=memutuskan."},
+     {jp:"最新の___が必要だ。",furi:"じょうほう",prompt:"Kanji untuk じょうほう (informasi):",opts:["情報","状報","情包","城報"],ans:0,exp:"情報(じょうほう) = informasi. 情=kondisi, 報=laporan."},
+     {jp:"幼い頃の___がある。",furi:"きおく",prompt:"Kanji untuk きおく (ingatan):",opts:["記憶","記録","記事","記号"],ans:0,exp:"記憶(きおく) = ingatan/memori. 記=mencatat, 憶=mengingat."},
+     {jp:"語学___を高めたい。",furi:"のうりょく",prompt:"Kanji untuk のうりょく (kemampuan):",opts:["能力","農力","脳力","動力"],ans:0,exp:"能力(のうりょく) = kemampuan. 能=mampu, 力=kekuatan."},
+   ]},
+
+  {id:2,title:"Dasar",titleJp:"基礎",jp:"二",icon:"📗",color:"var(--lv2)",
+   desc:"Kanji N3 lanjutan yang wajib dikuasai untuk ujian",
+   badgeClass:"badge-kanji",typeLabel:"漢字",xp:150,
+   cards:[
+     {jp:"環境",read:"かんきょう",meaning:"Lingkungan",example:"自然環境を守ろう。",exampleId:"Mari jaga lingkungan alam.",mnemonic:"環=siklus/cincin + 境=batas → batas siklus alam = lingkungan"},
+     {jp:"信頼",read:"しんらい",meaning:"Kepercayaan",example:"信頼関係が大切だ。",exampleId:"Hubungan saling percaya itu penting.",mnemonic:"信=percaya + 頼=bergantung → bergantung karena percaya"},
+     {jp:"成功",read:"せいこう",meaning:"Kesuksesan",example:"プロジェクトが成功した。",exampleId:"Proyek berhasil.",mnemonic:"成=menjadi + 功=hasil kerja → hasil kerja menjadi nyata"},
+     {jp:"状況",read:"じょうきょう",meaning:"Situasi / Kondisi",example:"現在の状況を説明する。",exampleId:"Menjelaskan situasi saat ini.",mnemonic:"状=kondisi + 況=keadaan → kondisi dan keadaan"},
+     {jp:"発展",read:"はってん",meaning:"Perkembangan",example:"経済の発展に貢献する。",exampleId:"Berkontribusi pada perkembangan ekonomi.",mnemonic:"発=berkembang + 展=membentang → membentang dan berkembang"},
+     {jp:"解決",read:"かいけつ",meaning:"Penyelesaian / Solusi",example:"問題を解決しなければ。",exampleId:"Harus menyelesaikan masalah.",mnemonic:"解=membuka + 決=memutuskan → memutuskan untuk membuka masalah"},
+   ],
+   questions:[
+     {jp:"自然___を守ろう。",furi:"かんきょう",prompt:"Kanji untuk かんきょう (lingkungan):",opts:["環境","感情","観光","完成"],ans:0,exp:"環境(かんきょう) = lingkungan. 環=siklus, 境=batas."},
+     {jp:"___関係が大切だ。",furi:"しんらい",prompt:"Kanji untuk しんらい (kepercayaan):",opts:["信頼","信来","真頼","申頼"],ans:0,exp:"信頼(しんらい) = kepercayaan. 信=percaya, 頼=bergantung."},
+     {jp:"プロジェクトが___した。",furi:"せいこう",prompt:"Kanji untuk せいこう (kesuksesan):",opts:["成功","成行","生功","正功"],ans:0,exp:"成功(せいこう) = kesuksesan. 成=menjadi, 功=hasil kerja."},
+     {jp:"現在の___を説明する。",furi:"じょうきょう",prompt:"Kanji untuk じょうきょう (situasi):",opts:["状況","状態","情況","形況"],ans:0,exp:"状況(じょうきょう) = situasi/kondisi."},
+     {jp:"経済の___に貢献する。",furi:"はってん",prompt:"Kanji untuk はってん (perkembangan):",opts:["発展","発見","発表","発生"],ans:0,exp:"発展(はってん) = perkembangan. 発=berkembang, 展=membentang."},
+   ]},
+
+  {id:3,title:"Menengah Bawah",titleJp:"中級初め",jp:"三",icon:"📘",color:"var(--lv3)",
+   desc:"Kosakata N3 penting untuk percakapan & ujian tulis",
+   badgeClass:"badge-vocab",typeLabel:"語彙",xp:200,
+   cards:[
+     {jp:"真面目",read:"まじめ",meaning:"Serius / Tekun / Rajin",example:"彼はとても真面目な学生だ。",exampleId:"Dia murid yang sangat rajin.",mnemonic:"真=sejati + 面目=wajah/kehormatan → sungguh-sungguh & jujur"},
+     {jp:"根気",read:"こんき",meaning:"Ketekunan / Ketabahan",example:"根気があれば何でもできる。",exampleId:"Dengan ketekunan apapun bisa dilakukan.",mnemonic:"根=akar + 気=semangat → semangat berakar kuat"},
+     {jp:"自信",read:"じしん",meaning:"Kepercayaan diri",example:"自信を持って発言しよう。",exampleId:"Mari berbicara dengan percaya diri.",mnemonic:"自=diri + 信=percaya → percaya pada diri sendiri"},
+     {jp:"責任",read:"せきにん",meaning:"Tanggung jawab",example:"責任を持って仕事をする。",exampleId:"Bekerja dengan penuh tanggung jawab.",mnemonic:"責=tuntut + 任=tugas → tugas yang harus dipertanggungjawabkan"},
+     {jp:"前向き",read:"まえむき",meaning:"Positif / Berorientasi maju",example:"前向きに考えることが大切だ。",exampleId:"Berpikir positif itu penting.",mnemonic:"前=depan + 向き=menghadap → selalu menghadap ke depan"},
+     {jp:"要約",read:"ようやく",meaning:"Ringkasan / Rangkuman",example:"内容を要約してください。",exampleId:"Tolong rangkum isinya.",mnemonic:"要=pokok + 約=singkat → singkat ke pokoknya"},
+   ],
+   questions:[
+     {jp:"彼はとても___な学生だ。",furi:"",prompt:"Kata untuk 'serius dan tekun':",opts:["真面目","元気","暇","適当"],ans:0,exp:"真面目(まじめ) = serius, tekun, rajin. Sifat yang sangat dihargai di Jepang."},
+     {jp:"___があれば何でもできる。",furi:"",prompt:"Kata untuk 'ketekunan/ketabahan':",opts:["根気","勇気","元気","本気"],ans:0,exp:"根気(こんき) = ketekunan. 根=akar, 気=semangat → semangat berakar."},
+     {jp:"___を持って発言しよう。",furi:"",prompt:"Kata untuk 'kepercayaan diri':",opts:["自信","自身","自然","事情"],ans:0,exp:"自信(じしん) = kepercayaan diri. 自=diri, 信=percaya."},
+     {jp:"___を持って仕事をする。",furi:"",prompt:"Kata untuk 'tanggung jawab':",opts:["責任","義務","権利","役割"],ans:0,exp:"責任(せきにん) = tanggung jawab. 責=tuntut, 任=tugas."},
+     {jp:"___に考えることが大切だ。",furi:"",prompt:"Kata untuk 'secara positif/maju':",opts:["前向き","後ろ向き","横向き","下向き"],ans:0,exp:"前向き(まえむき) = positif, berorientasi maju. 前=depan, 向き=menghadap."},
+   ]},
+
+  {id:4,title:"Menengah",titleJp:"中級",jp:"四",icon:"📐",color:"var(--lv4)",
+   desc:"Pola tata bahasa N3 yang paling sering diujikan",
+   badgeClass:"badge-grammar",typeLabel:"文法",xp:250,
+   cards:[
+     {jp:"〜てから",read:"",meaning:"Setelah A, lalu B",example:"宿題を終えてから遊ぶ。",exampleId:"Bermain setelah selesai PR.",mnemonic:"て形+から = urutan jelas: A selesai dulu → B mulai"},
+     {jp:"〜ながら",read:"",meaning:"Sambil (dua aksi bersamaan)",example:"音楽を聴きながら勉強する。",exampleId:"Belajar sambil mendengarkan musik.",mnemonic:"ます形+ながら → dua aksi terjadi di waktu yang sama"},
+     {jp:"〜なので",read:"",meaning:"Karena (alasan objektif/sopan)",example:"雨なので、試合は中止です。",exampleId:"Karena hujan, pertandingan dibatalkan.",mnemonic:"なので = karena (sopan). Lebih formal dari だから"},
+     {jp:"〜けど／けれど",read:"",meaning:"Meskipun / Tapi",example:"日本語は難しいけど、面白い。",exampleId:"Bahasa Jepang sulit tapi menarik.",mnemonic:"けど = tapi. Lembut dan natural. Lebih casual dari が"},
+     {jp:"〜とたん（に）",read:"",meaning:"Begitu A, langsung B",example:"窓を開けたとたん、風が入った。",exampleId:"Begitu buka jendela, angin masuk.",mnemonic:"た形+とたん = kejadian spontan tak terduga setelah A"},
+     {jp:"〜になる",read:"",meaning:"Menjadi (sesuatu)",example:"彼女は先生になりたい。",exampleId:"Dia ingin menjadi guru.",mnemonic:"名詞+に+なる = menjadi. 医者になる = menjadi dokter"},
+   ],
+   questions:[
+     {jp:"宿題を___、ゲームをしてもいいよ。",furi:"",prompt:"Pola 'setelah A selesai, baru B':",opts:["終えてから","終えるので","終えながら","終えても"],ans:0,exp:"〜てから = setelah melakukan A, lalu B. Urutan tindakan yang jelas."},
+     {jp:"音楽を聴き___勉強する。",furi:"",prompt:"Pola dua aksi bersamaan:",opts:["ながら","てから","たり","ために"],ans:0,exp:"〜ながら = sambil. Dua aksi terjadi di waktu yang sama."},
+     {jp:"雨が降り___、試合は中止になった。",furi:"",prompt:"Pola alasan objektif/sopan:",opts:["だから","なので","けれど","ために"],ans:1,exp:"〜なので = karena. Alasan objektif, lebih sopan dari だから."},
+     {jp:"日本語は難しい___、おもしろい。",furi:"",prompt:"Pola kontras 'meskipun/tapi':",opts:["けど","から","ので","だって"],ans:0,exp:"〜けど/けれど = meskipun, tapi. Kontras yang natural dan ringan."},
+     {jp:"窓を開けた___、風が入ってきた。",furi:"",prompt:"Pola 'begitu A, langsung B':",opts:["とたん","ながら","だけで","ばかり"],ans:0,exp:"〜とたん(に) = begitu/seketika setelah A, langsung terjadi B."},
+   ]},
+
+  {id:5,title:"Menengah Atas",titleJp:"中上級",jp:"五",icon:"🔥",color:"var(--lv5)",
+   desc:"Pola grammar N3 yang kompleks & wajib dikuasai",
+   badgeClass:"badge-grammar",typeLabel:"文法",xp:300,
+   cards:[
+     {jp:"〜ばよかった",read:"",meaning:"Seharusnya melakukan (penyesalan)",example:"もっと勉強すればよかった。",exampleId:"Seharusnya belajar lebih banyak.",mnemonic:"仮定形+ばよかった = penyesalan karena tidak melakukan sesuatu"},
+     {jp:"〜のに",read:"",meaning:"Padahal (kekecewaan)",example:"約束したのに来なかった。",exampleId:"Padahal sudah berjanji, tidak datang.",mnemonic:"のに = kekecewaan. Selalu ada rasa tidak puas/kecewa"},
+     {jp:"〜ば〜ほど",read:"",meaning:"Semakin A, semakin B",example:"読めば読むほど面白くなる。",exampleId:"Semakin dibaca, semakin menarik.",mnemonic:"仮定形+ば + 辞書形+ほど = makin-makin. Dua hal meningkat bersamaan"},
+     {jp:"〜だけでなく",read:"",meaning:"Tidak hanya A, tapi juga B",example:"英語だけでなく中国語も話せる。",exampleId:"Tidak hanya Inggris, bisa juga Mandarin.",mnemonic:"だけ=hanya + でなく=bukan → tidak hanya. Tambahan informasi"},
+     {jp:"〜ようと思う",read:"",meaning:"Berencana / Berniat",example:"来年、日本へ行こうと思う。",exampleId:"Berencana pergi ke Jepang tahun depan.",mnemonic:"意向形+と思う = niat/rencana yang baru diputuskan"},
+     {jp:"〜ことにする",read:"",meaning:"Memutuskan untuk melakukan",example:"毎日運動することにした。",exampleId:"Memutuskan untuk olahraga setiap hari.",mnemonic:"辞書形+ことにする = keputusan sadar dan sengaja"},
+   ],
+   questions:[
+     {jp:"もっと勉強すれば___。",furi:"",prompt:"Pola penyesalan 'seharusnya':",opts:["よかった","いい","いいでしょう","よかっただろう"],ans:0,exp:"〜ばよかった = seharusnya melakukan. Ungkapan penyesalan terhadap masa lalu."},
+     {jp:"彼は約束した___、来なかった。",furi:"",prompt:"Pola 'padahal' (kekecewaan):",opts:["のに","ので","から","ため"],ans:0,exp:"〜のに = padahal. Selalu mengandung rasa kecewa/tidak puas."},
+     {jp:"この本は読め___読む___面白くなる。",furi:"",prompt:"Pola 'semakin A, semakin B':",opts:["ば〜ほど","か〜か","も〜も","と〜と"],ans:0,exp:"〜ば〜ほど = semakin A semakin B. 読めば読むほど = semakin dibaca semakin."},
+     {jp:"彼女は英語___フランス語も話せる。",furi:"",prompt:"Pola 'tidak hanya A tapi juga B':",opts:["だけでなく","だけでも","だけには","だけから"],ans:0,exp:"〜だけでなく = tidak hanya. Menambahkan informasi tambahan."},
+     {jp:"毎日運動する___にした。",furi:"",prompt:"Pola 'memutuskan untuk melakukan':",opts:["こと","もの","ため","はず"],ans:0,exp:"〜ことにする = memutuskan untuk melakukan. Keputusan yang sadar dan sengaja."},
+   ]},
+
+  {id:6,title:"Lanjutan",titleJp:"上級",jp:"六",icon:"⚡",color:"var(--lv6)",
+   desc:"Kosakata & kanji N3 tingkat tinggi untuk skor maksimal",
+   badgeClass:"badge-mixed",typeLabel:"総合",xp:400,
+   cards:[
+     {jp:"論理的",read:"ろんりてき",meaning:"Logis / Rasional",example:"論理的に考えなさい。",exampleId:"Berpikirlah secara logis.",mnemonic:"論理=logika + 的=sufiks '-teki' → bersifat logis"},
+     {jp:"貢献",read:"こうけん",meaning:"Kontribusi",example:"社会に貢献したい。",exampleId:"Ingin berkontribusi pada masyarakat.",mnemonic:"貢=persembahan + 献=dedikasi → mendedikasikan diri untuk berkontribusi"},
+     {jp:"〜によると",read:"",meaning:"Menurut (sumber)",example:"天気予報によると、明日は雨だ。",exampleId:"Menurut ramalan cuaca, besok hujan.",mnemonic:"〜によると/によれば = menurut. Selalu diikuti info dari sumber tertentu"},
+     {jp:"充実",read:"じゅうじつ",meaning:"Memuaskan / Penuh makna",example:"充実した一日を過ごした。",exampleId:"Menjalani hari yang memuaskan.",mnemonic:"充=penuh + 実=buah/isi → hari yang berisi dan bermakna"},
+     {jp:"〜ために",read:"",meaning:"Demi / Untuk (tujuan)",example:"合格するために毎日勉強する。",exampleId:"Belajar setiap hari demi lulus.",mnemonic:"目的語+ために = untuk tujuan. Berbeda dari ので yang alasan faktual"},
+     {jp:"覚悟",read:"かくご",meaning:"Tekad / Kesiapan menanggung akibat",example:"覚悟を持って挑戦する。",exampleId:"Menantang dengan tekad bulat.",mnemonic:"覚=sadar + 悟=mengerti → sadar & siap menanggung segala akibat"},
+   ],
+   questions:[
+     {jp:"___に考えなさい。",furi:"ろんりてき",prompt:"Kanji untuk ろんりてき (logis):",opts:["論理的","倫理的","道理的","原理的"],ans:0,exp:"論理的(ろんりてき) = logis/rasional. 論理=logika + 的=sufiks sifat."},
+     {jp:"社会に___したい。",furi:"こうけん",prompt:"Kanji untuk こうけん (kontribusi):",opts:["貢献","交換","公演","講演"],ans:0,exp:"貢献(こうけん) = kontribusi. 貢=persembahan, 献=dedikasi."},
+     {jp:"天気予報___、明日は雨だ。",furi:"",prompt:"Pola 'menurut (sumber informasi)':",opts:["によると","になると","にとって","において"],ans:0,exp:"〜によると = menurut. Digunakan untuk mengutip sumber informasi."},
+     {jp:"合格する___、毎日勉強する。",furi:"",prompt:"Pola 'demi / untuk tujuan':",opts:["ために","ように","から","ので"],ans:0,exp:"〜ために = demi/untuk (tujuan yang ingin dicapai)."},
+     {jp:"___を持って挑戦する。",furi:"かくご",prompt:"Kanji untuk かくご (tekad):",opts:["覚悟","確固","格後","角語"],ans:0,exp:"覚悟(かくご) = tekad, kesiapan menanggung segala akibat."},
+   ]},
+
+  {id:7,title:"Master",titleJp:"マスター",jp:"七",icon:"👑",color:"var(--lv7)",
+   desc:"Ujian akhir! Campuran semua materi N3 — butuh 100% untuk menjadi Master!",
+   badgeClass:"badge-mixed",typeLabel:"N3総合",xp:500,
+   cards:[
+     {jp:"率直",read:"そっちょく",meaning:"Blak-blakan / Terus terang",example:"率直に言うと、難しい。",exampleId:"Terus terang, itu sulit.",mnemonic:"率=memimpin/langsung + 直=lurus → langsung dan lurus = jujur"},
+     {jp:"〜っぱなし",read:"",meaning:"Terus dalam keadaan (negatif)",example:"テレビをつけっぱなしにしないで。",exampleId:"Jangan biarkan TV terus menyala.",mnemonic:"ます形+っぱなし = dibiarkan terus dalam kondisi tertentu"},
+     {jp:"〜はずだ",read:"",meaning:"Seharusnya / Pasti (ekspektasi logis)",example:"今頃、彼はもう着いているはずだ。",exampleId:"Seharusnya dia sudah tiba sekarang.",mnemonic:"はず = ekspektasi berdasarkan logika/fakta. Beda dari でしょう (tebakan)"},
+     {jp:"根拠",read:"こんきょ",meaning:"Dasar / Landasan / Bukti",example:"根拠なしに話すな。",exampleId:"Jangan bicara tanpa dasar.",mnemonic:"根=akar + 拠=bersandar → bersandar pada akar yang kuat = bukti valid"},
+     {jp:"〜ものの",read:"",meaning:"Meskipun (kenyataan berbeda)",example:"試験を受けたものの、合格できなかった。",exampleId:"Meski sudah ujian, tidak bisa lulus.",mnemonic:"〜ものの = meskipun (kenyataan tidak sesuai harapan)"},
+     {jp:"様々",read:"さまざま",meaning:"Bermacam-macam / Beragam",example:"様々な意見を聞いた。",exampleId:"Mendengar berbagai macam pendapat.",mnemonic:"様=gaya/cara → banyak gaya/cara = beragam"},
+     {jp:"〜ことで",read:"",meaning:"Dengan melakukan (cara/sarana)",example:"運動することで健康になれる。",exampleId:"Dengan berolahraga bisa jadi sehat.",mnemonic:"〜することで = dengan melakukan A, menghasilkan B"},
+     {jp:"充実",read:"じゅうじつ",meaning:"Bermakna / Memuaskan",example:"充実した毎日を送る。",exampleId:"Menjalani hari-hari yang bermakna.",mnemonic:"充=penuh + 実=buah → hari yang penuh dan berbuah"},
+   ],
+   questions:[
+     {jp:"___に言うと、この計画は難しい。",furi:"そっちょく",prompt:"Kanji untuk そっちょく (blak-blakan):",opts:["率直","率則","率束","卒直"],ans:0,exp:"率直(そっちょく) = blak-blakan, terus terang. Berbicara langsung tanpa berputar-putar."},
+     {jp:"テレビをつけ___にしないで。",furi:"",prompt:"Pola 'dibiarkan terus dalam keadaan':",opts:["っぱなし","っきり","がち","すぎ"],ans:0,exp:"〜っぱなし = dibiarkan terus. つけっぱなし = dibiarkan terus menyala (negatif)."},
+     {jp:"今頃、彼はもう着いている___だ。",furi:"",prompt:"Pola 'seharusnya/pasti sudah' (logis):",opts:["はず","べき","こと","もの"],ans:0,exp:"〜はずだ = seharusnya/pasti (ekspektasi berdasarkan logika dan fakta)."},
+     {jp:"試験を受けた___、合格できなかった。",furi:"",prompt:"Pola 'meskipun (tapi kenyataannya)':",opts:["ものの","ものだ","ものか","もので"],ans:0,exp:"〜ものの = meskipun. Kenyataan tidak sesuai dengan yang diharapkan."},
+     {jp:"運動する___、健康になれる。",furi:"",prompt:"Pola 'dengan melakukan A, hasilnya B':",opts:["ことで","ことに","ことを","ことか"],ans:0,exp:"〜することで = dengan melakukan A menghasilkan B. 運動することで健康になる = berolahraga → sehat."},
+     {jp:"___なしに話すな。",furi:"こんきょ",prompt:"Kanji untuk こんきょ (dasar/bukti):",opts:["根拠","根気","原因","根本"],ans:0,exp:"根拠(こんきょ) = dasar, landasan, bukti. 根=akar, 拠=bersandar."},
+     {jp:"会議では___な意見が出た。",furi:"さまざま",prompt:"Kanji untuk さまざま (beragam):",opts:["様々","同様","同一","均一"],ans:0,exp:"様々(さまざま) = bermacam-macam, beragam. 様=gaya/cara."},
+     {jp:"___した一日を過ごした。",furi:"じゅうじつ",prompt:"Kanji untuk じゅうじつ (bermakna):",opts:["充実","重実","中実","住実"],ans:0,exp:"充実(じゅうじつ) = memuaskan, bermakna. 充=penuh, 実=buah/isi."},
+   ]},
+];
+
+// ── STATE ──
+function initP(){const p={};STAGES.forEach(s=>{p[s.id]={studied:false,att:0,best:0,ok:false,xp:0};});return p;}
+function loadP(){const r=localStorage.getItem('n3_7v2');if(!r)return initP();const s=JSON.parse(r);const p=initP();Object.keys(p).forEach(k=>{if(s[k])p[k]=s[k];});return p;}
+function saveP(){localStorage.setItem('n3_7v2',JSON.stringify(PROG));}
+
+let PROG=loadP();
+let curS=null,siIdx=0,siFlip=false;
+let qSess=[],qCur=0,qAns=[],qDone=false;
+let tIv=null,tVal=100;
+
+const tg=window.Telegram?.WebApp;
+if(tg){tg.ready();tg.expand();}
+
+function getTotalXP(){return Object.values(PROG).reduce((a,b)=>a+(b.xp||0),0);}
+
+// ── HOME ──
+function renderHome(){
+  const xp=getTotalXP();
+  document.getElementById('hdr-xp').textContent=xp;
+  const done=STAGES.filter(s=>PROG[s.id].ok).length;
+  const pct=Math.round((done/7)*100);
+  document.getElementById('op-val').textContent=`${done} / 7 Tahap`;
+  document.getElementById('op-fill').style.width=pct+'%';
+
+  const dots=document.getElementById('op-stages');
+  dots.innerHTML='';
+  STAGES.forEach(s=>{
+    const p=PROG[s.id];
+    const d=document.createElement('div');
+    d.className='op-dot'+(p.ok?' done':p.studied?' active-dot':'');
+    dots.appendChild(d);
+  });
+
+  const list=document.getElementById('stage-list');
+  list.innerHTML='';
+  STAGES.forEach((s,i)=>{
+    const p=PROG[s.id];
+    const prevOk=i===0||PROG[STAGES[i-1].id].ok;
+    const locked=!prevOk;
+
+    if(i>0){
+      const conn=document.createElement('div');
+      conn.className='stage-connector'+(PROG[STAGES[i-1].id].ok?' done-line':'');
+      list.appendChild(conn);
+    }
+
+    let stat='',mini=0;
+    if(p.ok){stat='<span class="sc-status s-done">✅ Selesai</span>';mini=100;}
+    else if(locked){stat='<span class="sc-status s-locked">🔒 Terkunci</span>';}
+    else if(p.studied&&p.att>0){stat=`<span class="sc-status s-quiz">📝 Ulang ke-${p.att+1}</span>`;mini=60;}
+    else if(p.studied){stat='<span class="sc-status s-quiz">📝 Kuis Siap!</span>';mini=40;}
+    else{stat='<span class="sc-status s-ready">📖 Mulai Belajar</span>';}
+
+    const card=document.createElement('div');
+    card.className='stage-card'+(locked?' locked':'');
+    card.style.setProperty('--lv-color',s.color);
+    card.innerHTML=`<div class="sc-inner">
+      <div class="sc-badge${p.ok?' done-badge':(!locked&&!p.ok)?' active-badge':''}" style="--lv-color:${s.color}">${s.icon}</div>
+      <div class="sc-info">
+        <div class="sc-num">TAHAP ${s.id} · ${s.jp}段階</div>
+        <div class="sc-name">${s.title}</div>
+        <div class="sc-jp">${s.titleJp} · ${s.typeLabel} · +${s.xp} XP</div>
+        <div class="sc-desc">${s.desc}</div>
+      </div>
+      <div class="sc-right">${stat}
+        <div class="sc-mini"><div class="sc-mini-fill" style="width:${mini}%;background:${s.color}"></div></div>
+        ${p.att>0?`<div class="sc-att">${p.att}x percobaan</div>`:''}
+      </div>
+    </div>`;
+    if(!locked)card.onclick=()=>enterStage(s.id);
+    list.appendChild(card);
+  });
+
+  const totalAtt=Object.values(PROG).reduce((a,b)=>a+(b.att||0),0);
+  const scores=Object.values(PROG).map(p=>p.best).filter(x=>x>0);
+  document.getElementById('hs-done').textContent=done;
+  document.getElementById('hs-xp').textContent=xp;
+
+  // Hero progress ring
+  const done_pct=Math.round((STAGES.filter(s=>PROG[s.id].ok).length/7)*100);
+  const arc=document.getElementById('prog-arc');
+  if(arc){const c=2*Math.PI*37;arc.style.strokeDasharray=c;arc.style.strokeDashoffset=c-(c*done_pct/100);}
+  const pp=document.getElementById('prog-pct');if(pp)pp.textContent=done_pct+'%';
+  document.getElementById('hs-att').textContent=totalAtt;
+  document.getElementById('hs-acc').textContent=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%':'—';
+}
+
+function enterStage(id){
+  curS=STAGES.find(s=>s.id===id);
+  const p=PROG[id];
+  if(p.ok||p.studied)showGate();
+  else startStudy();
+}
+
+function goHome(){clearInterval(tIv);showScreen('s-home');renderHome();}
+function quickStart(){const next=STAGES.find(s=>!PROG[s.id].ok);if(next){enterStage(next.id);}else{goHome();}}
+
+// ── STUDY ──
+function startStudy(isRetry=false){
+  siIdx=0;siFlip=false;
+  showScreen('s-study');
+  document.getElementById('st-name').textContent=`Tahap ${curS.id} — ${curS.title}`;
+  document.getElementById('st-loop').textContent=PROG[curS.id].att>0?`↩ Ulang ke-${PROG[curS.id].att+1}`:'';
+  buildDots();
+  loadCard(0);
+}
+
+function buildDots(){
+  const c=document.getElementById('card-dots');c.innerHTML='';
+  curS.cards.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='cdot'+(i===0?' current':'');
+    d.id='cd-'+i;c.appendChild(d);
+  });
+}
+
+function loadCard(idx){
+  const fc=curS.cards[idx];siFlip=false;
+  document.getElementById('fc3d').classList.remove('flipped');
+  document.getElementById('fc-jp-f').textContent=fc.jp;
+  document.getElementById('fc-read').textContent=fc.read||'';
+  document.getElementById('fc-read').style.display=fc.read?'block':'none';
+  document.getElementById('fc-meaning').textContent=fc.meaning;
+  document.getElementById('fc-example').textContent=fc.example;
+  document.getElementById('fc-ex-id').textContent=fc.exampleId;
+  document.getElementById('fc-mnemonic').innerHTML='💡 '+fc.mnemonic;
+  document.getElementById('fc-num').textContent=`${idx+1}/${curS.cards.length}`;
+  document.getElementById('st-sub').textContent=`Kartu ${idx+1} / ${curS.cards.length}`;
+  document.getElementById('st-prog').style.width=`${(idx/curS.cards.length)*100}%`;
+  ['fc-tag-f','fc-tag-b'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.className='card-type-badge '+curS.badgeClass;
+    el.textContent=curS.typeLabel;
+  });
+  const backBg={
+    'badge-kanji':'background:linear-gradient(145deg,rgba(212,160,23,.12),rgba(192,57,43,.08));border:1px solid rgba(212,160,23,.22)',
+    'badge-grammar':'background:linear-gradient(145deg,rgba(41,128,185,.12),rgba(26,188,156,.08));border:1px solid rgba(41,128,185,.22)',
+    'badge-vocab':'background:linear-gradient(145deg,rgba(192,57,43,.12),rgba(212,160,23,.08));border:1px solid rgba(192,57,43,.22)',
+    'badge-mixed':'background:linear-gradient(145deg,rgba(155,89,182,.12),rgba(41,128,185,.08));border:1px solid rgba(155,89,182,.22)',
+  };
+  document.getElementById('fc-back').style.cssText=backBg[curS.badgeClass]||backBg['badge-mixed'];
+  document.querySelectorAll('.cdot').forEach((d,i)=>{
+    d.classList.remove('current','done');
+    if(i<idx)d.classList.add('done');
+    if(i===idx)d.classList.add('current');
+  });
+}
+
+function flipCard(){siFlip=!siFlip;document.getElementById('fc3d').classList.toggle('flipped',siFlip);}
+
+function nextCard(){
+  siIdx++;
+  if(siIdx>=curS.cards.length){PROG[curS.id].studied=true;saveP();showGate();}
+  else loadCard(siIdx);
+}
+
+// ── GATE ──
+function showGate(){
+  showScreen('s-gate');
+  const p=PROG[curS.id];
+  if(p.ok){
+    document.getElementById('gt-k').textContent='完璧';
+    document.getElementById('gt-t').textContent='Sudah Dikuasai!';
+    document.getElementById('gt-s').textContent='Tahap ini sudah kamu kuasai sempurna 🎉';
+  } else if(p.att>0){
+    document.getElementById('gt-k').textContent='再挑戦';
+    document.getElementById('gt-t').textContent=`Kuis Ulang ke-${p.att+1}`;
+    document.getElementById('gt-s').innerHTML=`Skor terbaik: <strong style="color:var(--amber)">${p.best}%</strong> — Target <strong style="color:var(--jade)">100%</strong> untuk buka Tahap ${curS.id+1}!`;
+  } else {
+    document.getElementById('gt-k').textContent='準備OK';
+    document.getElementById('gt-t').textContent='Kuis Siap Dimulai!';
+    document.getElementById('gt-s').textContent=`${curS.cards.length} kartu sudah dipelajari. Raih 100% untuk${curS.id<7?' buka Tahap '+(curS.id+1)+' — '+STAGES[curS.id].title+' !':' menjadi N3 Master!'}`;
+  }
+  const ai=document.getElementById('gt-att');
+  ai.innerHTML=p.att>0&&!p.ok?`<div class="gate-att">Percobaan ke <span>${p.att+1}</span> — Skor sebelumnya: <span>${p.best}%</span></div>`:'';
+  const items=document.getElementById('gl-items');
+  items.innerHTML='';
+  curS.cards.forEach(fc=>{
+    const d=document.createElement('div');
+    d.className='gl-item';
+    d.innerHTML=`<span class="gl-jp">${fc.jp}</span><span class="gl-meaning">${fc.read?`(${fc.read}) `:''}${fc.meaning}</span>`;
+    items.appendChild(d);
+  });
+}
+
+// ── QUIZ ──
+function startQuiz(){
+  const qs=curS.questions;
+  qSess=[...qs].sort(()=>Math.random()-.5).slice(0,Math.min(5,qs.length));
+  qCur=0;qAns=[];
+  document.getElementById('qz-cat').textContent=`Tahap ${curS.id} · ${curS.title}`;
+  showScreen('s-quiz');
+  buildQDots();
+  loadQ(0);
+}
+
+function buildQDots(){
+  const c=document.getElementById('qdots');c.innerHTML='';
+  qSess.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='qdot'+(i===0?' current':'');
+    d.id='qd-'+i;c.appendChild(d);
+  });
+}
+
+function loadQ(idx){
+  const q=qSess[idx];qDone=false;
+  document.getElementById('qz-num').textContent=`問題 ${idx+1}`;
+  document.getElementById('qz-ctr').textContent=`${idx+1}/${qSess.length}`;
+  document.getElementById('qz-jp').textContent=q.jp;
+  document.getElementById('qz-furi').textContent=q.furi||'';
+  document.getElementById('qz-furi').style.display=q.furi?'block':'none';
+  document.getElementById('qz-prompt').textContent=q.prompt;
+  document.getElementById('qz-tag').className='q-tag '+curS.badgeClass;
+  document.getElementById('qz-tag').textContent=curS.typeLabel;
+  const sh=q.opts.map((o,i)=>({t:o,orig:i})).sort(()=>Math.random()-.5);
+  const L=['A','B','C','D'];
+  const g=document.getElementById('opts');g.innerHTML='';
+  sh.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.dataset.l=L[i];b.dataset.orig=opt.orig;
+    b.textContent=opt.t;
+    b.onclick=()=>pick(b,opt.orig,q.ans,q.exp,q);
+    g.appendChild(b);
+  });
+  document.getElementById('exp-box').style.display='none';
+  document.getElementById('btn-nq').style.display='none';
+  document.querySelectorAll('.qdot').forEach((d,i)=>{d.classList.remove('current');if(i===idx)d.classList.add('current');});
+  startT();
+}
+
+function startT(){
+  clearInterval(tIv);tVal=100;
+  const f=document.getElementById('t-fill');
+  f.style.width='100%';f.classList.remove('danger');
+  tIv=setInterval(()=>{
+    tVal-=.5;f.style.width=tVal+'%';
+    if(tVal<=25)f.classList.add('danger');
+    if(tVal<=0){clearInterval(tIv);if(!qDone)timeUp();}
+  },100);
+}
+
+function timeUp(){
+  qDone=true;
+  qAns.push({ok:false,skip:true,q:qSess[qCur]});
+  markD(qCur,false);
+  document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(parseInt(b.dataset.orig)===qSess[qCur].ans)b.classList.add('correct');});
+  showE(qSess[qCur].exp);
+}
+
+function pick(btn,orig,ans,exp,q){
+  if(qDone)return;qDone=true;clearInterval(tIv);
+  const ok=orig===ans;
+  qAns.push({ok,skip:false,q});
+  markD(qCur,ok);
+  btn.classList.add(ok?'correct':'wrong');
+  if(!ok){document.querySelectorAll('.opt').forEach(b=>{if(parseInt(b.dataset.orig)===ans)b.classList.add('correct');});}
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  showE(exp);
+  if(tg)tg.HapticFeedback?.impactOccurred(ok?'medium':'heavy');
+}
+
+function markD(idx,ok){
+  const d=document.getElementById('qd-'+idx);
+  if(!d)return;
+  d.classList.remove('current');
+  d.classList.add(ok?'qc':'qw');
+}
+
+function showE(txt){
+  document.getElementById('exp-txt').innerHTML=txt;
+  document.getElementById('exp-box').style.display='block';
+  document.getElementById('btn-nq').style.display='block';
+}
+
+function nextQ(){qCur++;if(qCur>=qSess.length)showResult();else loadQ(qCur);}
+
+// ── RESULT ──
+function showResult(){
+  clearInterval(tIv);
+  const correct=qAns.filter(a=>a.ok).length;
+  const total=qSess.length;
+  const pct=Math.round((correct/total)*100);
+  const p=PROG[curS.id];
+  const perfect=pct===100;
+
+  p.att++;
+  if(pct>p.best)p.best=pct;
+  if(perfect){
+    p.ok=true;p.xp=curS.xp;
+    document.getElementById('hdr-xp').textContent=getTotalXP();
+    const fl=document.createElement('div');fl.className='unlock-flash';document.body.appendChild(fl);
+    setTimeout(()=>fl.remove(),900);
+  }
+  saveP();
+
+  // ring
+  const arc=document.getElementById('s-arc');
+  const circ=2*Math.PI*75;
+  arc.style.strokeDasharray=circ;
+  setTimeout(()=>{
+    arc.style.strokeDashoffset=circ-(circ*pct/100);
+    arc.style.stroke=perfect?'#1abc9c':pct>=80?'#27ae60':pct>=60?'#f39c12':'#e74c3c';
+  },100);
+  document.getElementById('r-pct').textContent=pct+'%';
+  document.getElementById('r-frac').textContent=correct+'/'+total;
+
+  const verdicts=[
+    {min:100,jp:'完璧！',msg:`Sempurna! Tahap ${curS.id} — ${curS.title} berhasil dikuasai!${curS.id<7?' Tahap berikutnya sudah terbuka!':' 🏆 Kamu adalah N3 Master!'}`},
+    {min:80,jp:'よくできました',msg:`Hampir sempurna! Butuh 100% untuk lanjut ke Tahap ${curS.id+1}. Pelajari ulang dan coba lagi!`},
+    {min:60,jp:'もう少し！',msg:'Lumayan, tapi belum cukup. Kembali ke kartu dan pelajari dengan seksama.'},
+    {min:0,jp:'頑張れ！',msg:'Jangan menyerah! Pelajari kembali semua kartu perlahan-lahan, lalu coba kuis lagi.'},
+  ];
+  const v=verdicts.find(x=>pct>=x.min);
+  document.getElementById('r-verdict').textContent=v.jp;
+  document.getElementById('r-msg').textContent=v.msg;
+
+  const perfEl=document.getElementById('r-perfect');
+  if(perfect){
+    const next=STAGES.find(s=>s.id===curS.id+1);
+    perfEl.style.display='block';
+    perfEl.innerHTML=`<div class="perfect-box">
+      <div class="pb-kanji">完璧</div>
+      <div class="pb-title">+${curS.xp} XP 獲得!</div>
+      <div class="pb-sub">Tahap ${curS.id} — ${curS.title} dikuasai sepenuhnya!</div>
+      ${next?`<div class="pb-next">🔓 Tahap ${next.id} — ${next.title} sudah terbuka!</div>`:`<div class="pb-next">🏆 SELAMAT! Kamu adalah N3 マスター！ 総合 XP: ${getTotalXP()}</div>`}
+    </div>`;
+  } else perfEl.style.display='none';
+
+  const retEl=document.getElementById('r-retry');
+  if(!perfect){
+    retEl.style.display='block';
+    const wrongs=qAns.filter(a=>!a.ok);
+    retEl.innerHTML=`<div class="att-bar">Percobaan ke <span>${p.att}</span> — Skor: <span>${pct}%</span> | Terbaik: <span>${p.best}%</span></div>
+    <div class="retry-box">
+      <div class="rb-hdr">❌ Soal yang Perlu Dipelajari Ulang</div>
+      ${wrongs.map(a=>`<div class="rb-row">
+        <div class="rb-jp">${(a.q.jp||'').replace('___','＿').slice(0,10)}</div>
+        <div><div class="rb-ans">✓ ${a.q.opts[a.q.ans]}</div>
+        <div class="rb-note">${(a.q.exp||'').split('.')[0]}</div></div>
+      </div>`).join('')}
+    </div>`;
+  } else retEl.style.display='none';
+
+  const rev=document.getElementById('r-review');
+  rev.innerHTML='';
+  qSess.forEach((q,i)=>{
+    const a=qAns[i];
+    const el=document.createElement('div');
+    el.className='rev-item '+(a?.ok?'rev-c':'rev-w');
+    el.innerHTML=`<span style="font-size:.88rem">${a?.ok?'✅':a?.skip?'⏱️':'❌'}</span>
+      <div><div class="rev-q">問題 ${i+1}</div>
+      <div style="font-size:.68rem">${q.jp}</div>
+      ${!a?.ok?`<div style="color:var(--correct);font-size:.63rem">✓ ${q.opts[q.ans]}</div>`:''}</div>`;
+    rev.appendChild(el);
+  });
+
+  const btns=document.getElementById('r-btns');
+  if(perfect){
+    const nextId=curS.id+1;
+    const next=STAGES.find(s=>s.id===nextId);
+    btns.innerHTML=next
+      ?`<button class="btn-a btn-jade-a" onclick="enterStage(${nextId})">▶ Lanjut ke Tahap ${nextId} — ${next.title}</button>
+         <button class="btn-a btn-ghost" onclick="goHome()">🗺️ Lihat Peta Tahap</button>`
+      :`<button class="btn-a btn-jade-a" onclick="goHome()">🏆 Kembali ke Peta — Kamu Master!</button>`;
+  } else {
+    btns.innerHTML=`
+      <button class="btn-a btn-primary" onclick="startStudy(true)">📖 Pelajari Ulang → Kuis Lagi</button>
+      <button class="btn-a btn-ghost" onclick="startQuiz()">⚡ Langsung Kuis Ulang</button>
+      <button class="btn-a btn-ghost" onclick="goHome()">← Kembali ke Peta</button>`;
+  }
+
+  if(tg?.sendData){try{tg.sendData(JSON.stringify({stage:curS.id,pct,correct,total,perfect}));}catch(e){}}
+  showScreen('s-result');
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+renderHome();
+</script>
+</body>
+</html>
