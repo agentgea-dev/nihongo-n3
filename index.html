@@ -26,9 +26,11 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{background:var(--sky);color:var(--text-dark);font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradient(160deg,rgba(232,244,253,.8) 0%,rgba(248,251,255,1) 100%);pointer-events:none;}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradient(160deg,rgba(232,244,253,.9) 0%,rgba(248,251,255,1) 100%);pointer-events:none;}
+body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8rem;opacity:.06;pointer-events:none;z-index:0;animation:petal-float 6s ease-in-out infinite;}
+@keyframes petal-float{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-12px) rotate(8deg);}}
 
-.wrap{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 0 80px;}
+.wrap{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 0 90px;}
 .site-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--navy3) 100%);padding:0 24px;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100;}.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
 .logo-kanji{font-family:'Noto Serif JP',serif;font-size:1.8rem;color:var(--gold);animation:glow 4s ease-in-out infinite;}
 @keyframes glow{0%,100%{text-shadow:0 0 18px rgba(212,160,23,.4);}50%{text-shadow:0 0 32px rgba(212,160,23,.75);}}.logo-title{font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em;line-height:1.2;}.logo-subtitle{font-family:'Noto Serif JP',serif;font-size:.62rem;color:var(--sakura);letter-spacing:.1em;}.logo-svg-wrap{width:48px;height:48px;flex-shrink:0;}.logo-wrap{display:flex;align-items:center;gap:12px;cursor:pointer;}
@@ -102,7 +104,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
 .cdot{width:8px;height:8px;border-radius:50%;background:var(--border);border:1px solid rgba(255,255,255,.1);transition:all .3s;}
 .cdot.done{background:var(--jade);}
 .cdot.current{transform:scale(1.45);border-color:var(--text);}
-.card-scene{perspective:1100px;height:285px;margin-bottom:14px;cursor:pointer;}
+.card-scene{perspective:1100px;height:320px;margin-bottom:14px;cursor:pointer;}
 .card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
 .card-3d.flipped{transform:rotateY(180deg);}
 .card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 20px;text-align:center;}
@@ -114,7 +116,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
 .badge-vocab{background:rgba(192,57,43,.22);color:#e74c3c;}
 .badge-mixed{background:rgba(155,89,182,.22);color:#c39bd3;}
 .card-num{position:absolute;top:11px;left:11px;font-size:.53rem;color:var(--muted);}
-.card-jp{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,3.5rem);margin-bottom:7px;color:#fff;}
+.card-jp{font-family:'Noto Serif JP',serif;font-size:clamp(3rem,10vw,5.5rem);margin-bottom:4px;color:#fff;line-height:1;}
 .card-read{font-family:'Noto Serif JP',serif;font-size:.93rem;color:var(--sakura);margin-bottom:4px;}
 .card-hint{font-size:.58rem;color:rgba(255,255,255,.2);margin-top:12px;letter-spacing:.08em;}
 .card-meaning{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:8px;color:var(--text-dark);}
@@ -170,6 +172,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
 .opt.correct{background:rgba(39,174,96,.18);border-color:var(--correct);animation:cf .4s;}
 .opt.wrong{background:rgba(231,76,60,.18);border-color:var(--wrong);animation:sk .4s;}
 .opt:disabled{cursor:default;}
+.opt-letter{width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;flex-shrink:0;color:#fff;margin-right:7px;vertical-align:middle;}
+.opt[data-l="A"] .opt-letter{background:#e8507a;}
+.opt[data-l="B"] .opt-letter{background:#d4a017;}
+.opt[data-l="C"] .opt-letter{background:#1abc9c;}
+.opt[data-l="D"] .opt-letter{background:#2980b9;}
 @keyframes cf{0%,100%{transform:none;}50%{transform:scale(1.02);}}
 @keyframes sk{0%,100%{transform:none;}20%,60%{transform:translateX(-4px);}40%,80%{transform:translateX(4px);}}
 .exp-box{background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.2);border-radius:8px;padding:12px 14px;font-size:.69rem;line-height:1.8;color:rgba(232,228,218,.8);margin-bottom:12px;display:none;animation:fadeUp .3s ease;}
@@ -218,7 +225,45 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
 .unlock-flash{position:fixed;inset:0;background:rgba(26,188,156,.12);z-index:9999;pointer-events:none;animation:ufl .8s ease forwards;}
 @keyframes ufl{0%{opacity:0;}30%{opacity:1;}100%{opacity:0;}}
 @media(max-width:500px){.opts{grid-template-columns:1fr;}.home-stats{grid-template-columns:repeat(2,1fr);}}
+/* ── FURIGANA RUBY ── */
+ruby{display:inline-flex;flex-direction:column-reverse;align-items:center;line-height:1.1;vertical-align:bottom;}
+rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-align:center;letter-spacing:.02em;}
+.q-jp ruby rt{font-size:.45em;color:var(--navy2);}
+
+/* ── EXP BOX READABLE ── */
+.exp-box{background:var(--white);border:2px solid rgba(212,160,23,.3);border-radius:12px;padding:14px 16px;font-size:.82rem;line-height:1.9;color:var(--text-dark);margin-bottom:12px;display:none;animation:fadeUp .3s ease;box-shadow:0 2px 12px rgba(26,39,68,.08);}
+.exp-lbl{font-size:.62rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;display:block;font-weight:700;}
+.exp-meaning{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.exp-detail{font-size:.78rem;color:var(--text-mid);line-height:1.8;}
+
+/* ── TOMBOL RISET ── */
+.btn-riset{background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;border:none;border-radius:8px;padding:6px 13px;font-size:.65rem;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s;box-shadow:0 2px 8px rgba(41,128,185,.3);}
+.btn-riset:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(41,128,185,.4);}
+
+/* ── MODAL RISET ── */
+.riset-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:flex-end;animation:fadeUp .25s ease;}
+.riset-overlay.open{display:flex;}
+.riset-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;max-height:80vh;overflow-y:auto;padding:0 0 80px;}
+.riset-header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:18px 20px;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;}
+.riset-title{font-weight:700;font-size:1rem;}
+.riset-close{background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.2rem;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.riset-body{padding:16px 20px;}
+.riset-item{background:var(--sky);border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--sky2);}
+.riset-jp{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.riset-read{font-size:.78rem;color:var(--sakura3);font-weight:600;margin-bottom:4px;}
+.riset-meaning{font-size:.85rem;font-weight:700;color:var(--text-dark);margin-bottom:6px;}
+.riset-ex{font-family:'Noto Serif JP',serif;font-size:.8rem;color:var(--text-mid);line-height:1.9;margin-bottom:3px;}
+.riset-exid{font-size:.7rem;color:var(--text-light);font-style:italic;margin-bottom:6px;}
+.riset-mnemonic{background:rgba(212,160,23,.08);border-left:3px solid var(--gold);padding:7px 10px;border-radius:0 8px 8px 0;font-size:.72rem;color:var(--text-mid);line-height:1.6;}
+
+/* ── KARTU BELAKANG: contoh dengan furigana ── */
+.card-example-wrap{width:100%;margin-top:8px;}
+.card-example-jp{font-family:'Noto Serif JP',serif;font-size:.88rem;color:var(--text-dark);line-height:2.2;margin-bottom:3px;text-align:center;}
+.card-example-id{font-size:.68rem;color:var(--text-light);font-style:italic;text-align:center;}
+.card-meaning-big{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:6px;color:var(--text-dark);}
+
 </style>
+<script src="data/loader.js"></script>
 <script src="data/kanji.js"></script>
 <script src="data/grammar.js"></script>
 <script src="data/vocabulary.js"></script>
@@ -347,28 +392,33 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
       <div class="study-stage-name" id="st-name">Tahap 1</div>
       <div class="study-stage-sub" id="st-sub">Kartu 1 / 6</div>
     </div>
-    <div style="font-size:.6rem;color:#8a9ab8;font-weight:500" id="st-loop"></div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="font-size:.6rem;color:#8a9ab8;font-weight:500" id="st-loop"></div>
+      <button class="btn-riset" onclick="openRiset()">📋 Riset</button>
+    </div>
   </div>
   <div class="phase-banner">
     <span class="phase-icon">📖</span>
     <div><strong style="color:#1a2744">Fase Belajar (学習フェーズ)</strong><br>Tap kartu untuk balik & lihat arti + contoh + mnemonic. Setelah semua kartu selesai, kuis akan terbuka!</div>
   </div>
-  <div class="prog-bar"><div class="prog-fill" id="st-prog" style="width:0%"></div></div>
+  <div style="padding:0 20px;margin-bottom:14px;"><div class="prog-bar"><div class="prog-fill" id="st-prog" style="width:0%"></div></div></div>
   <div class="card-dots" id="card-dots"></div>
-  <div class="card-scene" onclick="flipCard()">
+  <div style="padding:0 20px;margin-bottom:14px;"><div class="card-scene" onclick="flipCard()">
     <div class="card-3d" id="fc3d">
       <div class="card-face card-front">
         <span class="card-type-badge badge-kanji" id="fc-tag-f">漢字</span>
         <div class="card-num" id="fc-num">1/6</div>
         <div class="card-jp" id="fc-jp-f">学</div>
         <div class="card-read" id="fc-read">がく</div>
-        <div class="card-hint">↻ Tap untuk lihat arti</div>
+        <div class="card-hint">🌸 Tap untuk lihat arti &amp; contoh</div>
       </div>
       <div class="card-face card-back" id="fc-back" style="background:linear-gradient(145deg,rgba(212,160,23,.12),rgba(192,57,43,.08));border:1px solid rgba(212,160,23,.22)">
         <span class="card-type-badge badge-kanji" id="fc-tag-b">漢字</span>
-        <div class="card-meaning" id="fc-meaning">Belajar</div>
-        <div class="card-example" id="fc-example">例文</div>
-        <div class="card-ex-id" id="fc-ex-id">contoh</div>
+        <div class="card-meaning-big" id="fc-meaning">Belajar</div>
+        <div class="card-example-wrap">
+          <div class="card-example-jp" id="fc-example">例文</div>
+          <div class="card-example-id" id="fc-ex-id">contoh</div>
+        </div>
         <div class="card-mnemonic" id="fc-mnemonic">💡 mnemonic</div>
       </div>
     </div>
@@ -376,6 +426,18 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
   <div style="display:flex;gap:10px;padding:0 20px;margin-bottom:14px;">
     <button class="btn-flip" onclick="flipCard()">↻ Balik Kartu</button>
     <button class="btn-next-card" onclick="nextCard()">✓ Mengerti → Lanjut</button>
+  </div></div>
+</div>
+
+
+<!-- MODAL RISET -->
+<div class="riset-overlay" id="riset-overlay" onclick="closeRisetOutside(event)">
+  <div class="riset-sheet">
+    <div class="riset-header">
+      <div class="riset-title">📋 Daftar Materi Tahap <span id="riset-stage-num">1</span></div>
+      <button class="riset-close" onclick="closeRiset()">✕</button>
+    </div>
+    <div class="riset-body" id="riset-body"></div>
   </div>
 </div>
 
@@ -390,9 +452,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
       <div class="gl-title">📚 Materi yang Sudah Dipelajari</div>
       <div id="gl-items"></div>
     </div>
-    <button class="btn-a btn-jade-a" onclick="startQuiz()">📝 Mulai Kuis Tahap Ini</button>
-    <button class="btn-a btn-ghost" onclick="startStudy(true)">↩ Pelajari Ulang Kartu</button>
-    <button class="btn-a btn-ghost" style="margin-top:4px" onclick="goHome()">← Kembali ke Peta</button>
+    <button class="btn-a" style="background:linear-gradient(135deg,#e8507a,#c0392b);color:#fff;box-shadow:0 4px 16px rgba(232,80,122,.3);" onclick="startQuiz()">📝 Mulai Kuis Tahap Ini！</button>
+    <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="startStudy(true)">↩ Pelajari Ulang Kartu</button>
+    <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">← Kembali ke Peta</button>
   </div>
 </div>
 
@@ -412,7 +474,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background:linear-gradi
     <div class="q-prompt" id="qz-prompt"></div>
   </div>
   <div class="opts" id="opts"></div>
-  <div class="exp-box" id="exp-box"><span class="exp-lbl">📚 Penjelasan</span><div id="exp-txt"></div></div>
+  <div class="exp-box" id="exp-box"><span class="exp-lbl">📚 Penjelasan</span><div class="exp-detail" id="exp-txt"></div></div>
   <button class="btn-nq" id="btn-nq" onclick="nextQ()">次へ → Soal Berikutnya</button>
 </div>
 
@@ -674,7 +736,39 @@ function enterStage(id){
   else startStudy();
 }
 
-function goHome(){clearInterval(tIv);showScreen('s-home');renderHome();}
+function goHome(){clearInterval(tIv);showScreen('s-home');
+// ── RISET MODAL ──
+function openRiset(){
+  if(!curS)return;
+  document.getElementById('riset-stage-num').textContent=curS.id+' — '+curS.title;
+  const body=document.getElementById('riset-body');
+  body.innerHTML='';
+  curS.cards.forEach((fc,i)=>{
+    const d=document.createElement('div');
+    d.className='riset-item';
+    d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <span style="background:var(--navy);color:#fff;border-radius:6px;padding:3px 9px;font-size:.6rem;font-weight:700">${i+1}</span>
+      <span class="riset-jp">${fc.jp}</span>
+    </div>
+    ${fc.read?`<div class="riset-read">📖 ${fc.read}</div>`:''}
+    <div class="riset-meaning">🇮🇩 ${fc.meaning}</div>
+    <div class="riset-ex">${fc.exampleFuri||fc.example}</div>
+    <div class="riset-exid">${fc.exampleId}</div>
+    <div class="riset-mnemonic">💡 ${fc.mnemonic}</div>`;
+    body.appendChild(d);
+  });
+  document.getElementById('riset-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeRiset(){
+  document.getElementById('riset-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeRisetOutside(e){
+  if(e.target.id==='riset-overlay')closeRiset();
+}
+
+renderHome();}
 function quickStart(){const next=STAGES.find(s=>!PROG[s.id].ok);if(next){enterStage(next.id);}else{goHome();}}
 
 // ── STUDY ──
@@ -703,7 +797,10 @@ function loadCard(idx){
   document.getElementById('fc-read').textContent=fc.read||'';
   document.getElementById('fc-read').style.display=fc.read?'block':'none';
   document.getElementById('fc-meaning').textContent=fc.meaning;
-  document.getElementById('fc-example').textContent=fc.example;
+  // Render contoh dengan furigana jika ada field 'exampleFuri'
+  const exEl=document.getElementById('fc-example');
+  if(fc.exampleFuri){exEl.innerHTML=fc.exampleFuri;}
+  else{exEl.textContent=fc.example;}
   document.getElementById('fc-ex-id').textContent=fc.exampleId;
   document.getElementById('fc-mnemonic').innerHTML='💡 '+fc.mnemonic;
   document.getElementById('fc-num').textContent=`${idx+1}/${curS.cards.length}`;
@@ -732,8 +829,30 @@ function flipCard(){siFlip=!siFlip;document.getElementById('fc3d').classList.tog
 
 function nextCard(){
   siIdx++;
-  if(siIdx>=curS.cards.length){PROG[curS.id].studied=true;saveP();showGate();}
+  const total=curS.cards.length;
+  // Setiap 20 kartu tampilkan mini-kuis (jika belum selesai semua)
+  if(siIdx>0 && siIdx%20===0 && siIdx<total){
+    PROG[curS.id].studied=false;
+    showMiniQuizPrompt(siIdx);
+    return;
+  }
+  if(siIdx>=total){PROG[curS.id].studied=true;saveP();showGate();}
   else loadCard(siIdx);
+}
+
+function showMiniQuizPrompt(nextIdx){
+  const done=nextIdx;
+  const remaining=curS.cards.length-nextIdx;
+  const overlay=document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .3s ease';
+  overlay.innerHTML=`<div style="background:#fff;border-radius:20px;padding:28px 24px;text-align:center;max-width:340px;width:100%;">
+    <div style="font-family:'Noto Serif JP',serif;font-size:2.5rem;color:var(--navy);margin-bottom:8px;">🎯</div>
+    <div style="font-weight:700;font-size:1.1rem;color:var(--navy);margin-bottom:6px;">${done} Kartu Selesai!</div>
+    <div style="font-size:.78rem;color:var(--text-mid);line-height:1.7;margin-bottom:18px;">Sudah belajar <strong>${done} kartu</strong>.<br>Lanjut ${remaining} kartu berikutnya?</div>
+    <button onclick="this.closest('[style*=fixed]').remove();loadCard(${nextIdx});" style="width:100%;padding:13px;background:linear-gradient(135deg,#1a2744,#223060);color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:8px;">▶ Lanjut Belajar (${remaining} kartu)</button>
+    <button onclick="this.closest('[style*=fixed]').remove();PROG[curS.id].studied=true;saveP();showGate();" style="width:100%;padding:12px;background:#fff;border:2px solid var(--sky3);color:var(--text-mid);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;">📝 Langsung ke Kuis Sekarang</button>
+  </div>`;
+  document.body.appendChild(overlay);
 }
 
 // ── GATE ──
@@ -754,7 +873,7 @@ function showGate(){
     document.getElementById('gt-s').textContent=`${curS.cards.length} kartu sudah dipelajari. Raih 100% untuk${curS.id<7?' buka Tahap '+(curS.id+1)+' — '+STAGES[curS.id].title+' !':' menjadi N3 Master!'}`;
   }
   const ai=document.getElementById('gt-att');
-  ai.innerHTML=p.att>0&&!p.ok?`<div class="gate-att">Percobaan ke <span>${p.att+1}</span> — Skor sebelumnya: <span>${p.best}%</span></div>`:'';
+  ai.innerHTML=p.att>0&&!p.ok?`<div style="background:rgba(231,76,60,.07);border:1px solid rgba(231,76,60,.18);border-radius:10px;padding:10px 14px;font-size:.68rem;color:#c0392b;margin-bottom:14px;font-weight:500;">Percobaan ke <span>${p.att+1}</span> — Skor sebelumnya: <span>${p.best}%</span></div>`:'';
   const items=document.getElementById('gl-items');
   items.innerHTML='';
   curS.cards.forEach(fc=>{
@@ -801,7 +920,7 @@ function loadQ(idx){
   sh.forEach((opt,i)=>{
     const b=document.createElement('button');
     b.className='opt';b.dataset.l=L[i];b.dataset.orig=opt.orig;
-    b.textContent=opt.t;
+    b.innerHTML=`<span class="opt-letter">${L[i]}</span>${opt.t}`;
     b.onclick=()=>pick(b,opt.orig,q.ans,q.exp,q);
     g.appendChild(b);
   });
@@ -850,7 +969,15 @@ function markD(idx,ok){
 }
 
 function showE(txt){
-  document.getElementById('exp-txt').innerHTML=txt;
+  // Format penjelasan: pisahkan bagian pertama sebagai makna utama
+  const parts=txt.split('.');
+  let html='';
+  if(parts.length>1){
+    html=`<div class="exp-meaning">${parts[0]}.</div><div class="exp-detail">${parts.slice(1).join('.').trim()}</div>`;
+  } else {
+    html=`<div class="exp-detail">${txt}</div>`;
+  }
+  document.getElementById('exp-txt').innerHTML=html;
   document.getElementById('exp-box').style.display='block';
   document.getElementById('btn-nq').style.display='block';
 }
@@ -901,7 +1028,7 @@ function showResult(){
   if(perfect){
     const next=STAGES.find(s=>s.id===curS.id+1);
     perfEl.style.display='block';
-    perfEl.innerHTML=`<div class="perfect-box">
+    perfEl.innerHTML=`<div class='perfect-box'>
       <div class="pb-kanji">完璧</div>
       <div class="pb-title">+${curS.xp} XP 獲得!</div>
       <div class="pb-sub">Tahap ${curS.id} — ${curS.title} dikuasai sepenuhnya!</div>
@@ -942,14 +1069,14 @@ function showResult(){
     const nextId=curS.id+1;
     const next=STAGES.find(s=>s.id===nextId);
     btns.innerHTML=next
-      ?`<button class="btn-a btn-jade-a" onclick="enterStage(${nextId})">▶ Lanjut ke Tahap ${nextId} — ${next.title}</button>
-         <button class="btn-a btn-ghost" onclick="goHome()">🗺️ Lihat Peta Tahap</button>`
-      :`<button class="btn-a btn-jade-a" onclick="goHome()">🏆 Kembali ke Peta — Kamu Master!</button>`;
+      ?`<button class="btn-a" style="background:linear-gradient(135deg,#e8507a,#c0392b);color:#fff;box-shadow:0 4px 16px rgba(232,80,122,.3);" onclick="enterStage(${nextId})">▶ Lanjut ke Tahap ${nextId} — ${next.title}</button>
+         <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">🗺️ Lihat Peta Tahap</button>`
+      :`<button class="btn-a" style="background:linear-gradient(135deg,#1abc9c,#16a085);color:#fff;" onclick="goHome()">🏆 Kembali ke Peta — Kamu Master!</button>`;
   } else {
     btns.innerHTML=`
-      <button class="btn-a btn-primary" onclick="startStudy(true)">📖 Pelajari Ulang → Kuis Lagi</button>
-      <button class="btn-a btn-ghost" onclick="startQuiz()">⚡ Langsung Kuis Ulang</button>
-      <button class="btn-a btn-ghost" onclick="goHome()">← Kembali ke Peta</button>`;
+      <button class="btn-a" style="background:linear-gradient(135deg,#1a2744,#223060);color:#fff;box-shadow:0 4px 16px rgba(26,39,68,.3);" onclick="startStudy(true)">📖 Pelajari Ulang → Kuis Lagi</button>
+      <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="startQuiz()">⚡ Langsung Kuis Ulang</button>
+      <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">← Kembali ke Peta</button>`;
   }
 
   if(tg?.sendData){try{tg.sendData(JSON.stringify({stage:curS.id,pct,correct,total,perfect}));}catch(e){}}
@@ -962,7 +1089,56 @@ function showScreen(id){
   window.scrollTo(0,0);
 }
 
+
+// ── RISET MODAL ──
+function openRiset(){
+  if(!curS)return;
+  document.getElementById('riset-stage-num').textContent=curS.id+' — '+curS.title;
+  const body=document.getElementById('riset-body');
+  body.innerHTML='';
+  curS.cards.forEach((fc,i)=>{
+    const d=document.createElement('div');
+    d.className='riset-item';
+    d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <span style="background:var(--navy);color:#fff;border-radius:6px;padding:3px 9px;font-size:.6rem;font-weight:700">${i+1}</span>
+      <span class="riset-jp">${fc.jp}</span>
+    </div>
+    ${fc.read?`<div class="riset-read">📖 ${fc.read}</div>`:''}
+    <div class="riset-meaning">🇮🇩 ${fc.meaning}</div>
+    <div class="riset-ex">${fc.exampleFuri||fc.example}</div>
+    <div class="riset-exid">${fc.exampleId}</div>
+    <div class="riset-mnemonic">💡 ${fc.mnemonic}</div>`;
+    body.appendChild(d);
+  });
+  document.getElementById('riset-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeRiset(){
+  document.getElementById('riset-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeRisetOutside(e){
+  if(e.target.id==='riset-overlay')closeRiset();
+}
+
 renderHome();
 </script>
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #d0eaf8;display:flex;justify-content:space-around;box-shadow:0 -4px 20px rgba(26,39,68,.1);z-index:200;padding:0 8px;">
+  <button onclick="goHome()" style="flex:1;max-width:100px;padding:9px 4px 11px;text-align:center;border:none;background:none;color:#8a9ab8;font-family:Poppins,sans-serif;font-size:.57rem;font-weight:500;cursor:pointer;transition:color .2s;">
+    <span style="font-size:1.15rem;display:block;margin-bottom:3px">🏠</span>Beranda
+  </button>
+  <button onclick="goHome()" style="flex:1;max-width:100px;padding:9px 4px 11px;text-align:center;border:none;background:none;color:#8a9ab8;font-family:Poppins,sans-serif;font-size:.57rem;font-weight:500;cursor:pointer;transition:color .2s;">
+    <span style="font-size:1.15rem;display:block;margin-bottom:3px">🗺️</span>Peta Tahap
+  </button>
+  <button onclick="quickStart()" style="flex:1;max-width:100px;padding:9px 4px 11px;text-align:center;border:none;background:none;color:#e8507a;font-family:Poppins,sans-serif;font-size:.57rem;font-weight:700;cursor:pointer;transition:color .2s;">
+    <span style="font-size:1.15rem;display:block;margin-bottom:3px">⚡</span>Belajar
+  </button>
+  <button onclick="goHome()" style="flex:1;max-width:100px;padding:9px 4px 11px;text-align:center;border:none;background:none;color:#8a9ab8;font-family:Poppins,sans-serif;font-size:.57rem;font-weight:500;cursor:pointer;transition:color .2s;">
+    <span style="font-size:1.15rem;display:block;margin-bottom:3px">📊</span>Statistik
+  </button>
+</nav>
+
 </body>
 </html>
