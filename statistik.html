@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistik — Sakura Anki N3</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --navy:#1a2744;--navy2:#223060;
+  --sakura:#f9b8c8;--sakura2:#f4739a;--sakura3:#e8507a;
+  --sky:#e8f4fd;--sky2:#d0eaf8;--sky3:#b8ddf5;
+  --white:#fff;--gold:#d4a017;--jade:#1abc9c;--wrong:#e74c3c;
+  --text:#1a2744;--mid:#4a5a7a;--light:#8a9ab8;
+  --shadow:0 4px 20px rgba(26,39,68,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--sky);font-family:'Poppins',sans-serif;color:var(--text);padding-bottom:90px;}
+
+.site-header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:0 20px;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(26,39,68,.2);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;}
+.logo-text{font-weight:700;font-size:.9rem;color:#fff;}
+.logo-sub{font-family:'Noto Serif JP',serif;font-size:.55rem;color:var(--sakura);}
+.page-title{font-weight:700;font-size:.9rem;color:#fff;}
+
+.content{padding:18px 20px 0;}
+.section-title{font-size:.65rem;font-weight:700;letter-spacing:.2em;color:var(--light);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--sky3);}
+
+/* ── HERO STATS ── */
+.hero-stats{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:20px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden;}
+.hero-stats::before{content:'📊';position:absolute;right:16px;bottom:12px;font-size:3rem;opacity:.08;}
+.hs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.hs-item{background:rgba(255,255,255,.1);border-radius:10px;padding:12px;}
+.hs-num{font-size:1.6rem;font-weight:800;color:#fff;}
+.hs-lbl{font-size:.6rem;color:var(--sakura);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;}
+.hs-sub{font-size:.65rem;color:rgba(255,255,255,.5);margin-top:2px;}
+
+/* ── CHARTS ── */
+.chart-card{background:var(--white);border-radius:14px;padding:16px;box-shadow:var(--shadow);border:2px solid var(--sky2);margin-bottom:14px;}
+.chart-title{font-weight:700;font-size:.85rem;color:var(--navy);margin-bottom:4px;}
+.chart-sub{font-size:.65rem;color:var(--light);margin-bottom:14px;}
+.chart-wrap{position:relative;}
+
+/* ── TAHAP REKAP ── */
+.tahap-list{margin-bottom:20px;}
+.tahap-item{background:var(--white);border-radius:12px;padding:14px 16px;margin-bottom:8px;box-shadow:var(--shadow);border:2px solid var(--sky2);display:flex;align-items:center;gap:12px;}
+.tahap-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.tahap-info{flex:1;min-width:0;}
+.tahap-name{font-weight:700;font-size:.85rem;color:var(--navy);}
+.tahap-meta{font-size:.65rem;color:var(--light);margin-top:2px;}
+.tahap-right{text-align:right;flex-shrink:0;}
+.tahap-status{font-size:.62rem;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+.s-ok{background:rgba(26,188,156,.15);color:var(--jade);}
+.s-progress{background:rgba(212,160,23,.15);color:var(--gold);}
+.s-belum{background:var(--sky2);color:var(--light);}
+.tahap-score{font-size:.7rem;color:var(--mid);margin-top:4px;}
+.mini-bar{width:60px;height:4px;background:var(--sky2);border-radius:2px;overflow:hidden;margin-top:4px;margin-left:auto;}
+.mini-bar-fill{height:100%;border-radius:2px;}
+
+/* ── REKAP TABLE ── */
+.rekap-card{background:var(--white);border-radius:14px;padding:16px;box-shadow:var(--shadow);border:2px solid var(--sky2);margin-bottom:14px;}
+.rekap-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--sky2);font-size:.78rem;}
+.rekap-row:last-child{border-bottom:none;}
+.rekap-label{color:var(--mid);}
+.rekap-val{font-weight:700;color:var(--navy);}
+.rekap-val.good{color:var(--jade);}
+.rekap-val.warn{color:var(--gold);}
+.rekap-val.bad{color:var(--wrong);}
+
+/* ── MOTIVASI ── */
+.moti-card{background:linear-gradient(135deg,#1a2744,#223060);border-radius:14px;padding:18px;text-align:center;color:#fff;margin-bottom:20px;}
+.moti-jp{font-family:'Noto Serif JP',serif;font-size:1.4rem;color:var(--sakura);margin-bottom:6px;}
+.moti-id{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.6;}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2px solid var(--sky2);display:flex;justify-content:space-around;box-shadow:0 -4px 20px rgba(26,39,68,.1);z-index:200;padding:0 8px;}
+.nav-btn{flex:1;max-width:100px;padding:9px 4px 11px;text-align:center;border:none;background:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:.57rem;font-weight:500;color:var(--light);text-decoration:none;display:flex;flex-direction:column;align-items:center;transition:color .2s;}
+.nav-btn.active{color:var(--navy);font-weight:700;}
+.nav-icon{font-size:1.15rem;margin-bottom:3px;}
+.nav-btn.belajar{color:var(--sakura3);font-weight:700;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="beranda.html" class="logo-wrap">
+      <svg viewBox="0 0 100 100" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="#1a2744"/>
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#f4739a" stroke-width="1.5"/>
+        <ellipse cx="50" cy="58" rx="18" ry="20" fill="#f5e6c8"/>
+        <ellipse cx="32" cy="56" rx="10" ry="14" fill="#c8a86a" transform="rotate(-15 32 56)"/>
+        <ellipse cx="68" cy="56" rx="10" ry="14" fill="#c8a86a" transform="rotate(15 68 56)"/>
+        <ellipse cx="50" cy="38" rx="16" ry="15" fill="#c8a86a"/>
+        <circle cx="43" cy="37" r="7" fill="white"/><circle cx="57" cy="37" r="7" fill="white"/>
+        <circle cx="43" cy="37" r="5" fill="#1a2744"/><circle cx="57" cy="37" r="5" fill="#1a2744"/>
+        <circle cx="43" cy="37" r="7" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+        <circle cx="57" cy="37" r="7" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+        <polygon points="50,42 46,46 54,46" fill="#d4a017"/>
+        <rect x="33" y="76" width="34" height="13" rx="4" fill="#f4739a"/>
+        <text x="50" y="86" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="bold">JLPT N3</text>
+      </svg>
+      <div>
+        <div class="logo-text">Sakura Anki N3</div>
+        <div class="logo-sub">さくらアンキ N3</div>
+      </div>
+    </a>
+    <div class="page-title">📊 Statistik</div>
+  </div>
+</header>
+
+<div class="content">
+
+  <!-- Hero Stats -->
+  <div class="hero-stats">
+    <div class="hs-grid">
+      <div class="hs-item">
+        <div class="hs-num" id="hs-done">0</div>
+        <div class="hs-lbl">Tahap Selesai</div>
+        <div class="hs-sub">dari 7 tahap</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num" id="hs-xp">0</div>
+        <div class="hs-lbl">Total XP</div>
+        <div class="hs-sub">dari 1900 maks</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num" id="hs-att">0</div>
+        <div class="hs-lbl">Total Kuis</div>
+        <div class="hs-sub">percobaan</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num" id="hs-acc">—</div>
+        <div class="hs-lbl">Rata-rata Akurasi</div>
+        <div class="hs-sub">semua kuis</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 1: Skor per Tahap -->
+  <div class="section-title">Skor per Tahap</div>
+  <div class="chart-card">
+    <div class="chart-title">Performa Kuis</div>
+    <div class="chart-sub">Skor terbaik yang pernah dicapai di setiap tahap</div>
+    <div class="chart-wrap" style="height:220px;">
+      <canvas id="chart-skor"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart 2: XP Progress -->
+  <div class="chart-card">
+    <div class="chart-title">Progress XP</div>
+    <div class="chart-sub">XP terkumpul vs XP maksimal per tahap</div>
+    <div class="chart-wrap" style="height:200px;">
+      <canvas id="chart-xp"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart 3: Kelengkapan Database -->
+  <div class="chart-card">
+    <div class="chart-title">Kelengkapan Database N3</div>
+    <div class="chart-sub">Materi yang sudah tersedia vs target JLPT N3</div>
+    <div class="chart-wrap" style="height:180px;">
+      <canvas id="chart-db"></canvas>
+    </div>
+  </div>
+
+  <!-- Rekap per Tahap -->
+  <div class="section-title">Rekap per Tahap</div>
+  <div class="tahap-list" id="tahap-list"></div>
+
+  <!-- Ringkasan -->
+  <div class="section-title">Ringkasan Belajar</div>
+  <div class="rekap-card">
+    <div class="rekap-row">
+      <span class="rekap-label">Total percobaan kuis</span>
+      <span class="rekap-val" id="r-total-att">0 kali</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">Tahap yang sudah dipelajari</span>
+      <span class="rekap-val" id="r-studied">0 / 7</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">Tahap yang sudah dikuasai</span>
+      <span class="rekap-val good" id="r-mastered">0 / 7</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">Skor terbaik keseluruhan</span>
+      <span class="rekap-val good" id="r-best">—</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">Skor terrendah</span>
+      <span class="rekap-val warn" id="r-worst">—</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">XP terkumpul</span>
+      <span class="rekap-val" id="r-xp">0 / 1900</span>
+    </div>
+    <div class="rekap-row">
+      <span class="rekap-label">Estimasi progress JLPT N3</span>
+      <span class="rekap-val" id="r-est">—</span>
+    </div>
+  </div>
+
+  <!-- Motivasi -->
+  <div class="moti-card" id="moti-card">
+    <div class="moti-jp" id="moti-jp">継続は力なり</div>
+    <div class="moti-id" id="moti-id">Ketekunan adalah kekuatan. Terus belajar setiap hari!</div>
+  </div>
+
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<nav class="bottom-nav">
+  <a href="beranda.html" class="nav-btn">
+    <span class="nav-icon">🏠</span>Beranda
+  </a>
+  <a href="index.html" class="nav-btn">
+    <span class="nav-icon">🗺️</span>Peta Tahap
+  </a>
+  <a href="index.html" class="nav-btn belajar">
+    <span class="nav-icon">⚡</span>Belajar
+  </a>
+  <a href="statistik.html" class="nav-btn active">
+    <span class="nav-icon">📊</span>Statistik
+  </a>
+</nav>
+
+<script>
+const STAGES_META=[
+  {id:1,title:'Pemula',icon:'🌱',color:'#3498db',xp:100},
+  {id:2,title:'Dasar',icon:'📗',color:'#1abc9c',xp:150},
+  {id:3,title:'Menengah Bawah',icon:'📘',color:'#2ecc71',xp:200},
+  {id:4,title:'Menengah',icon:'📐',color:'#f39c12',xp:250},
+  {id:5,title:'Menengah Atas',icon:'🔥',color:'#e67e22',xp:300},
+  {id:6,title:'Lanjutan',icon:'⚡',color:'#e74c3c',xp:400},
+  {id:7,title:'Master',icon:'👑',color:'#9b59b6',xp:500},
+];
+
+function loadProgress(){
+  const raw=localStorage.getItem('n3_7v2')||localStorage.getItem('n3_sakura_v1');
+  if(!raw)return null;
+  try{return JSON.parse(raw);}catch(e){return null;}
+}
+
+const PROG=loadProgress()||{};
+
+function getVal(k,field,def=0){
+  return PROG[k]?.(PROG[k][field]??def)??def;
+}
+
+// ── HERO STATS ──
+const done=STAGES_META.filter(s=>PROG[s.id]?.ok).length;
+const xp=STAGES_META.reduce((a,s)=>a+(PROG[s.id]?.xp||0),0);
+const att=STAGES_META.reduce((a,s)=>a+(PROG[s.id]?.att||0),0);
+const scores=STAGES_META.map(s=>PROG[s.id]?.best||0).filter(x=>x>0);
+const acc=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):null;
+const best=scores.length?Math.max(...scores):null;
+const worst=scores.length?Math.min(...scores):null;
+const studied=STAGES_META.filter(s=>PROG[s.id]?.studied||PROG[s.id]?.ok).length;
+
+document.getElementById('hs-done').textContent=done;
+document.getElementById('hs-xp').textContent=xp;
+document.getElementById('hs-att').textContent=att;
+document.getElementById('hs-acc').textContent=acc!=null?acc+'%':'—';
+document.getElementById('r-total-att').textContent=att+' kali';
+document.getElementById('r-studied').textContent=studied+' / 7';
+document.getElementById('r-mastered').textContent=done+' / 7';
+document.getElementById('r-best').textContent=best!=null?best+'%':'—';
+document.getElementById('r-worst').textContent=worst!=null?worst+'%':'—';
+document.getElementById('r-xp').textContent=xp+' / 1900';
+const estPct=Math.round(xp/1900*100);
+const estClass=estPct>=80?'good':estPct>=40?'warn':'bad';
+document.getElementById('r-est').textContent=estPct+'% siap ujian';
+document.getElementById('r-est').className='rekap-val '+estClass;
+
+// ── MOTIVASI ──
+const motis=[
+  {jp:'継続は力なり',id:'Ketekunan adalah kekuatan. Terus belajar setiap hari!'},
+  {jp:'七転び八起き',id:'Jatuh tujuh kali, bangkit delapan kali. Jangan menyerah!'},
+  {jp:'努力は裏切らない',id:'Kerja keras tidak pernah mengkhianati. Percaya pada prosesmu!'},
+  {jp:'一歩一歩',id:'Satu langkah demi satu langkah. Perjalanan seribu mil dimulai dari satu langkah.'},
+  {jp:'自分を信じろ',id:'Percayalah pada dirimu sendiri. Kamu bisa lulus N3!'},
+];
+const moti=motis[done%motis.length];
+document.getElementById('moti-jp').textContent=moti.jp;
+document.getElementById('moti-id').textContent=moti.id;
+
+// ── REKAP TAHAP ──
+const tahapList=document.getElementById('tahap-list');
+STAGES_META.forEach(s=>{
+  const p=PROG[s.id]||{};
+  let statusHtml,statusClass;
+  if(p.ok){statusHtml='✅ Selesai';statusClass='s-ok';}
+  else if(p.studied||p.att>0){statusHtml='📝 Proses';statusClass='s-progress';}
+  else{statusHtml='🔒 Belum';statusClass='s-belum';}
+  const best=p.best||0;
+  const att=p.att||0;
+  const el=document.createElement('div');
+  el.className='tahap-item';
+  el.innerHTML=`
+    <div class="tahap-icon" style="background:${s.color}22;border:2px solid ${s.color}44">${s.icon}</div>
+    <div class="tahap-info">
+      <div class="tahap-name">Tahap ${s.id} — ${s.title}</div>
+      <div class="tahap-meta">+${s.xp} XP · ${att} percobaan kuis</div>
+    </div>
+    <div class="tahap-right">
+      <span class="tahap-status ${statusClass}">${statusHtml}</span>
+      <div class="tahap-score">${best>0?'Terbaik: '+best+'%':'—'}</div>
+      <div class="mini-bar"><div class="mini-bar-fill" style="width:${best}%;background:${s.color}"></div></div>
+    </div>`;
+  tahapList.appendChild(el);
+});
+
+// ── CHART: SKOR PER TAHAP ──
+new Chart(document.getElementById('chart-skor'),{
+  type:'bar',
+  data:{
+    labels:STAGES_META.map(s=>`T${s.id}`),
+    datasets:[{
+      label:'Skor Terbaik (%)',
+      data:STAGES_META.map(s=>PROG[s.id]?.best||0),
+      backgroundColor:STAGES_META.map(s=>s.color+'cc'),
+      borderColor:STAGES_META.map(s=>s.color),
+      borderWidth:2,
+      borderRadius:8,
+    },{
+      label:'Target (100%)',
+      data:STAGES_META.map(()=>100),
+      type:'line',
+      borderColor:'rgba(26,39,68,.2)',
+      borderDash:[4,4],
+      borderWidth:1.5,
+      pointRadius:0,
+      fill:false,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:11}},grid:{color:'rgba(26,39,68,.06)'}},
+      x:{ticks:{font:{size:11}},grid:{display:false}}
+    }
+  }
+});
+
+// ── CHART: XP PROGRESS ──
+new Chart(document.getElementById('chart-xp'),{
+  type:'bar',
+  data:{
+    labels:STAGES_META.map(s=>`T${s.id} — ${s.title.split(' ')[0]}`),
+    datasets:[
+      {label:'XP Didapat',data:STAGES_META.map(s=>PROG[s.id]?.xp||0),backgroundColor:'rgba(26,188,156,.7)',borderRadius:6,borderSkipped:false},
+      {label:'XP Maks',data:STAGES_META.map(s=>s.xp),backgroundColor:'rgba(26,39,68,.08)',borderRadius:6,borderSkipped:false},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      y:{ticks:{font:{size:11}},grid:{color:'rgba(26,39,68,.06)'}},
+      x:{ticks:{font:{size:10},maxRotation:30},grid:{display:false}}
+    }
+  }
+});
+
+// ── CHART: DATABASE ──
+new Chart(document.getElementById('chart-db'),{
+  type:'bar',
+  data:{
+    labels:['漢字 Kanji','文法 Grammar','語彙 Vocab'],
+    datasets:[
+      {label:'Ada',data:[528,158,339],backgroundColor:['rgba(52,152,219,.8)','rgba(26,188,156,.8)','rgba(231,76,60,.8)'],borderRadius:6},
+      {label:'Target',data:[650,168,3750],backgroundColor:['rgba(52,152,219,.15)','rgba(26,188,156,.15)','rgba(231,76,60,.15)'],borderRadius:6},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{
+        display:true,
+        labels:{font:{size:11},boxWidth:12,boxHeight:12}
+      }
+    },
+    scales:{
+      y:{ticks:{font:{size:11}},grid:{color:'rgba(26,39,68,.06)'}},
+      x:{ticks:{font:{size:12}},grid:{display:false}}
+    }
+  }
+});
+</script>
+</body>
+</html>
