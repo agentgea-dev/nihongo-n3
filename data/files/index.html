@@ -265,9 +265,11 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
 .btn-riset:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(41,128,185,.4);}
 
 /* ── MODAL RISET ── */
-.riset-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:flex-end;animation:fadeUp .25s ease;}
+.riset-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:flex-end;}
+.riset-overlay.open{display:flex;animation:slideUpSheet .3s ease;}
+@keyframes slideUpSheet{from{transform:translateY(100%);}to{transform:none;}}
 .riset-overlay.open{display:flex;}
-.riset-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;max-height:80vh;overflow-y:auto;padding:0 0 80px;}
+.riset-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;max-height:82vh;overflow-y:auto;padding:0 0 80px;}
 .riset-header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:18px 20px;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;}
 .riset-title{font-weight:700;font-size:1rem;}
 .riset-close{background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.2rem;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
@@ -496,8 +498,9 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
       <div class="gl-title">📚 Materi yang Sudah Dipelajari</div>
       <div id="gl-items"></div>
     </div>
-    <button class="btn-a" style="background:linear-gradient(135deg,#e8507a,#c0392b);color:#fff;box-shadow:0 4px 16px rgba(232,80,122,.3);" onclick="startQuiz()">📝 Mulai Kuis Tahap Ini！</button>
-    <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="startStudy(true)">↩ Pelajari Ulang Kartu</button>
+    <button class="btn-a" style="background:linear-gradient(135deg,#e8507a,#c0392b);color:#fff;box-shadow:0 4px 16px rgba(232,80,122,.3);" onclick="startQuiz()">📝 Mulai Kuis Final！</button>
+    <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="openRiset()">📋 Lihat Semua Materi</button>
+    <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="startStudy(false,0)">↩ Pelajari Ulang dari Awal</button>
     <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">← Kembali ke Peta</button>
   </div>
 </div>
@@ -506,7 +509,10 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
 <div class="screen" id="s-quiz">
   <div class="quiz-topbar">
     <span class="q-cat" id="qz-cat">Tahap 1</span>
-    <span class="q-ctr" id="qz-ctr">1/5</span>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="q-ctr" id="qz-ctr">1/5</span>
+      <button class="btn-riset" onclick="openRiset()" style="padding:4px 10px;font-size:.6rem;">📋</button>
+    </div>
   </div>
   <div class="timer-bar"><div class="timer-fill" id="t-fill" style="width:100%"></div></div>
   <div class="qdots" id="qdots"></div>
@@ -825,11 +831,21 @@ function enterStage(id){
 function goHome(){clearInterval(tIv);showScreen('s-home');
 // ── RISET MODAL ──
 function openRiset(){
-  if(!curS)return;
+  if(!curS){alert('Pilih tahap dulu dari Peta!');return;}
+  // Pastikan curCards sudah terisi
+  if(curCards.length===0){
+    const hard=[...curS.cards];
+    const db=getDBCardsForStage(curS.id);
+    const seen=new Set(hard.map(c=>c.jp));
+    curCards=[...hard,...db.filter(c=>!seen.has(c.jp))];
+  }
   document.getElementById('riset-stage-num').textContent=curS.id+' — '+curS.title;
   const body=document.getElementById('riset-body');
   body.innerHTML='';
-  (curCards.length>0?curCards:curS.cards).forEach((fc,i)=>{
+  const cards=curCards.length>0?curCards:curS.cards;
+  body.innerHTML=`<div style="background:var(--sky);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:.7rem;color:var(--mid);">
+    📚 Total <strong>${cards.length} item</strong> di Tahap ${curS.id}</div>`;
+  cards.forEach((fc,i)=>{
     const d=document.createElement('div');
     d.className='riset-item';
     d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
@@ -1405,11 +1421,21 @@ function showScreen(id){
 
 // ── RISET MODAL ──
 function openRiset(){
-  if(!curS)return;
+  if(!curS){alert('Pilih tahap dulu dari Peta!');return;}
+  // Pastikan curCards sudah terisi
+  if(curCards.length===0){
+    const hard=[...curS.cards];
+    const db=getDBCardsForStage(curS.id);
+    const seen=new Set(hard.map(c=>c.jp));
+    curCards=[...hard,...db.filter(c=>!seen.has(c.jp))];
+  }
   document.getElementById('riset-stage-num').textContent=curS.id+' — '+curS.title;
   const body=document.getElementById('riset-body');
   body.innerHTML='';
-  (curCards.length>0?curCards:curS.cards).forEach((fc,i)=>{
+  const cards=curCards.length>0?curCards:curS.cards;
+  body.innerHTML=`<div style="background:var(--sky);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:.7rem;color:var(--mid);">
+    📚 Total <strong>${cards.length} item</strong> di Tahap ${curS.id}</div>`;
+  cards.forEach((fc,i)=>{
     const d=document.createElement('div');
     d.className='riset-item';
     d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
