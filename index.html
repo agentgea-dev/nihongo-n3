@@ -440,7 +440,7 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
       <div style="font-size:.6rem;color:#8a9ab8;font-weight:500" id="st-loop"></div>
-      <button class="btn-riset" onclick="openRiset()">📋 Riset</button>
+      <button class="btn-riset" onclick="openRiset()">📋 Materi</button>
     </div>
   </div>
   <div class="phase-banner">
@@ -480,7 +480,7 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
 <div class="riset-overlay" id="riset-overlay" onclick="closeRisetOutside(event)">
   <div class="riset-sheet">
     <div class="riset-header">
-      <div class="riset-title">📋 Daftar Materi Tahap <span id="riset-stage-num">1</span></div>
+      <div class="riset-title">📚 Daftar Materi — Tahap <span id="riset-stage-num">1</span></div>
       <button class="riset-close" onclick="closeRiset()">✕</button>
     </div>
     <div class="riset-body" id="riset-body"></div>
@@ -511,7 +511,7 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
     <span class="q-cat" id="qz-cat">Tahap 1</span>
     <div style="display:flex;align-items:center;gap:8px;">
       <span class="q-ctr" id="qz-ctr">1/5</span>
-      <button class="btn-riset" onclick="openRiset()" style="padding:4px 10px;font-size:.6rem;">📋</button>
+      <button class="btn-riset" onclick="openRiset()" style="padding:4px 10px;font-size:.6rem;" title="Lihat daftar materi">📋</button>
     </div>
   </div>
   <div class="timer-bar"><div class="timer-fill" id="t-fill" style="width:100%"></div></div>
@@ -781,10 +781,18 @@ function renderHome(){
       <div class="sc-right">${stat}
         <div class="sc-mini"><div class="sc-mini-fill" style="width:${mini}%;background:${s.color}"></div></div>
         ${p.att>0?`<div class="sc-att">${p.att}x percobaan</div>`:''}
-        ${resetBtn}
+        ${hasProgress?'<button class="btn-reset-stage" id="reset-btn-'+s.id+'">↺ Reset</button>':''}
       </div>
     </div>`;
     if(!locked)card.onclick=()=>enterStage(s.id);
+    // Attach reset button event AFTER innerHTML (avoid inline onclick in template)
+    if(hasProgress){
+      const rb=card.querySelector('#reset-btn-'+s.id);
+      if(rb) rb.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        confirmReset(s.id, s.title);
+      });
+    }
     list.appendChild(card);
   });
 
@@ -1462,6 +1470,20 @@ function closeRisetOutside(e){
 
 renderHome();
 </script>
+
+
+<!-- ── KONFIRMASI RESET ── -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">🔄</div>
+    <div class="confirm-title" id="confirm-title">Reset Tahap?</div>
+    <div class="confirm-msg" id="confirm-msg">Progress tahap ini akan dihapus.</div>
+    <div class="confirm-btns">
+      <button class="confirm-yes" id="confirm-yes-btn">✓ Ya, Reset</button>
+      <button class="confirm-no" onclick="closeConfirm()">✕ Batal</button>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ BOTTOM NAV ═══ -->
 <nav style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #d0eaf8;display:flex;justify-content:space-around;box-shadow:0 -4px 20px rgba(26,39,68,.1);z-index:200;padding:0 8px;">
