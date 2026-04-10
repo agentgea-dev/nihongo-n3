@@ -176,11 +176,6 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .q-prompt{font-size:.71rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:8px;margin-top:8px;}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px;}
 .opt{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 12px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.88rem;line-height:1.5;}
-.opt::before{content:attr(data-l);display:inline-block;width:19px;height:19px;border-radius:3px;text-align:center;line-height:19px;font-size:.57rem;font-weight:700;margin-right:7px;background:var(--oc,rgba(255,255,255,.1));color:#fff;}
-.opt[data-l="A"]{--oc:rgba(192,57,43,.5);}
-.opt[data-l="B"]{--oc:rgba(212,160,23,.5);}
-.opt[data-l="C"]{--oc:rgba(26,188,156,.45);}
-.opt[data-l="D"]{--oc:rgba(41,128,185,.5);}
 .opt:hover:not(:disabled){background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);transform:translateY(-1px);}
 .opt.correct{background:rgba(39,174,96,.18);border-color:var(--correct);animation:cf .4s;}
 .opt.wrong{background:rgba(231,76,60,.18);border-color:var(--wrong);animation:sk .4s;}
@@ -524,10 +519,7 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
 <div class="screen" id="s-quiz">
   <div class="quiz-topbar">
     <span class="q-cat" id="qz-cat">Tahap 1</span>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span class="q-ctr" id="qz-ctr">1/5</span>
-      <button class="btn-riset" onclick="openRiset()" style="padding:4px 10px;font-size:.6rem;" title="Lihat daftar materi">📋</button>
-    </div>
+    <span class="q-ctr" id="qz-ctr">1/5</span>
   </div>
   <div class="alarm-wrap">
     <div class="alarm-ring-container">
