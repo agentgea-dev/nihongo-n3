@@ -180,6 +180,81 @@ const VOCAB_DB = [
     mnemonic:"せっかく = 'sek-ka-ku' → susah payah datang = sayang kalau sia-sia",
     wrongOpts:["わざと","わざわざ","もったいない"], stage:3, category:"cara" },
 
+  { jp:"まるで", read:"まるで", meaning:"Seolah-olah / Bagaikan", type:"adv",
+    example:"まるで夢のようだ。", exampleId:"Seolah-olah seperti mimpi.",
+    mnemonic:"まるで = 'ma-ru-de' → lingkaran penuh (丸) → semua serba = persis seperti",
+    wrongOpts:["あたかも","ちょうど","本当に"], stage:3, category:"cara" },
+
+  { jp:"おそらく", read:"おそらく", meaning:"Kemungkinan besar / Mungkin", type:"adv",
+    example:"おそらく明日も雨だろう。", exampleId:"Kemungkinan besar besok juga hujan.",
+    mnemonic:"おそらく = 'o-so-ra-ku' → 'osore' (rasa takut)が来る → kemungkinan tidak enak",
+    wrongOpts:["たぶん","きっと","必ず"], stage:3, category:"kepastian" },
+
+  { jp:"きっと", read:"きっと", meaning:"Pasti / Tentu saja (dugaan kuat)", type:"adv",
+    example:"彼はきっと来るよ。", exampleId:"Dia pasti datang.",
+    mnemonic:"きっと = 'kit-to' → 'kitto' (KitKat Jepang artinya 'pasti bisa') = pasti",
+    wrongOpts:["おそらく","たぶん","必ず"], stage:3, category:"kepastian" },
+
+  { jp:"もちろん", read:"もちろん", meaning:"Tentu saja / Pastilah", type:"adv",
+    example:"もちろん参加します。", exampleId:"Tentu saja akan ikut.",
+    mnemonic:"もちろん = 'mo-chi-ron' → 'mochi' yang bulat penuh = sudah tentu",
+    wrongOpts:["当然","もちろんだ","確かに"], stage:3, category:"kepastian" },
+
+  { jp:"とにかく", read:"とにかく", meaning:"Bagaimanapun juga / Pokoknya", type:"adv",
+    example:"とにかくやってみよう。", exampleId:"Pokoknya coba dulu.",
+    mnemonic:"とにかく = 'to-ni-ka-ku' → 'tokaku' = dalam hal apapun = bagaimanapun",
+    wrongOpts:["ともかく","いずれにせよ","まず"], stage:3, category:"cara" },
+
+  { jp:"感じる", read:"かんじる", meaning:"Merasakan / Merasa", type:"verb",
+    example:"温かさを感じる。", exampleId:"Merasakan kehangatan.",
+    mnemonic:"感=perasaan + じる(する) → melakukan perasaan = merasakan",
+    wrongOpts:["思う","気づく","分かる"], stage:3, category:"emosi" },
+
+  { jp:"表す", read:"あらわす", meaning:"Mengungkapkan / Mengekspresikan", type:"verb",
+    example:"気持ちを言葉で表す。", exampleId:"Mengungkapkan perasaan dengan kata-kata.",
+    mnemonic:"表=permukaan/wajah + す → mengeluarkan ke permukaan = mengungkapkan",
+    wrongOpts:["表現する","示す","見せる"], stage:3, category:"komunikasi" },
+
+  { jp:"認める", read:"みとめる", meaning:"Mengakui / Menerima", type:"verb",
+    example:"失敗を認めることが大切だ。", exampleId:"Penting untuk mengakui kegagalan.",
+    mnemonic:"認=mengakui + める → mengesahkan dengan hati = mengakui",
+    wrongOpts:["受け入れる","許す","同意する"], stage:3, category:"pikiran" },
+
+  { jp:"伝える", read:"つたえる", meaning:"Menyampaikan / Meneruskan", type:"verb",
+    example:"大切なことを伝える。", exampleId:"Menyampaikan hal yang penting.",
+    mnemonic:"伝=meneruskan/menyampaikan + える → pesan yang diteruskan = menyampaikan",
+    wrongOpts:["話す","送る","知らせる"], stage:3, category:"komunikasi" },
+
+  { jp:"印象",read:"いんしょう",meaning:"Kesan / Impresi",type:"noun",
+    example:"第一印象がとても大切だ。",exampleId:"Kesan pertama sangat penting.",
+    mnemonic:"印=cap/tanda + 象=gambaran → gambaran yang membekas = kesan",
+    wrongOpts:["イメージ","感想","評価"], stage:3, category:"pikiran" },
+
+  { jp:"影響",read:"えいきょう",meaning:"Pengaruh / Dampak",type:"noun",
+    example:"環境が人に影響を与える。",exampleId:"Lingkungan memberikan pengaruh pada orang.",
+    mnemonic:"影=bayangan + 響=bergema → bayangan yang bergema = pengaruh yang menyebar",
+    wrongOpts:["効果","作用","結果"], stage:3, category:"abstrak" },
+
+  { jp:"理由",read:"りゆう",meaning:"Alasan / Sebab",type:"noun",
+    example:"断った理由を教えてください。",exampleId:"Tolong beritahu alasan menolak.",
+    mnemonic:"理=prinsip/alasan + 由=dari → dari prinsip = alasan",
+    wrongOpts:["原因","根拠","事情"], stage:3, category:"abstrak" },
+
+  { jp:"目的",read:"もくてき",meaning:"Tujuan / Maksud",type:"noun",
+    example:"この旅行の目的は何ですか。",exampleId:"Apa tujuan perjalanan ini?",
+    mnemonic:"目=mata + 的=target → target yang terlihat = tujuan",
+    wrongOpts:["目標","意図","ゴール"], stage:3, category:"abstrak" },
+
+  { jp:"経験",read:"けいけん",meaning:"Pengalaman",type:"noun",
+    example:"豊かな経験が力になる。",exampleId:"Pengalaman yang kaya menjadi kekuatan.",
+    mnemonic:"経=melewati + 験=ujian/pengalaman → melewati ujian = pengalaman",
+    wrongOpts:["体験","経歴","実績"], stage:3, category:"abstrak" },
+
+  { jp:"機会",read:"きかい",meaning:"Kesempatan / Peluang",type:"noun",
+    example:"この機会を逃さないようにする。",exampleId:"Berusaha tidak melewatkan kesempatan ini.",
+    mnemonic:"機=waktu yang tepat + 会=bertemu → bertemu dengan waktu yang tepat = kesempatan",
+    wrongOpts:["チャンス","場合","時間"], stage:3, category:"abstrak" },
+
   // ══════════════════════════════════════
   //  STAGE 6 — KOSAKATA LANJUTAN N3 (40 kata)
   // ══════════════════════════════════════
@@ -287,6 +362,91 @@ const VOCAB_DB = [
     mnemonic:"曖昧 → 'ai-mai' → ingat 'aimer' (Prancis=cinta) tapi bentuknya samar",
     wrongOpts:["不明","不確か","漠然"], stage:6, category:"kondisi" },
 
+  { jp:"傾向", read:"けいこう", meaning:"Kecenderungan / Tendensi", type:"noun",
+    example:"最近、若者のSNS利用が増える傾向がある。", exampleId:"Ada kecenderungan penggunaan SNS kaum muda meningkat belakangan ini.",
+    mnemonic:"傾=condong/miring + 向=arah → arah yang condong ke satu sisi = kecenderungan",
+    wrongOpts:["動向","方向","傾斜"], stage:6, category:"akademik" },
+
+  { jp:"原因", read:"げんいん", meaning:"Penyebab / Akar masalah", type:"noun",
+    example:"失敗の原因を分析する。", exampleId:"Menganalisis penyebab kegagalan.",
+    mnemonic:"原=asal + 因=sebab → sebab yang berasal dari awal = penyebab",
+    wrongOpts:["理由","きっかけ","根拠"], stage:6, category:"akademik" },
+
+  { jp:"変化", read:"へんか", meaning:"Perubahan", type:"noun",
+    example:"急激な変化に対応する。", exampleId:"Beradaptasi dengan perubahan yang drastis.",
+    mnemonic:"変=berubah + 化=menjadi → menjadi berubah = perubahan",
+    wrongOpts:["変更","変動","変換"], stage:6, category:"proses" },
+
+  { jp:"効果", read:"こうか", meaning:"Efek / Dampak / Manfaat", type:"noun",
+    example:"薬の効果が出てきた。", exampleId:"Efek obat mulai terasa.",
+    mnemonic:"効=efektif + 果=hasil → hasil yang efektif = efek/manfaat",
+    wrongOpts:["影響","作用","結果"], stage:6, category:"proses" },
+
+  { jp:"状況", read:"じょうきょう", meaning:"Situasi / Keadaan", type:"noun",
+    example:"現在の状況を説明してください。", exampleId:"Tolong jelaskan situasi saat ini.",
+    mnemonic:"状=bentuk/keadaan + 況=kondisi → kondisi keadaan = situasi",
+    wrongOpts:["状態","状況","事情"], stage:6, category:"proses" },
+
+  { jp:"準備", read:"じゅんび", meaning:"Persiapan", type:"noun",
+    example:"試験の準備をしっかりする。", exampleId:"Mempersiapkan ujian dengan sungguh-sungguh.",
+    mnemonic:"準=standar + 備=mempersiapkan → mempersiapkan sesuai standar",
+    wrongOpts:["用意","支度","備え"], stage:6, category:"proses" },
+
+  { jp:"達成", read:"たっせい", meaning:"Pencapaian / Terwujud", type:"noun",
+    example:"目標を達成した。", exampleId:"Berhasil mencapai target.",
+    mnemonic:"達=mencapai + 成=berhasil → berhasil mencapai = pencapaian",
+    wrongOpts:["成功","実現","完成"], stage:6, category:"proses" },
+
+  { jp:"解決", read:"かいけつ", meaning:"Penyelesaian / Solusi", type:"noun",
+    example:"問題を迅速に解決する。", exampleId:"Menyelesaikan masalah dengan cepat.",
+    mnemonic:"解=melepaskan/memecahkan + 決=memutuskan → memutuskan dengan memecahkan = solusi",
+    wrongOpts:["処理","対処","片付け"], stage:6, category:"proses" },
+
+  { jp:"意識する", read:"いしきする", meaning:"Menyadari / Memperhatikan", type:"verb",
+    example:"姿勢を意識して歩く。", exampleId:"Berjalan dengan memperhatikan postur tubuh.",
+    mnemonic:"意識=kesadaran + する → melakukan dengan kesadaran = menyadari",
+    wrongOpts:["気づく","注意する","認識する"], stage:6, category:"kognitif" },
+
+  { jp:"向上する", read:"こうじょうする", meaning:"Meningkat / Berkembang", type:"verb",
+    example:"スキルを向上させる。", exampleId:"Meningkatkan kemampuan.",
+    mnemonic:"向=menghadap + 上=atas + する → bergerak menghadap ke atas = meningkat",
+    wrongOpts:["上達する","伸びる","高まる"], stage:6, category:"proses" },
+
+  { jp:"維持する", read:"いじする", meaning:"Mempertahankan / Menjaga", type:"verb",
+    example:"良い関係を維持する。", exampleId:"Mempertahankan hubungan yang baik.",
+    mnemonic:"維=menjaga + 持=memegang + する → memegang dan menjaga = mempertahankan",
+    wrongOpts:["保つ","続ける","保持する"], stage:6, category:"aksi" },
+
+  { jp:"判断する", read:"はんだんする", meaning:"Memutuskan / Menilai", type:"verb",
+    example:"状況を見て適切に判断する。", exampleId:"Menilai dan memutuskan dengan tepat melihat situasi.",
+    mnemonic:"判=memutuskan + 断=memotong + する → memotong kebimbangan = memutuskan",
+    wrongOpts:["決める","評価する","選ぶ"], stage:6, category:"kognitif" },
+
+  { jp:"主張", read:"しゅちょう", meaning:"Klaim / Argumen / Pendapat kuat", type:"noun",
+    example:"自分の主張をはっきり述べる。", exampleId:"Menyatakan argumen sendiri dengan jelas.",
+    mnemonic:"主=utama + 張=menegangkan/merentangkan → merentangkan pendapat utama = argumen",
+    wrongOpts:["意見","論点","提案"], stage:6, category:"komunikasi" },
+
+  { jp:"意図", read:"いと", meaning:"Niat / Maksud / Tujuan tersirat", type:"noun",
+    example:"その発言の意図が分からない。", exampleId:"Tidak mengerti maksud dari pernyataan itu.",
+    mnemonic:"意=pikiran/niat + 図=rencana → rencana dalam pikiran = niat",
+    wrongOpts:["目的","目標","意向"], stage:6, category:"pikiran" },
+
+  { jp:"否定", read:"ひてい", meaning:"Penyangkalan / Negasi", type:"noun",
+    example:"事実を否定することはできない。", exampleId:"Tidak bisa menyangkal fakta.",
+    mnemonic:"否=tidak + 定=memastikan → memastikan ketidakhadiran = menyangkal",
+    wrongOpts:["反論","拒否","否認"], stage:6, category:"logika" },
+
+  { jp:"肯定", read:"こうてい", meaning:"Penegasan / Afirmasi", type:"noun",
+    example:"肯定的な言葉をかける。", exampleId:"Memberikan kata-kata yang positif/afirmatif.",
+    mnemonic:"肯=setuju + 定=memastikan → memastikan persetujuan = afirmasi",
+    wrongOpts:["賛成","承認","同意"], stage:6, category:"logika" },
+
+  { jp:"仮定", read:"かてい", meaning:"Asumsi / Andaikan", type:"noun",
+    example:"仮定の話をしよう。", exampleId:"Mari bicarakan seandainya.",
+    mnemonic:"仮=sementara/misalkan + 定=memastikan → sementara asumsikan sebagai pasti = asumsi",
+    wrongOpts:["前提","条件","想定"], stage:6, category:"logika" },
+
   // ══════════════════════════════════════
   //  STAGE 7 — KOSAKATA MASTER N3 (40 kata)
   // ══════════════════════════════════════
@@ -370,6 +530,101 @@ const VOCAB_DB = [
     example:"健康促進のための運動。", exampleId:"Olahraga untuk promosi kesehatan.",
     mnemonic:"促=mendorong + 進=maju → mendorong untuk maju lebih cepat",
     wrongOpts:["推進","発展","向上"], stage:7, category:"proses" },
+
+  { jp:"共感", read:"きょうかん", meaning:"Empati / Simpati", type:"noun",
+    example:"相手の気持ちに共感する。", exampleId:"Berempati dengan perasaan lawan bicara.",
+    mnemonic:"共=bersama + 感=perasaan → perasaan yang dirasakan bersama = empati",
+    wrongOpts:["同情","感情移入","理解"], stage:7, category:"emosi" },
+
+  { jp:"創造", read:"そうぞう", meaning:"Kreasi / Mencipta", type:"noun",
+    example:"創造力を発揮する。", exampleId:"Mengekspresikan kreativitas.",
+    mnemonic:"創=menciptakan + 造=membuat → membuat sesuatu yang baru = kreasi",
+    wrongOpts:["制作","製造","発明"], stage:7, category:"kognitif" },
+
+  { jp:"革新", read:"かくしん", meaning:"Inovasi / Pembaruan radikal", type:"noun",
+    example:"技術革新が社会を変えた。", exampleId:"Inovasi teknologi mengubah masyarakat.",
+    mnemonic:"革=merevolusi + 新=baru → memperbarui secara revolusioner = inovasi",
+    wrongOpts:["改革","改善","更新"], stage:7, category:"proses" },
+
+  { jp:"倫理", read:"りんり", meaning:"Etika / Moral", type:"noun",
+    example:"医療倫理について考える。", exampleId:"Berpikir tentang etika medis.",
+    mnemonic:"倫=hubungan manusia + 理=prinsip → prinsip hubungan antar manusia = etika",
+    wrongOpts:["道徳","規範","モラル"], stage:7, category:"abstrak" },
+
+  { jp:"客観的", read:"きゃっかんてき", meaning:"Objektif / Berdasarkan fakta", type:"adj-na",
+    example:"客観的に判断することが大切だ。", exampleId:"Penting untuk menilai secara objektif.",
+    mnemonic:"客=tamu/dari luar + 観=pandangan → pandangan dari luar (tanpa bias) = objektif",
+    wrongOpts:["主観的","中立的","論理的"], stage:7, category:"evaluasi" },
+
+  { jp:"主観的", read:"しゅかんてき", meaning:"Subjektif / Berdasarkan perasaan pribadi", type:"adj-na",
+    example:"それは主観的な意見だ。", exampleId:"Itu adalah pendapat yang subjektif.",
+    mnemonic:"主=utama/sendiri + 観=pandangan → pandangan dari diri sendiri = subjektif",
+    wrongOpts:["客観的","個人的","感情的"], stage:7, category:"evaluasi" },
+
+  { jp:"偏見", read:"へんけん", meaning:"Prasangka / Bias", type:"noun",
+    example:"偏見を持たずに人を見る。", exampleId:"Melihat orang tanpa prasangka.",
+    mnemonic:"偏=condong/tidak seimbang + 見=melihat → melihat secara tidak seimbang = prasangka",
+    wrongOpts:["先入観","差別","固定観念"], stage:7, category:"psikologi" },
+
+  { jp:"追求する", read:"ついきゅうする", meaning:"Mengejar / Mengupayakan", type:"verb",
+    example:"真実を追求し続ける。", exampleId:"Terus mengejar kebenaran.",
+    mnemonic:"追=mengejar + 求=mencari + する → mengejar sambil mencari = mengupayakan",
+    wrongOpts:["追う","求める","探る"], stage:7, category:"aksi" },
+
+  { jp:"反映する", read:"はんえいする", meaning:"Mencerminkan / Merefleksikan", type:"verb",
+    example:"意見を政策に反映させる。", exampleId:"Mencerminkan pendapat dalam kebijakan.",
+    mnemonic:"反=balik + 映=memantulkan + する → memantulkan kembali = mencerminkan",
+    wrongOpts:["表す","示す","反省する"], stage:7, category:"aksi" },
+
+  { jp:"内省", read:"ないせい", meaning:"Introspeksi / Refleksi diri", type:"noun",
+    example:"自分の行動を内省する。", exampleId:"Mengintrospeksi tindakan sendiri.",
+    mnemonic:"内=dalam + 省=merenung/introspeksi → merenung ke dalam diri = introspeksi",
+    wrongOpts:["反省","自省","自己批判"], stage:7, category:"psikologi" },
+
+  { jp:"規律", read:"きりつ", meaning:"Disiplin / Tata tertib", type:"noun",
+    example:"厳しい規律を守る。", exampleId:"Mematuhi disiplin yang ketat.",
+    mnemonic:"規=standar/aturan + 律=hukum/aturan → aturan dan hukum = disiplin",
+    wrongOpts:["ルール","秩序","規則"], stage:7, category:"abstrak" },
+
+  { jp:"先入観", read:"せんにゅうかん", meaning:"Prasangka awal / Stereotip", type:"noun",
+    example:"先入観を捨てて考える。", exampleId:"Berpikir dengan membuang prasangka awal.",
+    mnemonic:"先=lebih dulu + 入=masuk + 観=pandangan → pandangan yang masuk lebih dulu = prasangka",
+    wrongOpts:["偏見","固定観念","思い込み"], stage:7, category:"psikologi" },
+
+  { jp:"固定観念", read:"こていかんねん", meaning:"Stereotip / Pandangan kaku", type:"noun",
+    example:"固定観念にとらわれない。", exampleId:"Tidak terpenjara dalam pandangan kaku.",
+    mnemonic:"固定=tetap tidak bergerak + 観念=pandangan/konsep → konsep yang tidak bergerak = stereotip",
+    wrongOpts:["先入観","偏見","思い込み"], stage:7, category:"psikologi" },
+
+  { jp:"自己実現", read:"じこじつげん", meaning:"Aktualisasi diri", type:"noun",
+    example:"自己実現のために努力する。", exampleId:"Berusaha untuk mengaktualisasikan diri.",
+    mnemonic:"自己=diri sendiri + 実現=mewujudkan → mewujudkan potensi diri = aktualisasi diri",
+    wrongOpts:["自己満足","自己啓発","自立"], stage:7, category:"psikologi" },
+
+  { jp:"潜在意識", read:"せんざいいしき", meaning:"Alam bawah sadar", type:"noun",
+    example:"潜在意識が行動に影響する。", exampleId:"Alam bawah sadar mempengaruhi tindakan.",
+    mnemonic:"潜在=tersembunyi/laten + 意識=kesadaran → kesadaran yang tersembunyi = bawah sadar",
+    wrongOpts:["無意識","深層心理","本能"], stage:7, category:"psikologi" },
+
+  { jp:"超越する", read:"ちょうえつする", meaning:"Melampaui / Melewati batas", type:"verb",
+    example:"限界を超越した力を発揮する。", exampleId:"Mengeluarkan kekuatan yang melampaui batas.",
+    mnemonic:"超=super/melampaui + 越=melewati + する → melewati batas super = melampaui",
+    wrongOpts:["超える","越える","突破する"], stage:7, category:"aksi" },
+
+  { jp:"抽象的", read:"ちゅうしょうてき", meaning:"Abstrak", type:"adj-na",
+    example:"抽象的な概念を具体的に説明する。", exampleId:"Menjelaskan konsep abstrak secara konkret.",
+    mnemonic:"抽=menarik keluar + 象=gambaran → gambaran yang ditarik keluar dari hal nyata = abstrak",
+    wrongOpts:["具体的","理論的","概念的"], stage:7, category:"abstrak" },
+
+  { jp:"具体的", read:"ぐたいてき", meaning:"Konkret / Spesifik", type:"adj-na",
+    example:"具体的な例を挙げてください。", exampleId:"Tolong berikan contoh yang konkret.",
+    mnemonic:"具=peralatan/nyata + 体=tubuh/wujud → wujud yang nyata = konkret",
+    wrongOpts:["抽象的","一般的","曖昧な"], stage:7, category:"abstrak" },
+
+  { jp:"本来", read:"ほんらい", meaning:"Seharusnya / Pada dasarnya / Semula", type:"adv",
+    example:"本来ならもっと早く終わるはずだ。", exampleId:"Seharusnya selesai lebih cepat.",
+    mnemonic:"本=asal/inti + 来=datang → yang datang dari inti = pada dasarnya",
+    wrongOpts:["本当に","元々","もともと"], stage:7, category:"abstrak" },
 
 ];
 

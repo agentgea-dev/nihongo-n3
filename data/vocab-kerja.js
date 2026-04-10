@@ -144,6 +144,107 @@ addVocab([
     mnemonic:"社=perusahaan+外=luar → di luar perusahaan = eksternal",
     wrongOpts:["社内","部外","会外"],stage:3,category:"kerja" },
 
+  // ── Tambahan Kosakata Kerja ──
+  { jp:"通勤",read:"つうきん",meaning:"Perjalanan ke kantor / Komuter",type:"noun",
+    example:"毎日一時間かけて通勤している。",exampleId:"Setiap hari butuh satu jam untuk berangkat kerja.",
+    mnemonic:"通=melewati+勤=bekerja → melewati perjalanan untuk bekerja = komuter",
+    wrongOpts:["出勤","登校","移動"],stage:3,category:"kerja" },
+
+  { jp:"テレワーク",read:"てれわーく",meaning:"Kerja jarak jauh / Remote work",type:"noun",
+    example:"週三日テレワークをしている。",exampleId:"Kerja remote tiga hari seminggu.",
+    mnemonic:"テレワーク = telework (kata pinjaman Inggris) = bekerja dari jarak jauh",
+    wrongOpts:["在宅勤務","リモート","フレックス"],stage:3,category:"kerja" },
+
+  { jp:"業務",read:"ぎょうむ",meaning:"Tugas / Operasional bisnis",type:"noun",
+    example:"日常業務をこなす。",exampleId:"Menyelesaikan tugas sehari-hari.",
+    mnemonic:"業=bisnis/kegiatan+務=kewajiban → kewajiban dalam bisnis = tugas operasional",
+    wrongOpts:["仕事","作業","任務"],stage:3,category:"kerja" },
+
+  { jp:"進捗",read:"しんちょく",meaning:"Kemajuan / Progress",type:"noun",
+    example:"プロジェクトの進捗を確認する。",exampleId:"Memastikan kemajuan proyek.",
+    mnemonic:"進=maju+捗=berkembang → terus maju dan berkembang = progress",
+    wrongOpts:["経過","状況","結果"],stage:3,category:"kerja" },
+
+  { jp:"目標",read:"もくひょう",meaning:"Target / Tujuan",type:"noun",
+    example:"今月の目標を達成した。",exampleId:"Mencapai target bulan ini.",
+    mnemonic:"目=mata+標=penanda → penanda yang terlihat di depan = target",
+    wrongOpts:["目的","ゴール","基準"],stage:3,category:"kerja" },
+
+  { jp:"企画",read:"きかく",meaning:"Perencanaan / Proposal proyek",type:"noun",
+    example:"新しいイベントを企画した。",exampleId:"Merencanakan acara baru.",
+    mnemonic:"企=berdiri berjinjit/merencanakan+画=gambar → gambar rencana = proposal",
+    wrongOpts:["計画","提案","プラン"],stage:3,category:"kerja" },
+
+  { jp:"資料",read:"しりょう",meaning:"Dokumen / Materi / Referensi",type:"noun",
+    example:"会議の資料を準備した。",exampleId:"Menyiapkan dokumen rapat.",
+    mnemonic:"資=bahan+料=materi → materi bahan = dokumen referensi",
+    wrongOpts:["書類","資産","データ"],stage:3,category:"kerja" },
+
+  { jp:"勤務",read:"きんむ",meaning:"Dinas / Bekerja (resmi)",type:"noun",
+    example:"勤務時間は九時から六時だ。",exampleId:"Jam dinas dari pukul 9 hingga 6.",
+    mnemonic:"勤=rajin bekerja+務=tugas/kewajiban → kewajiban bekerja secara resmi",
+    wrongOpts:["出勤","就業","業務"],stage:3,category:"kerja" },
+
+  { jp:"異動",read:"いどう",meaning:"Mutasi / Rotasi jabatan",type:"noun",
+    example:"四月に人事異動があった。",exampleId:"Ada mutasi kepegawaian di bulan April.",
+    mnemonic:"異=berbeda+動=bergerak → bergerak ke posisi berbeda = mutasi",
+    wrongOpts:["転勤","転職","配属"],stage:3,category:"kerja" },
+
+  { jp:"配属",read:"はいぞく",meaning:"Penempatan tugas",type:"noun",
+    example:"新しい部署に配属された。",exampleId:"Ditempatkan di departemen baru.",
+    mnemonic:"配=mendistribusikan+属=termasuk → didistribusikan ke tempat termasuk = penempatan",
+    wrongOpts:["異動","転勤","着任"],stage:3,category:"kerja" },
+
+  { jp:"試用期間",read:"しようきかん",meaning:"Masa percobaan",type:"noun",
+    example:"試用期間は三か月だ。",exampleId:"Masa percobaan adalah tiga bulan.",
+    mnemonic:"試用=coba pakai+期間=periode → periode mencoba bekerja = masa percobaan",
+    wrongOpts:["研修期間","見習い期間","訓練期間"],stage:3,category:"kerja" },
+
+  { jp:"問い合わせ",read:"といあわせ",meaning:"Pertanyaan / Inquiry",type:"noun",
+    example:"お客様から問い合わせがあった。",exampleId:"Ada pertanyaan dari pelanggan.",
+    mnemonic:"問=bertanya+合わせ=mencocokkan → mencocokkan dengan bertanya = inquiry",
+    wrongOpts:["質問","相談","クレーム"],stage:3,category:"kerja" },
+
+  { jp:"規則",read:"きそく",meaning:"Peraturan / Aturan",type:"noun",
+    example:"会社の規則を守る。",exampleId:"Mematuhi peraturan perusahaan.",
+    mnemonic:"規=ukuran/standar+則=prinsip → prinsip standar = peraturan",
+    wrongOpts:["ルール","規定","決まり"],stage:3,category:"kerja" },
+
+  { jp:"義務",read:"ぎむ",meaning:"Kewajiban",type:"noun",
+    example:"納税は国民の義務だ。",exampleId:"Membayar pajak adalah kewajiban warga negara.",
+    mnemonic:"義=kebenaran+務=tugas → tugas yang harus dilakukan dengan benar = kewajiban",
+    wrongOpts:["責任","権利","役割"],stage:3,category:"kerja" },
+
+  { jp:"権利",read:"けんり",meaning:"Hak",type:"noun",
+    example:"労働者の権利を守る。",exampleId:"Melindungi hak-hak pekerja.",
+    mnemonic:"権=wewenang+利=keuntungan → wewenang yang menguntungkan = hak",
+    wrongOpts:["義務","特権","資格"],stage:3,category:"kerja" },
+
+  { jp:"プレゼン",read:"ぷれぜん",meaning:"Presentasi",type:"noun",
+    example:"明日、取引先にプレゼンがある。",exampleId:"Besok ada presentasi ke klien.",
+    mnemonic:"プレゼン = presentation (disingkat) = presentasi",
+    wrongOpts:["発表","報告","説明"],stage:3,category:"kerja" },
+
+  { jp:"スケジュール",read:"すけじゅーる",meaning:"Jadwal",type:"noun",
+    example:"スケジュールを確認する。",exampleId:"Mengecek jadwal.",
+    mnemonic:"スケジュール = schedule (kata pinjaman Inggris) = jadwal",
+    wrongOpts:["予定","計画","日程"],stage:3,category:"kerja" },
+
+  { jp:"期限",read:"きげん",meaning:"Tenggat waktu / Batas waktu",type:"noun",
+    example:"期限までに提出する。",exampleId:"Mengumpulkan sebelum tenggat waktu.",
+    mnemonic:"期=periode+限=batas → batas periode = tenggat waktu",
+    wrongOpts:["締め切り","納期","〆切"],stage:3,category:"kerja" },
+
+  { jp:"目安",read:"めやす",meaning:"Patokan / Perkiraan / Acuan",type:"noun",
+    example:"完成まで三日が目安だ。",exampleId:"Patokan waktu penyelesaian adalah tiga hari.",
+    mnemonic:"目=mata+安=aman → penanda aman yang terlihat = acuan/patokan",
+    wrongOpts:["基準","指標","ガイドライン"],stage:3,category:"kerja" },
+
+  { jp:"引き継ぎ",read:"ひきつぎ",meaning:"Serah terima pekerjaan",type:"noun",
+    example:"退職前に引き継ぎをした。",exampleId:"Melakukan serah terima sebelum resign.",
+    mnemonic:"引=menarik+継=menyambung → menyambung dengan menarik = serah terima",
+    wrongOpts:["引き渡し","受け渡し","交代"],stage:6,category:"kerja" },
+
 ]);
 
 console.log("✅ vocab-kerja.js loaded");
