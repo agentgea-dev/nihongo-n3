@@ -379,4 +379,39 @@ addVocab([
     mnemonic:"評=menilai + 価=nilai → nilai dari penilaian = evaluasi",
     wrongOpts:["採点","査定","判定"],stage:3,category:"akademik" },
 
+  { jp:"理論",read:"りろん",meaning:"Teori",type:"noun",
+    example:"その理論を実験で証明した。",exampleId:"Teori itu dibuktikan melalui eksperimen.",
+    mnemonic:"理=logis+論=argumen → argumen yang logis = teori",
+    wrongOpts:["仮説","学説","原理"],stage:3,category:"akademik" },
+
+  { jp:"実験",read:"じっけん",meaning:"Eksperimen / Percobaan",type:"noun",
+    example:"化学の実験を行った。",exampleId:"Melakukan eksperimen kimia.",
+    mnemonic:"実=nyata+験=ujian → ujian yang nyata/langsung = eksperimen",
+    wrongOpts:["実習","演習","試験"],stage:3,category:"akademik" },
+
+  { jp:"研究者",read:"けんきゅうしゃ",meaning:"Peneliti / Ilmuwan",type:"noun",
+    example:"彼は優秀な研究者だ。",exampleId:"Dia adalah peneliti yang unggul.",
+    mnemonic:"研究=penelitian+者=orang → orang yang melakukan penelitian",
+    wrongOpts:["学者","科学者","専門家"],stage:3,category:"akademik" },
+
+  { jp:"引用",read:"いんよう",meaning:"Kutipan / Sitasi",type:"noun",
+    example:"レポートに引用を入れた。",exampleId:"Memasukkan kutipan ke dalam laporan.",
+    mnemonic:"引=menarik+用=menggunakan → menarik dan menggunakan kata orang = mengutip",
+    wrongOpts:["参照","転用","抜粋"],stage:3,category:"akademik" },
+
+  { jp:"仮説",read:"かせつ",meaning:"Hipotesis / Dugaan awal",type:"noun",
+    example:"仮説を立てて実験した。",exampleId:"Membuat hipotesis lalu bereksperimen.",
+    mnemonic:"仮=sementara+説=penjelasan → penjelasan yang masih sementara = hipotesis",
+    wrongOpts:["推論","理論","仮定"],stage:3,category:"akademik" },
+
+  { jp:"証拠",read:"しょうこ",meaning:"Bukti / Evidensi",type:"noun",
+    example:"犯罪の証拠が見つかった。",exampleId:"Ditemukan bukti kejahatan.",
+    mnemonic:"証=membuktikan+拠=pegangan → pegangan untuk membuktikan = bukti",
+    wrongOpts:["根拠","理由","事実"],stage:3,category:"akademik" },
+
+  { jp:"討論",read:"とうろん",meaning:"Diskusi / Debat",type:"noun",
+    example:"クラスで討論を行った。",exampleId:"Mengadakan diskusi di kelas.",
+    mnemonic:"討=menyerang+論=argumen → saling menyerang dengan argumen = debat",
+    wrongOpts:["議論","対話","会議"],stage:3,category:"akademik" },
+
 ]);

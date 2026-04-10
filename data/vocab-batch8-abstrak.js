@@ -397,4 +397,24 @@ addVocab([
     mnemonic:"ただし = tadashi → 'dengan syarat' atau 'namun' (pengecualian formal)",
     wrongOpts:["しかし","ただ","でも"],stage:3,category:"formal" },
 
+  { jp:"条件",read:"じょうけん",meaning:"Kondisi / Syarat / Prasyarat",type:"noun",
+    example:"条件が揃えば契約する。",exampleId:"Jika syarat terpenuhi, akan membuat kontrak.",
+    mnemonic:"条=garis/peraturan+件=perkara → perkara yang harus dipenuhi = syarat",
+    wrongOpts:["要件","基準","制約"],stage:3,category:"abstrak" },
+
+  { jp:"過程",read:"かてい",meaning:"Proses / Perjalanan / Tahapan",type:"noun",
+    example:"成長の過程で多くを学ぶ。",exampleId:"Belajar banyak dalam proses pertumbuhan.",
+    mnemonic:"過=melewati+程=tahapan → melewati tahapan demi tahapan = proses",
+    wrongOpts:["経過","手順","手続き"],stage:3,category:"abstrak" },
+
+  { jp:"意義",read:"いぎ",meaning:"Makna / Arti penting / Signifikansi",type:"noun",
+    example:"この仕事の意義を考えた。",exampleId:"Merenungkan makna pekerjaan ini.",
+    mnemonic:"意=niat/makna+義=kebenaran → makna yang benar dan penting = signifikansi",
+    wrongOpts:["意味","価値","意図"],stage:3,category:"abstrak" },
+
+  { jp:"立場",read:"たちば",meaning:"Posisi / Sudut pandang / Kedudukan",type:"noun",
+    example:"相手の立場を考えることが大切だ。",exampleId:"Penting untuk mempertimbangkan posisi pihak lain.",
+    mnemonic:"立=berdiri+場=tempat → tempat di mana seseorang berdiri = posisi/sudut pandang",
+    wrongOpts:["地位","状況","観点"],stage:3,category:"formal" },
+
 ]);

@@ -355,4 +355,64 @@ addVocab([
     mnemonic:"洋=Barat/Eropa + 食=makanan → makanan bergaya Barat",
     wrongOpts:["和食","外食","中華"],stage:3,category:"kuliner" },
 
+  { jp:"揚げる",read:"あげる",meaning:"Menggoreng (deep fry)",type:"verb",
+    example:"天ぷらを揚げる。",exampleId:"Menggoreng tempura.",
+    mnemonic:"揚=mengangkat+る → mengangkat makanan dari minyak = menggoreng",
+    wrongOpts:["焼く","炒める","蒸す"],stage:3,category:"memasak" },
+
+  { jp:"煮る",read:"にる",meaning:"Merebus / Memasak dengan air",type:"verb",
+    example:"野菜を柔らかくなるまで煮る。",exampleId:"Merebus sayuran hingga lunak.",
+    mnemonic:"煮=4点火(api)+者(orang) → orang yang memasak dengan api di bawah = merebus",
+    wrongOpts:["茹でる","炊く","蒸す"],stage:3,category:"memasak" },
+
+  { jp:"蒸す",read:"むす",meaning:"Mengukus",type:"verb",
+    example:"蒸し器で野菜を蒸した。",exampleId:"Mengukus sayuran dengan kukusan.",
+    mnemonic:"蒸=uap+す → memasak dengan uap = mengukus",
+    wrongOpts:["煮る","炒める","焼く"],stage:3,category:"memasak" },
+
+  { jp:"炒める",read:"いためる",meaning:"Menumis / Menggoreng dengan sedikit minyak",type:"verb",
+    example:"野菜と肉を炒めた。",exampleId:"Menumis sayuran dan daging.",
+    mnemonic:"炒=api kecil → memasak dengan api kecil dan sedikit minyak = menumis",
+    wrongOpts:["揚げる","焼く","煮る"],stage:3,category:"memasak" },
+
+  { jp:"漬ける",read:"つける",meaning:"Mengasinkan / Merendam / Memfermentasi",type:"verb",
+    example:"梅を塩に漬けた。",exampleId:"Merendam buah plum dalam garam.",
+    mnemonic:"漬=氵(air)+責(tanggung jawab) → merendam dalam cairan = mengasinkan",
+    wrongOpts:["浸す","塗る","かける"],stage:3,category:"memasak" },
+
+  { jp:"刺身",read:"さしみ",meaning:"Sashimi / Ikan mentah iris",type:"noun",
+    example:"新鮮な刺身を食べた。",exampleId:"Makan sashimi yang segar.",
+    mnemonic:"刺=menusuk+身=tubuh → menusuk ikan langsung = sashimi mentah",
+    wrongOpts:["寿司","天ぷら","焼き魚"],stage:3,category:"kuliner" },
+
+  { jp:"丼",read:"どんぶり",meaning:"Semangkuk nasi dengan topping / Mangkuk besar",type:"noun",
+    example:"牛丼を注文した。",exampleId:"Memesan gyudon (nasi sapi).",
+    mnemonic:"丼=mangkuk besar → nasi dengan lauk di atas dalam mangkuk besar",
+    wrongOpts:["茶碗","鍋","お椀"],stage:3,category:"kuliner" },
+
+  { jp:"食欲",read:"しょくよく",meaning:"Nafsu makan / Selera makan",type:"noun",
+    example:"体調が悪くて食欲がない。",exampleId:"Tidak ada nafsu makan karena tidak enak badan.",
+    mnemonic:"食=makan+欲=keinginan → keinginan untuk makan = nafsu makan",
+    wrongOpts:["食事","食べ物","空腹"],stage:3,category:"rasa" },
+
+  { jp:"後味",read:"あとあじ",meaning:"After taste / Rasa yang tersisa",type:"noun",
+    example:"このワインは後味がいい。",exampleId:"Anggur ini memiliki after taste yang enak.",
+    mnemonic:"後=setelah+味=rasa → rasa yang tersisa setelah menelan = after taste",
+    wrongOpts:["余韻","残味","余味"],stage:3,category:"rasa" },
+
+  { jp:"予約",read:"よやく",meaning:"Reservasi / Pemesanan tempat",type:"noun",
+    example:"レストランを予約した。",exampleId:"Membuat reservasi restoran.",
+    mnemonic:"予=sebelumnya+約=janji → membuat janji sebelumnya = reservasi",
+    wrongOpts:["注文","申込み","手配"],stage:3,category:"restoran" },
+
+  { jp:"お代わり",read:"おかわり",meaning:"Tambah porsi / Refill",type:"noun",
+    example:"ご飯のお代わりをもらった。",exampleId:"Meminta tambah nasi.",
+    mnemonic:"代=ganti+わり=berganti → ganti dengan porsi baru = tambah porsi",
+    wrongOpts:["おまけ","追加","お替わり"],stage:3,category:"restoran" },
+
+  { jp:"割り勘",read:"わりかん",meaning:"Bayar sendiri-sendiri / Dutch pay",type:"noun",
+    example:"今日は割り勘にしよう。",exampleId:"Hari ini kita bayar sendiri-sendiri ya.",
+    mnemonic:"割=membagi+勘=perhitungan → membagi perhitungan = dutch pay",
+    wrongOpts:["おごり","奢り","折半"],stage:3,category:"restoran" },
+
 ]);

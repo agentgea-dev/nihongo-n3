@@ -318,6 +318,97 @@ addVocab([
     mnemonic:"おおよそ = 'oo'(besar)+'yoso'(perkiraan) → perkiraan besar = kira-kira",
     wrongOpts:["およそ","大体","ほぼ"],stage:3,category:"kuantitas" },
 
+
+  { jp:"正確な",read:"せいかくな",meaning:"Tepat / Akurat / Presisi",type:"adj-na",
+    example:"正確な情報が必要だ。",exampleId:"Informasi yang akurat sangat diperlukan.",
+    mnemonic:"正=benar+確=pasti → benar dan pasti = akurat",
+    wrongOpts:["的確な","精密な","正直な"],stage:3,category:"kondisi" },
+
+  { jp:"不思議な",read:"ふしぎな",meaning:"Aneh / Misterius / Menakjubkan",type:"adj-na",
+    example:"不思議な夢を見た。",exampleId:"Bermimpi yang aneh.",
+    mnemonic:"不=tidak+思議=dapat dipikirkan → tidak dapat dipikirkan = misterius",
+    wrongOpts:["奇妙な","不可解な","謎めいた"],stage:3,category:"kondisi" },
+
+  { jp:"快適な",read:"かいてきな",meaning:"Nyaman / Menyenangkan",type:"adj-na",
+    example:"快適な部屋で働く。",exampleId:"Bekerja di ruangan yang nyaman.",
+    mnemonic:"快=menyenangkan+適=sesuai → sesuai dan menyenangkan = nyaman",
+    wrongOpts:["心地よい","居心地の良い","便利な"],stage:3,category:"kondisi" },
+
+  { jp:"複雑な",read:"ふくざつな",meaning:"Rumit / Kompleks",type:"adj-na",
+    example:"複雑な問題を解決した。",exampleId:"Menyelesaikan masalah yang rumit.",
+    mnemonic:"複=banyak lapis+雑=campur aduk → banyak lapis yang campur aduk = kompleks",
+    wrongOpts:["難しい","込み入った","厄介な"],stage:3,category:"kondisi" },
+
+  { jp:"素直な",read:"すなおな",meaning:"Penurut / Jujur / Polos",type:"adj-na",
+    example:"素直な子供は育てやすい。",exampleId:"Anak yang penurut mudah dididik.",
+    mnemonic:"素=dasar/asli+直=lurus → lurus dari dasar = polos/jujur",
+    wrongOpts:["従順な","純粋な","正直な"],stage:3,category:"karakter" },
+
+  { jp:"丁寧な",read:"ていねいな",meaning:"Sopan / Teliti / Hati-hati",type:"adj-na",
+    example:"丁寧な説明をありがとう。",exampleId:"Terima kasih atas penjelasan yang teliti.",
+    mnemonic:"丁=dengan hormat+寧=tenang → dengan hormat dan tenang = sopan",
+    wrongOpts:["礼儀正しい","親切な","細かい"],stage:3,category:"karakter" },
+
+  { jp:"真剣な",read:"しんけんな",meaning:"Serius / Sungguh-sungguh",type:"adj-na",
+    example:"真剣な表情で話している。",exampleId:"Berbicara dengan ekspresi serius.",
+    mnemonic:"真=benar-benar+剣=pedang → seperti pedang yang benar-benar tajam = serius",
+    wrongOpts:["熱心な","本気の","真面目な"],stage:3,category:"karakter" },
+
+  { jp:"頑固な",read:"がんこな",meaning:"Keras kepala / Teguh pendirian",type:"adj-na",
+    example:"頑固な性格で意見を変えない。",exampleId:"Kepribadian keras kepala tidak mengubah pendapat.",
+    mnemonic:"頑=keras+固=kaku → keras dan kaku = keras kepala",
+    wrongOpts:["意固地な","強情な","一途な"],stage:3,category:"karakter" },
+
+  { jp:"穏やかな",read:"おだやかな",meaning:"Tenang / Damai / Kalem",type:"adj-na",
+    example:"穏やかな海が広がっている。",exampleId:"Laut yang tenang terbentang luas.",
+    mnemonic:"穏=damai (kanji yang melambangkan ketenangan) = tenang",
+    wrongOpts:["静かな","平和な","のどかな"],stage:3,category:"kondisi" },
+
+  { jp:"地味な",read:"じみな",meaning:"Sederhana / Polos / Tidak mencolok",type:"adj-na",
+    example:"地味な服装で出かけた。",exampleId:"Keluar dengan pakaian yang sederhana.",
+    mnemonic:"地=tanah+味=rasa → rasa/kesan seperti tanah = polos tidak mencolok",
+    wrongOpts:["質素な","控えめな","目立たない"],stage:3,category:"sifat" },
+
+  { jp:"派手な",read:"はでな",meaning:"Mencolok / Ramai / Mewah",type:"adj-na",
+    example:"派手な色のドレスを着た。",exampleId:"Memakai gaun warna mencolok.",
+    mnemonic:"派=kelompok+手=tangan → tangan yang melambai-lambai (menarik perhatian) = mencolok",
+    wrongOpts:["華やかな","目立つ","鮮やかな"],stage:3,category:"sifat" },
+
+  { jp:"意外な",read:"いがいな",meaning:"Mengejutkan / Di luar dugaan",type:"adj-na",
+    example:"意外な結果に驚いた。",exampleId:"Terkejut dengan hasil yang tidak terduga.",
+    mnemonic:"意=pikiran+外=di luar → di luar pikiran = mengejutkan",
+    wrongOpts:["驚くべき","予想外の","突然の"],stage:3,category:"kondisi" },
+
+  { jp:"曖昧な",read:"あいまいな",meaning:"Ambigu / Samar / Tidak jelas",type:"adj-na",
+    example:"曖昧な返事をした。",exampleId:"Memberikan jawaban yang ambigu.",
+    mnemonic:"曖=tersembunyi+昧=gelap → tersembunyi dalam kegelapan = tidak jelas",
+    wrongOpts:["不明確な","あやふやな","漠然とした"],stage:6,category:"kondisi" },
+
+  { jp:"明確な",read:"めいかくな",meaning:"Jelas / Tegas / Pasti",type:"adj-na",
+    example:"明確な目標を立てた。",exampleId:"Menetapkan tujuan yang jelas.",
+    mnemonic:"明=terang+確=pasti → terang dan pasti = jelas/tegas",
+    wrongOpts:["明白な","確実な","はっきりした"],stage:6,category:"kondisi" },
+
+  { jp:"急な",read:"きゅうな",meaning:"Mendadak / Tiba-tiba / Curam",type:"adj-na",
+    example:"急な坂道を登った。",exampleId:"Mendaki jalan tanjakan yang curam.",
+    mnemonic:"急=terburu-buru → sesuatu yang terjadi terlalu cepat/tiba-tiba",
+    wrongOpts:["突然の","緊急の","唐突な"],stage:3,category:"waktu" },
+
+  { jp:"当然な",read:"とうぜんな",meaning:"Wajar / Sewajarnya / Sudah tentu",type:"adj-na",
+    example:"当然な結果だと思う。",exampleId:"Menurutku itu adalah hasil yang wajar.",
+    mnemonic:"当=tepat+然=begitulah → tepat seperti mestinya = wajar",
+    wrongOpts:["もちろん","普通の","自然な"],stage:6,category:"cara" },
+
+  { jp:"贅沢な",read:"ぜいたくな",meaning:"Mewah / Boros / Berlebihan",type:"adj-na",
+    example:"贅沢な食事を楽しんだ。",exampleId:"Menikmati makan mewah.",
+    mnemonic:"贅=kemewahan+沢=limpah → limpahan kemewahan = mewah",
+    wrongOpts:["豪華な","华麗な","裕福な"],stage:6,category:"sifat" },
+
+  { jp:"十分な",read:"じゅうぶんな",meaning:"Cukup / Memadai / Sudah lebih dari cukup",type:"adj-na",
+    example:"十分な準備ができた。",exampleId:"Persiapan sudah cukup.",
+    mnemonic:"十=sepuluh (penuh)+分=bagian → bagian yang penuh = cukup",
+    wrongOpts:["十分","充分","充足した"],stage:3,category:"kuantitas" },
+
 ]);
 
 console.log("✅ vocab-batch1-sifat.js loaded — 80 kata sifat & keterangan");

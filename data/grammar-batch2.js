@@ -290,6 +290,31 @@ addGrammar([
     quizOpts:["をよそに","もかまわず","をよそに","をよそにして"],quizAns:0,
     quizExp:"〜をよそに = mengabaikan/tidak peduli. Mengabaikan perasaan atau pandangan orang lain.",stage:7,category:"penghubung" },
 
+
+  { jp:"〜にわたって",meaning:"Selama / Sepanjang (rentang waktu atau wilayah)",
+    example:"三日間にわたって、会議が続いた。",exampleId:"Selama tiga hari, rapat terus berlangsung.",
+    mnemonic:"わたる=merentang → merentang sepanjang jangka waktu atau wilayah",
+    quizSentence:"三日間___、会議が続いた。",quizFuri:"",
+    quizPrompt:"Pola 'selama / sepanjang rentang waktu':",
+    quizOpts:["にわたって","にかけて","のあいだに","をとおして"],quizAns:0,
+    quizExp:"〜にわたって = selama/sepanjang. Menekankan rentang waktu atau jangkauan yang luas.",stage:5,category:"derajat" },
+
+  { jp:"〜きり",meaning:"Hanya itu / Sejak saat itu tidak lagi",
+    example:"彼は一言言ったきり、黙ってしまった。",exampleId:"Dia hanya berkata satu patah kata, lalu diam.",
+    mnemonic:"きり=batas → batas hanya sampai situ, tidak berlanjut lagi",
+    quizSentence:"彼は一言言った___、黙ってしまった。",quizFuri:"",
+    quizPrompt:"Pola 'hanya itu / sejak melakukan X tidak Y lagi':",
+    quizOpts:["きり","だけ","ばかり","しか"],quizAns:0,
+    quizExp:"〜きり = hanya itu. 〜たきり sering berarti 'sejak melakukan X, tidak melakukan Y lagi'.",stage:7,category:"khusus" },
+
+  { jp:"〜からすると",meaning:"Dilihat dari / Berdasarkan / Menurut pertimbangan",
+    example:"様子からすると、彼は怒っているようだ。",exampleId:"Dilihat dari sikapnya, sepertinya dia marah.",
+    mnemonic:"から=dari+すると=kalau begitu → kesimpulan berdasarkan sudut pandang itu",
+    quizSentence:"様子___、彼は怒っているようだ。",quizFuri:"",
+    quizPrompt:"Pola 'dilihat dari / berdasarkan':",
+    quizOpts:["からすると","からといって","によると","にしては"],quizAns:0,
+    quizExp:"〜からすると/からすれば = dilihat dari sisi itu. Dipakai saat membuat kesimpulan dari suatu petunjuk.",stage:5,category:"penghubung" },
+
 ]);
 
 console.log("✅ grammar-batch2.js loaded — 38 pola derajat, perbandingan & khusus");

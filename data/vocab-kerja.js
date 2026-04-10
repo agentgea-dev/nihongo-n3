@@ -48,6 +48,102 @@ addVocab([
   { jp:"経営",read:"けいえい",meaning:"Manajemen bisnis",type:"noun",example:"会社を経営する。",exampleId:"Mengelola perusahaan.",mnemonic:"経=melewati/mengelola+営=beroperasi → mengelola operasi = manajemen bisnis",wrongOpts:["管理","運営","統括"],stage:3,category:"kerja" },
   { jp:"方針",read:"ほうしん",meaning:"Kebijakan/Arah",type:"noun",example:"会社の方針を守る。",exampleId:"Mematuhi kebijakan perusahaan.",mnemonic:"方=arah+針=jarum → jarum penunjuk arah = kebijakan",wrongOpts:["方針","政策","戦略"],stage:3,category:"kerja" },
   { jp:"優先",read:"ゆうせん",meaning:"Prioritas",type:"noun",example:"何を優先すべきか考える。",exampleId:"Memikirkan apa yang harus diprioritaskan.",mnemonic:"優=unggul+先=lebih dulu → yang diutamakan lebih dulu = prioritas",wrongOpts:["重視","重要","先決"],stage:3,category:"kerja" },
+
+  { jp:"報告",read:"ほうこく",meaning:"Laporan / Melaporkan",type:"noun",
+    example:"上司に進捗を報告した。",exampleId:"Melaporkan kemajuan kepada atasan.",
+    mnemonic:"報=membalas+告=memberi tahu → memberi tahu sebagai balasan = laporan",
+    wrongOpts:["連絡","通知","発表"],stage:3,category:"kerja" },
+
+  { jp:"連絡",read:"れんらく",meaning:"Menghubungi / Komunikasi",type:"noun",
+    example:"後で連絡します。",exampleId:"Nanti akan menghubungi.",
+    mnemonic:"連=menghubungkan+絡=melingkar → melingkar untuk menghubungkan = komunikasi",
+    wrongOpts:["報告","通知","問い合わせ"],stage:3,category:"kerja" },
+
+  { jp:"相談",read:"そうだん",meaning:"Konsultasi / Berkonsultasi",type:"noun",
+    example:"先生に相談した。",exampleId:"Berkonsultasi dengan guru.",
+    mnemonic:"相=saling+談=bicara → saling bicara = konsultasi",
+    wrongOpts:["議論","交渉","打ち合わせ"],stage:3,category:"kerja" },
+
+  { jp:"指示",read:"しじ",meaning:"Instruksi / Petunjuk / Arahan",type:"noun",
+    example:"上司の指示に従う。",exampleId:"Mengikuti instruksi atasan.",
+    mnemonic:"指=menunjuk+示=menunjukkan → menunjukkan arah = instruksi",
+    wrongOpts:["命令","指導","指揮"],stage:3,category:"kerja" },
+
+  { jp:"評価",read:"ひょうか",meaning:"Evaluasi / Penilaian / Apresiasi",type:"noun",
+    example:"上司から高い評価を受けた。",exampleId:"Mendapat penilaian tinggi dari atasan.",
+    mnemonic:"評=menilai+価=nilai → menilai suatu nilai = evaluasi",
+    wrongOpts:["採点","査定","審査"],stage:3,category:"kerja" },
+
+  { jp:"研修",read:"けんしゅう",meaning:"Pelatihan / Training",type:"noun",
+    example:"新入社員の研修を行う。",exampleId:"Mengadakan pelatihan karyawan baru.",
+    mnemonic:"研=meneliti+修=belajar → belajar dengan meneliti = pelatihan",
+    wrongOpts:["訓練","練習","実習"],stage:3,category:"kerja" },
+
+  { jp:"採用",read:"さいよう",meaning:"Rekrutmen / Penerimaan karyawan",type:"noun",
+    example:"今年は新卒を10人採用する。",exampleId:"Tahun ini merekrut 10 lulusan baru.",
+    mnemonic:"採=mengambil/memilih+用=menggunakan → memilih untuk digunakan = rekrutmen",
+    wrongOpts:["雇用","採択","選考"],stage:3,category:"kerja" },
+
+  { jp:"面接",read:"めんせつ",meaning:"Wawancara (kerja)",type:"noun",
+    example:"就職面接を受けた。",exampleId:"Mengikuti wawancara kerja.",
+    mnemonic:"面=wajah/langsung+接=bertemu → bertemu langsung muka = wawancara",
+    wrongOpts:["試験","面談","審査"],stage:3,category:"kerja" },
+
+  { jp:"予算",read:"よさん",meaning:"Anggaran / Budget",type:"noun",
+    example:"今年の予算を組んだ。",exampleId:"Menyusun anggaran tahun ini.",
+    mnemonic:"予=sebelumnya+算=menghitung → menghitung sebelumnya = anggaran",
+    wrongOpts:["経費","資金","費用"],stage:3,category:"kerja" },
+
+  { jp:"経費",read:"けいひ",meaning:"Biaya operasional / Pengeluaran",type:"noun",
+    example:"経費を削減する。",exampleId:"Memotong biaya operasional.",
+    mnemonic:"経=melalui/mengurus+費=biaya → biaya yang harus diurus = biaya operasional",
+    wrongOpts:["費用","予算","出費"],stage:3,category:"kerja" },
+
+  { jp:"取引先",read:"とりひきさき",meaning:"Mitra bisnis / Klien / Rekanan",type:"noun",
+    example:"取引先との関係を大切にする。",exampleId:"Menjaga hubungan baik dengan klien.",
+    mnemonic:"取引=transaksi+先=pihak → pihak tempat bertransaksi = mitra bisnis",
+    wrongOpts:["顧客","得意先","業者"],stage:3,category:"kerja" },
+
+  { jp:"請求書",read:"せいきゅうしょ",meaning:"Invoice / Tagihan",type:"noun",
+    example:"取引先に請求書を送った。",exampleId:"Mengirimkan invoice ke klien.",
+    mnemonic:"請求=menagih+書=dokumen → dokumen untuk menagih = invoice",
+    wrongOpts:["領収書","見積書","納品書"],stage:3,category:"kerja" },
+
+  { jp:"競合",read:"きょうごう",meaning:"Kompetitor / Persaingan",type:"noun",
+    example:"競合他社の動向を調べる。",exampleId:"Meneliti pergerakan kompetitor.",
+    mnemonic:"競=bersaing+合=bergabung → bergabung dalam persaingan = kompetitor",
+    wrongOpts:["ライバル","競争","対抗"],stage:3,category:"kerja" },
+
+  { jp:"業界",read:"ぎょうかい",meaning:"Industri / Sektor bisnis",type:"noun",
+    example:"IT業界は成長が速い。",exampleId:"Industri IT berkembang pesat.",
+    mnemonic:"業=bisnis/industri+界=dunia → dunia bisnis = industri/sektor",
+    wrongOpts:["分野","部門","業種"],stage:3,category:"kerja" },
+
+  { jp:"労働",read:"ろうどう",meaning:"Tenaga kerja / Bekerja keras",type:"noun",
+    example:"労働時間が長すぎる。",exampleId:"Jam kerja terlalu panjang.",
+    mnemonic:"労=kerja keras+働=bekerja → bekerja dengan keras = tenaga kerja",
+    wrongOpts:["勤労","就労","作業"],stage:3,category:"kerja" },
+
+  { jp:"正社員",read:"せいしゃいん",meaning:"Karyawan tetap",type:"noun",
+    example:"アルバイトから正社員になった。",exampleId:"Dari paruh waktu menjadi karyawan tetap.",
+    mnemonic:"正=tetap/resmi+社員=karyawan → karyawan yang resmi dan tetap",
+    wrongOpts:["契約社員","派遣社員","アルバイト"],stage:3,category:"kerja" },
+
+  { jp:"副業",read:"ふくぎょう",meaning:"Pekerjaan sampingan / Side job",type:"noun",
+    example:"副業で収入を増やした。",exampleId:"Menambah penghasilan dengan pekerjaan sampingan.",
+    mnemonic:"副=tambahan+業=pekerjaan → pekerjaan tambahan = pekerjaan sampingan",
+    wrongOpts:["内職","兼業","本業"],stage:3,category:"kerja" },
+
+  { jp:"社内",read:"しゃない",meaning:"Internal perusahaan / Di dalam perusahaan",type:"noun",
+    example:"社内の雰囲気が明るい。",exampleId:"Suasana internal perusahaan ceria.",
+    mnemonic:"社=perusahaan+内=dalam → di dalam perusahaan = internal",
+    wrongOpts:["社外","部内","会内"],stage:3,category:"kerja" },
+
+  { jp:"社外",read:"しゃがい",meaning:"Eksternal perusahaan / Di luar perusahaan",type:"noun",
+    example:"社外の人と交流する。",exampleId:"Berinteraksi dengan orang di luar perusahaan.",
+    mnemonic:"社=perusahaan+外=luar → di luar perusahaan = eksternal",
+    wrongOpts:["社内","部外","会外"],stage:3,category:"kerja" },
+
 ]);
 
 console.log("✅ vocab-kerja.js loaded");

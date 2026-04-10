@@ -284,6 +284,32 @@ addKanji([
     mnemonic:"阜(bukit)+禺(monyet) → monyet di sudut bukit = pojok/sudut",
     wrongOpts:["端","辺","角"],stage:1,category:"arah" },
 
+
+  { jp:"霧",read:"きり / ム",meaning:"Kabut",
+    example:"今朝は霧が深い。",exampleId:"Pagi ini kabut tebal.",
+    mnemonic:"雨(hujan)+務(tugas) → hujan yang 'bertugas' menutupi pemandangan = kabut",
+    wrongOpts:["雲","煙","靄"],stage:1,category:"cuaca" },
+
+  { jp:"凍",read:"こお / トウ",meaning:"Membeku / Beku",
+    example:"池の水が凍った。",exampleId:"Air kolam membeku.",
+    mnemonic:"冫(es)+東(timur) → angin timur yang membekukan = beku",
+    wrongOpts:["冷","氷","寒"],stage:1,category:"cuaca" },
+
+  { jp:"渡",read:"わた / ト",meaning:"Menyeberangi / Melewati",
+    example:"橋を渡って向こう側に行く。",exampleId:"Menyeberangi jembatan menuju sisi seberang.",
+    mnemonic:"氵(air)+度(kali/melewati) → melewati air = menyeberangi",
+    wrongOpts:["越","超","過"],stage:1,category:"transport" },
+
+  { jp:"辺",read:"あた / ヘン",meaning:"Sekitar / Area / Wilayah",
+    example:"この辺に駅はありますか。",exampleId:"Apakah ada stasiun di sekitar sini?",
+    mnemonic:"辶(berjalan)+自(sendiri) → area yang dijelajahi sendiri = sekitar sini",
+    wrongOpts:["周","近","付近"],stage:1,category:"arah" },
+
+  { jp:"遅",read:"おそ / チ",meaning:"Lambat / Terlambat",
+    example:"電車が遅れて遅刻した。",exampleId:"Kereta telat sehingga terlambat.",
+    mnemonic:"辶(berjalan)+犀(badak) → berjalan seperti badak = lambat",
+    wrongOpts:["早","速","後"],stage:1,category:"waktu" },
+
 ]);
 
 console.log("✅ kanji-batch5-waktu.js loaded — 60 kanji waktu, perjalanan & alam");

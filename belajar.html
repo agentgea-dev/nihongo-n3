@@ -999,10 +999,15 @@ function loadCard(idx){
   document.getElementById('fc-read').textContent=fc.read||'';
   document.getElementById('fc-read').style.display=fc.read?'block':'none';
   document.getElementById('fc-meaning').textContent=fc.meaning;
-  // Render contoh dengan furigana jika ada field 'exampleFuri'
+  // Render contoh dengan furigana: exampleFuri (full) → auto-ruby → plain
   const exEl=document.getElementById('fc-example');
-  if(fc.exampleFuri){exEl.innerHTML=fc.exampleFuri;}
-  else{exEl.textContent=fc.example;}
+  if(fc.exampleFuri){
+    exEl.innerHTML=fc.exampleFuri;
+  } else if(fc.jp&&fc.read&&fc.example&&fc.example.includes(fc.jp)){
+    exEl.innerHTML=fc.example.replace(fc.jp,`<ruby>${fc.jp}<rt>${fc.read}</rt></ruby>`);
+  } else {
+    exEl.textContent=fc.example||'';
+  }
   document.getElementById('fc-ex-id').textContent=fc.exampleId;
   document.getElementById('fc-mnemonic').innerHTML='💡 '+fc.mnemonic;
   const sesNum=idx-sessionStartIdx+1;

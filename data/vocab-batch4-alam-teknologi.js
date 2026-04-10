@@ -256,6 +256,166 @@ addVocab([
     mnemonic:"平=datar/sama + 等=tingkatan → tingkatan yang sama = kesetaraan",
     wrongOpts:["公平","均等","同等"],stage:3,category:"masyarakat" },
 
+  // ── ALAM (lanjutan) ──
+  { jp:"環境",read:"かんきょう",meaning:"Lingkungan",type:"noun",
+    example:"環境を守ることが大切だ。",exampleId:"Menjaga lingkungan itu penting.",
+    mnemonic:"環=lingkaran + 境=batas → batas lingkaran sekitar kita = lingkungan",
+    wrongOpts:["自然","周囲","生態系"],stage:3,category:"alam" },
+
+  { jp:"資源",read:"しげん",meaning:"Sumber daya",type:"noun",
+    example:"天然資源を大切に使う。",exampleId:"Menggunakan sumber daya alam dengan bijak.",
+    mnemonic:"資=modal/bahan + 源=sumber → sumber bahan = sumber daya",
+    wrongOpts:["原料","素材","材料"],stage:3,category:"alam" },
+
+  { jp:"汚染",read:"おせん",meaning:"Pencemaran",type:"noun",
+    example:"川の汚染が深刻だ。",exampleId:"Pencemaran sungai sangat serius.",
+    mnemonic:"汚=kotor + 染=men染/mewarnai → diwarnai kotoran = pencemaran",
+    wrongOpts:["汚染物質","公害","汚濁"],stage:6,category:"alam" },
+
+  { jp:"噴火",read:"ふんか",meaning:"Letusan gunung berapi",type:"noun",
+    example:"火山が噴火した。",exampleId:"Gunung berapi meletus.",
+    mnemonic:"噴=menyemburkan + 火=api → api yang menyembur = letusan",
+    wrongOpts:["爆発","溶岩","火山活動"],stage:6,category:"alam" },
+
+  { jp:"雷",read:"かみなり",meaning:"Petir / Guntur",type:"noun",
+    example:"雷が鳴っている。",exampleId:"Petir sedang bergemuruh.",
+    mnemonic:"雷(かみなり) = suara dewa (神鳴り) = petir",
+    wrongOpts:["稲妻","落雷","嵐"],stage:3,category:"alam" },
+
+  { jp:"砂漠",read:"さばく",meaning:"Gurun",type:"noun",
+    example:"砂漠では水が貴重だ。",exampleId:"Di gurun, air sangat berharga.",
+    mnemonic:"砂=pasir + 漠=luas/kosong → pasir yang luas = gurun",
+    wrongOpts:["荒野","草原","砂丘"],stage:6,category:"alam" },
+
+  // ── TEKNOLOGI (lanjutan) ──
+  { jp:"アプリ",read:"あぷり",meaning:"Aplikasi / App",type:"noun",
+    example:"便利なアプリをダウンロードした。",exampleId:"Mengunduh aplikasi yang berguna.",
+    mnemonic:"アプリ = application (disingkat) = aplikasi",
+    wrongOpts:["ソフト","プログラム","ツール"],stage:3,category:"teknologi" },
+
+  { jp:"セキュリティ",read:"せきゅりてぃ",meaning:"Keamanan / Security",type:"noun",
+    example:"セキュリティを強化する。",exampleId:"Memperkuat keamanan.",
+    mnemonic:"セキュリティ = security (kata pinjaman Inggris)",
+    wrongOpts:["安全","防犯","保護"],stage:3,category:"teknologi" },
+
+  { jp:"クラウド",read:"くらうど",meaning:"Cloud / Komputasi awan",type:"noun",
+    example:"データをクラウドに保存する。",exampleId:"Menyimpan data di cloud.",
+    mnemonic:"クラウド = cloud (kata pinjaman Inggris) = awan",
+    wrongOpts:["サーバー","ネットワーク","オンライン"],stage:3,category:"teknologi" },
+
+  { jp:"インターネット",read:"いんたーねっと",meaning:"Internet",type:"noun",
+    example:"インターネットで調べた。",exampleId:"Mencari tahu di internet.",
+    mnemonic:"インターネット = Internet (kata pinjaman Inggris)",
+    wrongOpts:["ネット","ウェブ","オンライン"],stage:3,category:"teknologi" },
+
+  { jp:"ウイルス",read:"ういるす",meaning:"Virus (komputer)",type:"noun",
+    example:"コンピューターがウイルスに感染した。",exampleId:"Komputer terinfeksi virus.",
+    mnemonic:"ウイルス = virus (kata pinjaman Inggris)",
+    wrongOpts:["マルウェア","不正プログラム","スパイウェア"],stage:3,category:"teknologi" },
+
+  { jp:"ダウンロード",read:"だうんろーど",meaning:"Unduhan / Download",type:"noun",
+    example:"ファイルをダウンロードする。",exampleId:"Mengunduh file.",
+    mnemonic:"ダウンロード = download (kata pinjaman Inggris)",
+    wrongOpts:["アップロード","転送","保存"],stage:3,category:"teknologi" },
+
+  { jp:"スマートフォン",read:"すまーとふぉん",meaning:"Smartphone",type:"noun",
+    example:"スマートフォンを毎日使っている。",exampleId:"Menggunakan smartphone setiap hari.",
+    mnemonic:"スマートフォン = smartphone (kata pinjaman Inggris)",
+    wrongOpts:["携帯電話","スマホ","タブレット"],stage:3,category:"teknologi" },
+
+  // ── KESEHATAN (lanjutan) ──
+  { jp:"予防",read:"よぼう",meaning:"Pencegahan",type:"noun",
+    example:"病気の予防が大切だ。",exampleId:"Pencegahan penyakit itu penting.",
+    mnemonic:"予=sebelumnya + 防=mencegah → mencegah sebelum terjadi = pencegahan",
+    wrongOpts:["防止","対策","保護"],stage:3,category:"kesehatan" },
+
+  { jp:"栄養",read:"えいよう",meaning:"Nutrisi / Gizi",type:"noun",
+    example:"バランスよく栄養をとる。",exampleId:"Mengonsumsi nutrisi secara seimbang.",
+    mnemonic:"栄=berkembang/subur + 養=memelihara → memelihara agar subur = nutrisi",
+    wrongOpts:["成分","ビタミン","タンパク質"],stage:3,category:"kesehatan" },
+
+  { jp:"血圧",read:"けつあつ",meaning:"Tekanan darah",type:"noun",
+    example:"血圧を毎朝測る。",exampleId:"Mengukur tekanan darah setiap pagi.",
+    mnemonic:"血=darah + 圧=tekanan → tekanan darah = tekanan darah",
+    wrongOpts:["脈拍","心拍数","体温"],stage:3,category:"kesehatan" },
+
+  { jp:"体重",read:"たいじゅう",meaning:"Berat badan",type:"noun",
+    example:"体重が増えた。",exampleId:"Berat badan bertambah.",
+    mnemonic:"体=tubuh + 重=berat → berat tubuh = berat badan",
+    wrongOpts:["体格","体型","身長"],stage:3,category:"kesehatan" },
+
+  { jp:"健診",read:"けんしん",meaning:"Pemeriksaan kesehatan",type:"noun",
+    example:"毎年健診を受けている。",exampleId:"Menjalani pemeriksaan kesehatan setiap tahun.",
+    mnemonic:"健=sehat + 診=memeriksa → memeriksa kesehatan = pemeriksaan kesehatan",
+    wrongOpts:["診察","検査","検診"],stage:3,category:"kesehatan" },
+
+  // ── PENDIDIKAN (lanjutan) ──
+  { jp:"入試",read:"にゅうし",meaning:"Ujian masuk",type:"noun",
+    example:"大学の入試に合格した。",exampleId:"Lulus ujian masuk universitas.",
+    mnemonic:"入=masuk + 試=ujian → ujian untuk masuk = ujian masuk",
+    wrongOpts:["入学試験","受験","試験"],stage:3,category:"pendidikan" },
+
+  { jp:"欠席",read:"けっせき",meaning:"Tidak hadir / Absen",type:"noun",
+    example:"病気で授業を欠席した。",exampleId:"Absen dari kelas karena sakit.",
+    mnemonic:"欠=kurang + 席=tempat duduk → tempat duduk yang kurang = absen",
+    wrongOpts:["遅刻","早退","休む"],stage:3,category:"pendidikan" },
+
+  { jp:"合格",read:"ごうかく",meaning:"Lulus / Lolos",type:"noun",
+    example:"試験に合格した。",exampleId:"Lulus ujian.",
+    mnemonic:"合=sesuai + 格=standar → sesuai standar = lulus",
+    wrongOpts:["不合格","通過","成功"],stage:3,category:"pendidikan" },
+
+  { jp:"卒業",read:"そつぎょう",meaning:"Kelulusan / Wisuda",type:"noun",
+    example:"今年大学を卒業する。",exampleId:"Tahun ini lulus dari universitas.",
+    mnemonic:"卒=selesai + 業=studi/pekerjaan → selesai studi = kelulusan",
+    wrongOpts:["修了","終了","졸업"],stage:3,category:"pendidikan" },
+
+  { jp:"試験",read:"しけん",meaning:"Ujian / Tes",type:"noun",
+    example:"明日は大事な試験がある。",exampleId:"Besok ada ujian penting.",
+    mnemonic:"試=mencoba + 験=menguji → mencoba untuk menguji = ujian",
+    wrongOpts:["テスト","検定","審査"],stage:3,category:"pendidikan" },
+
+  // ── MASYARAKAT (lanjutan) ──
+  { jp:"政治",read:"せいじ",meaning:"Politik",type:"noun",
+    example:"政治に関心を持つ。",exampleId:"Tertarik pada politik.",
+    mnemonic:"政=pemerintahan + 治=mengatur → mengatur pemerintahan = politik",
+    wrongOpts:["政策","行政","政府"],stage:3,category:"masyarakat" },
+
+  { jp:"選挙",read:"せんきょ",meaning:"Pemilihan umum / Pemilu",type:"noun",
+    example:"来月は市長選挙がある。",exampleId:"Bulan depan ada pemilihan wali kota.",
+    mnemonic:"選=memilih + 挙=mengangkat → mengangkat pilihan = pemilu",
+    wrongOpts:["投票","議会","政党"],stage:3,category:"masyarakat" },
+
+  { jp:"法律",read:"ほうりつ",meaning:"Hukum / Undang-undang",type:"noun",
+    example:"法律を守らなければならない。",exampleId:"Harus menaati hukum.",
+    mnemonic:"法=hukum + 律=aturan → aturan hukum = undang-undang",
+    wrongOpts:["規則","条例","法令"],stage:3,category:"masyarakat" },
+
+  { jp:"税金",read:"ぜいきん",meaning:"Pajak",type:"noun",
+    example:"税金を納める。",exampleId:"Membayar pajak.",
+    mnemonic:"税=pajak + 金=uang → uang pajak = pajak",
+    wrongOpts:["税率","関税","所得税"],stage:3,category:"masyarakat" },
+
+  { jp:"犯罪",read:"はんざい",meaning:"Kejahatan / Kriminalitas",type:"noun",
+    example:"犯罪を防ぐために協力する。",exampleId:"Bekerja sama untuk mencegah kejahatan.",
+    mnemonic:"犯=melanggar + 罪=dosa/kesalahan → melanggar dan bersalah = kejahatan",
+    wrongOpts:["事件","違法","犯行"],stage:3,category:"masyarakat" },
+
+  { jp:"裁判",read:"さいばん",meaning:"Persidangan / Pengadilan",type:"noun",
+    example:"裁判で無罪になった。",exampleId:"Divonis tidak bersalah di pengadilan.",
+    mnemonic:"裁=menghakimi + 判=memutuskan → memutuskan dan menghakimi = persidangan",
+    wrongOpts:["審判","法廷","判決"],stage:6,category:"masyarakat" },
+
+  { jp:"外交",read:"がいこう",meaning:"Diplomasi",type:"noun",
+    example:"両国の外交関係が改善された。",exampleId:"Hubungan diplomatik kedua negara membaik.",
+    mnemonic:"外=luar + 交=berhubungan → berhubungan dengan luar negeri = diplomasi",
+    wrongOpts:["国際関係","外務","交渉"],stage:6,category:"masyarakat" },
+
+  { jp:"国際",read:"こくさい",meaning:"Internasional",type:"adj-na",
+    example:"国際的な問題を話し合う。",exampleId:"Mendiskusikan masalah internasional.",
+    mnemonic:"国=negara + 際=antara/perbatasan → antar negara = internasional",
+    wrongOpts:["世界的","海外","グローバル"],stage:3,category:"masyarakat" },
+
 ]);
 
 console.log("✅ vocab-batch4-alam-teknologi.js loaded — 80 kata alam & teknologi");

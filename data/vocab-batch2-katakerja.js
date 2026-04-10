@@ -321,6 +321,97 @@ addVocab([
     mnemonic:"見=melihat + 抜く=mencabut/menembus → melihat menembus = mendeteksi",
     wrongOpts:["見破る","見極める","見分ける"],stage:6,category:"kognitif" },
 
+
+  { jp:"諦める",read:"あきらめる",meaning:"Menyerah / Melepaskan / Pasrah",type:"verb",
+    example:"夢を諦めないでほしい。",exampleId:"Jangan menyerah pada impian.",
+    mnemonic:"諦=melihat dengan jelas → melihat dengan jelas bahwa tidak bisa dilanjutkan = menyerah",
+    wrongOpts:["断念する","辞める","放棄する"],stage:3,category:"emosi" },
+
+  { jp:"褒める",read:"ほめる",meaning:"Memuji / Memberikan pujian",type:"verb",
+    example:"子供をたくさん褒めた。",exampleId:"Banyak memuji anak.",
+    mnemonic:"褒=bagian atas衣(pakaian) menunjukkan kebanggaan → memuji dengan bangga",
+    wrongOpts:["称える","賞賛する","讃える"],stage:3,category:"komunikasi" },
+
+  { jp:"叱る",read:"しかる",meaning:"Memarahi / Menegur dengan keras",type:"verb",
+    example:"先生に叱られた。",exampleId:"Dimarahi guru.",
+    mnemonic:"叱=口(mulut)+七→ mulut yang berbicara keras tujuh kali = memarahi",
+    wrongOpts:["怒る","注意する","責める"],stage:3,category:"komunikasi" },
+
+  { jp:"悩む",read:"なやむ",meaning:"Bingung / Khawatir / Galau",type:"verb",
+    example:"進路について悩んでいる。",exampleId:"Sedang bingung tentang jalan hidup.",
+    mnemonic:"悩=心(hati)+脳(otak) → hati dan otak yang berputar-putar = galau",
+    wrongOpts:["心配する","迷う","困る"],stage:3,category:"pikiran" },
+
+  { jp:"迷う",read:"まよう",meaning:"Ragu-ragu / Bingung memilih / Tersesat",type:"verb",
+    example:"どちらにするか迷っている。",exampleId:"Sedang bingung memilih yang mana.",
+    mnemonic:"迷=辶(berjalan)+米(nasi menyebar) → berjalan tanpa arah = ragu-ragu",
+    wrongOpts:["悩む","困惑する","躊躇する"],stage:3,category:"pikiran" },
+
+  { jp:"怒る",read:"おこる",meaning:"Marah / Murka",type:"verb",
+    example:"父が怒っている。",exampleId:"Ayah sedang marah.",
+    mnemonic:"怒=女+又+心 → hati yang tertekan dan meledak = marah",
+    wrongOpts:["腹を立てる","激怒する","いらつく"],stage:3,category:"emosi" },
+
+  { jp:"慌てる",read:"あわてる",meaning:"Panik / Terburu-buru / Gugup",type:"verb",
+    example:"試験前に慌てて勉強した。",exampleId:"Belajar buru-buru sebelum ujian.",
+    mnemonic:"慌=心(hati)+荒(kasar/berantakan) → hati yang berantakan = panik",
+    wrongOpts:["焦る","急ぐ","動揺する"],stage:3,category:"emosi" },
+
+  { jp:"落ち込む",read:"おちこむ",meaning:"Kecewa / Sedih / Down",type:"verb",
+    example:"失敗して落ち込んだ。",exampleId:"Kecewa karena gagal.",
+    mnemonic:"落ち=jatuh+込む=masuk dalam → jatuh ke dalam lubang perasaan = kecewa",
+    wrongOpts:["凹む","がっかりする","元気をなくす"],stage:3,category:"emosi" },
+
+  { jp:"励ます",read:"はげます",meaning:"Menyemangati / Memberi dukungan",type:"verb",
+    example:"友達を励ました。",exampleId:"Menyemangati teman.",
+    mnemonic:"励=力(kekuatan)+劦(bersama-sama) → memberi kekuatan bersama = menyemangati",
+    wrongOpts:["応援する","元気づける","鼓舞する"],stage:3,category:"sosial" },
+
+  { jp:"確認する",read:"かくにんする",meaning:"Memastikan / Konfirmasi / Memeriksa",type:"verb",
+    example:"予約を確認した。",exampleId:"Memastikan reservasi.",
+    mnemonic:"確=pasti+認=mengakui → mengakui kepastian = konfirmasi",
+    wrongOpts:["チェックする","確かめる","検証する"],stage:3,category:"tindakan" },
+
+  { jp:"解決する",read:"かいけつする",meaning:"Menyelesaikan masalah / Memecahkan",type:"verb",
+    example:"問題を解決した。",exampleId:"Menyelesaikan masalah.",
+    mnemonic:"解=membuka+決=memutuskan → membuka dan memutuskan = menyelesaikan",
+    wrongOpts:["対処する","処理する","克服する"],stage:3,category:"tindakan" },
+
+  { jp:"計画する",read:"けいかくする",meaning:"Merencanakan / Membuat rencana",type:"verb",
+    example:"旅行を計画した。",exampleId:"Merencanakan perjalanan.",
+    mnemonic:"計=menghitung+画=menggambar → menghitung dan menggambar rencana",
+    wrongOpts:["企画する","立案する","段取りする"],stage:3,category:"tindakan" },
+
+  { jp:"成功する",read:"せいこうする",meaning:"Berhasil / Sukses",type:"verb",
+    example:"新しい事業が成功した。",exampleId:"Bisnis baru berhasil.",
+    mnemonic:"成=mencapai+功=keberhasilan → mencapai keberhasilan = sukses",
+    wrongOpts:["達成する","うまくいく","実現する"],stage:3,category:"perubahan" },
+
+  { jp:"失敗する",read:"しっぱいする",meaning:"Gagal / Tidak berhasil",type:"verb",
+    example:"試験に失敗した。",exampleId:"Gagal dalam ujian.",
+    mnemonic:"失=kehilangan+敗=kalah → kalah dan kehilangan = gagal",
+    wrongOpts:["ミスする","負ける","挫折する"],stage:3,category:"perubahan" },
+
+  { jp:"工夫する",read:"くふうする",meaning:"Berinovasi / Memikirkan cara kreatif",type:"verb",
+    example:"料理に工夫を加えた。",exampleId:"Menambahkan inovasi pada masakan.",
+    mnemonic:"工=kerajinan+夫=ahli → ahli yang terampil menciptakan cara baru",
+    wrongOpts:["考える","発明する","創造する"],stage:6,category:"kognitif" },
+
+  { jp:"協力する",read:"きょうりょくする",meaning:"Bekerjasama / Berkolaborasi",type:"verb",
+    example:"チームで協力して仕事した。",exampleId:"Bekerja dengan kerjasama tim.",
+    mnemonic:"協=bersama-sama+力=kekuatan → kekuatan bersama-sama = kerjasama",
+    wrongOpts:["連携する","手伝う","共同する"],stage:3,category:"sosial" },
+
+  { jp:"挑戦する",read:"ちょうせんする",meaning:"Menantang / Mencoba sesuatu baru",type:"verb",
+    example:"新しいことに挑戦した。",exampleId:"Mencoba hal baru.",
+    mnemonic:"挑=menantang+戦=pertempuran → pertempuran menantang batas diri",
+    wrongOpts:["試みる","チャレンジする","取り組む"],stage:3,category:"tindakan" },
+
+  { jp:"集中する",read:"しゅうちゅうする",meaning:"Berkonsentrasi / Fokus",type:"verb",
+    example:"勉強に集中する。",exampleId:"Berkonsentrasi belajar.",
+    mnemonic:"集=mengumpulkan+中=di tengah → mengumpulkan ke satu titik tengah = fokus",
+    wrongOpts:["専念する","没頭する","夢中になる"],stage:3,category:"kognitif" },
+
 ]);
 
 console.log("✅ vocab-batch2-katakerja.js loaded — 80 kata kerja sehari-hari");

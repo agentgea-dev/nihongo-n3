@@ -299,6 +299,17 @@ addKanji([
     mnemonic:"乘(mengendarai)+刀(pisau) → memotong yang berlebih = surplus",
     wrongOpts:["余","残","過"],stage:2,category:"kondisi" },
 
+
+  { jp:"誇",read:"ほこ / コ",meaning:"Bangga / Membanggakan",
+    example:"自分の仕事に誇りを持つ。",exampleId:"Merasa bangga dengan pekerjaan sendiri.",
+    mnemonic:"言(kata)+夸(melebih-lebihkan) → berkata dengan bangga = kebanggaan",
+    wrongOpts:["誉","栄","威"],stage:2,category:"ekspresi" },
+
+  { jp:"謙",read:"ケン",meaning:"Rendah hati / Merendahkan diri",
+    example:"謙虚な態度が大切だ。",exampleId:"Sikap rendah hati itu penting.",
+    mnemonic:"言(kata)+兼(menggabungkan) → menggabungkan kata dengan sopan = rendah hati",
+    wrongOpts:["敬","恭","遜"],stage:2,category:"nilai" },
+
 ]);
 
 console.log("✅ kanji-batch6-pikiran.js loaded — 60 kanji perasaan & abstrak | BATCH TERAKHIR!");

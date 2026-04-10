@@ -300,6 +300,39 @@ addGrammar([
     quizOpts:["ない","ないで","なく","ずに"],quizAns:0,
     quizExp:"〜ないようにする = berusaha agar tidak/menghindari.",stage:4,category:"tujuan" },
 
+
+  { jp:"〜に反して",meaning:"Berlawanan dengan / Bertentangan dengan harapan",
+    example:"予想に反して、試験は簡単だった。",exampleId:"Berlawanan dengan perkiraan, ujiannya mudah.",
+    mnemonic:"反=berlawanan+して=dengan → berlawanan dengan ekspektasi",
+    quizSentence:"予想___、試験は簡単だった。",quizFuri:"",
+    quizPrompt:"Pola 'berlawanan dengan (harapan/perkiraan)':",
+    quizOpts:["に反して","に比べて","に関して","に対して"],quizAns:0,
+    quizExp:"〜に反して = berlawanan dengan. Dipakai saat kenyataan bertolak belakang dengan ekspektasi.",stage:7,category:"kondisional" },
+
+  { jp:"〜とともに",meaning:"Bersamaan dengan / Seiring dengan",
+    example:"春になるとともに、桜が咲き始めた。",exampleId:"Seiring datangnya musim semi, bunga sakura mulai mekar.",
+    mnemonic:"と=dengan+共=bersama+に=di → bersama-sama secara bersamaan",
+    quizSentence:"春になる___、桜が咲き始めた。",quizFuri:"",
+    quizPrompt:"Pola 'bersamaan dengan / seiring dengan':",
+    quizOpts:["とともに","とともに","につれて","にしたがって"],quizAns:0,
+    quizExp:"〜とともに = bersamaan dengan. Menunjukkan dua hal yang terjadi pada waktu yang sama.",stage:5,category:"waktu" },
+
+  { jp:"〜ばかりに",meaning:"Hanya karena (sehingga menyebabkan hal buruk)",
+    example:"遅刻したばかりに、上司に叱られた。",exampleId:"Hanya karena terlambat, dimarahi atasan.",
+    mnemonic:"ばかり=hanya+に=karena → hanya karena satu hal itu, hal buruk terjadi",
+    quizSentence:"遅刻した___、上司に叱られた。",quizFuri:"",
+    quizPrompt:"Pola 'hanya karena (penyebab hal negatif)':",
+    quizOpts:["ばかりに","せいで","ために","おかげで"],quizAns:0,
+    quizExp:"〜ばかりに = hanya karena. Selalu diikuti hasil negatif. Lebih dramatis dari せいで.",stage:7,category:"alasan" },
+
+  { jp:"〜ことなく",meaning:"Tanpa melakukan / Tanpa pernah",
+    example:"一度も休むことなく、毎日働き続けた。",exampleId:"Tanpa sekali pun istirahat, terus bekerja setiap hari.",
+    mnemonic:"こと=hal+なく=tanpa → tanpa melakukan hal tersebut",
+    quizSentence:"一度も休む___、毎日働き続けた。",quizFuri:"",
+    quizPrompt:"Pola 'tanpa melakukan sama sekali':",
+    quizOpts:["ことなく","ことなしに","ないで","ずに"],quizAns:0,
+    quizExp:"〜ことなく = tanpa melakukan. Lebih formal dari 〜ないで. Menekankan ketidakhadiran tindakan.",stage:7,category:"batas" },
+
 ]);
 
 console.log("✅ grammar-batch1.js loaded — 40 pola kondisional, waktu & alasan");

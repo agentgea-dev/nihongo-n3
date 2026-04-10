@@ -377,4 +377,39 @@ addVocab([
     mnemonic:"活=aktif/hidup + 力=kekuatan → kekuatan hidup yang aktif = vitalitas",
     wrongOpts:["気力","元気","エネルギー"],stage:3,category:"psikologi" },
 
+  { jp:"同情",read:"どうじょう",meaning:"Simpati / Empati / Belas kasih",type:"noun",
+    example:"彼女の悲しみに同情した。",exampleId:"Merasa simpati dengan kesedihannya.",
+    mnemonic:"同=sama+情=perasaan → merasakan perasaan yang sama = simpati",
+    wrongOpts:["共感","理解","憐れみ"],stage:3,category:"emosi" },
+
+  { jp:"羨む",read:"うらやむ",meaning:"Iri hati / Merasa cemburu",type:"verb",
+    example:"友達の成功を羨む気持ちがある。",exampleId:"Ada perasaan iri dengan kesuksesan teman.",
+    mnemonic:"羨=iri → kanji khusus untuk perasaan iri melihat kebaikan orang lain",
+    wrongOpts:["嫉妬する","妬む","憎む"],stage:3,category:"emosi" },
+
+  { jp:"傷つく",read:"きずつく",meaning:"Terluka (hati) / Tersakiti",type:"verb",
+    example:"その言葉に心が傷ついた。",exampleId:"Hati tersakiti oleh kata-kata itu.",
+    mnemonic:"傷=luka+つく=menempel → luka yang menempel = tersakiti",
+    wrongOpts:["傷める","痛む","悲しむ"],stage:3,category:"emosi" },
+
+  { jp:"落ち着く",read:"おちつく",meaning:"Tenang / Menenangkan diri",type:"verb",
+    example:"深呼吸して落ち着いた。",exampleId:"Menarik napas dalam dan menjadi tenang.",
+    mnemonic:"落=jatuh+着=menetap → jatuh dan menetap di tempat = menjadi tenang",
+    wrongOpts:["安心する","静まる","平静"],stage:3,category:"psikologi" },
+
+  { jp:"充実感",read:"じゅうじつかん",meaning:"Rasa kepuasan / Rasa puas",type:"noun",
+    example:"仕事で充実感を得た。",exampleId:"Mendapat rasa kepuasan dari pekerjaan.",
+    mnemonic:"充=penuh+実=nyata+感=perasaan → perasaan penuh nyata = kepuasan",
+    wrongOpts:["満足感","達成感","幸福感"],stage:3,category:"psikologi" },
+
+  { jp:"誇り",read:"ほこり",meaning:"Kebanggaan / Rasa bangga",type:"noun",
+    example:"家族の誇りになりたい。",exampleId:"Ingin menjadi kebanggaan keluarga.",
+    mnemonic:"誇=membanggakan → kanji yang secara langsung berarti kebanggaan",
+    wrongOpts:["自信","自慢","誉れ"],stage:3,category:"kepribadian" },
+
+  { jp:"遠慮",read:"えんりょ",meaning:"Sungkan / Menahan diri / Sopan",type:"noun",
+    example:"遠慮なく食べてください。",exampleId:"Silakan makan tanpa sungkan.",
+    mnemonic:"遠=jauh+慮=mempertimbangkan → mempertimbangkan dari jarak jauh = sungkan/sopan",
+    wrongOpts:["謙遜","控える","辞退"],stage:3,category:"kepribadian" },
+
 ]);

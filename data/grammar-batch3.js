@@ -265,6 +265,31 @@ addGrammar([
     quizOpts:["からには","からこそ","からして","から"],quizAns:0,
     quizExp:"〜からには = karena sudah. Komitmen yang harus ditepati setelah keputusan diambil.",stage:7,category:"kondisional" },
 
+
+  { jp:"〜てほしい",meaning:"Ingin (orang lain) melakukan / Harap lakukan",
+    example:"早く帰ってきてほしい。",exampleId:"Ingin (kamu) segera pulang.",
+    mnemonic:"て+ほしい=ingin diperlakukan → ingin orang lain melakukan sesuatu untukku",
+    quizSentence:"早く帰ってきて___。",quizFuri:"",
+    quizPrompt:"Pola 'ingin (orang lain) melakukan':",
+    quizOpts:["ほしい","もらいたい","くれたい","あげたい"],quizAns:0,
+    quizExp:"〜てほしい = ingin seseorang melakukan X. Subjeknya orang lain, bukan diri sendiri.",stage:5,category:"perasaan" },
+
+  { jp:"〜ことはない",meaning:"Tidak perlu / Tidak ada kewajiban untuk",
+    example:"そんなに心配することはない。",exampleId:"Tidak perlu terlalu khawatir seperti itu.",
+    mnemonic:"こと=hal+はない=tidak ada → tidak ada hal yang perlu dilakukan",
+    quizSentence:"そんなに心配する___。",quizFuri:"",
+    quizPrompt:"Pola 'tidak perlu (melakukan)':",
+    quizOpts:["ことはない","必要がない","わけではない","ほどではない"],quizAns:0,
+    quizExp:"〜ことはない = tidak perlu. Menyatakan bahwa suatu tindakan tidak diperlukan atau berlebihan.",stage:5,category:"kondisional" },
+
+  { jp:"〜を通して",meaning:"Melalui / Lewat / Sepanjang (proses)",
+    example:"経験を通して、多くのことを学んだ。",exampleId:"Melalui pengalaman, banyak hal yang dipelajari.",
+    mnemonic:"通=melewati+して=dengan → dengan melewati/melalui sesuatu",
+    quizSentence:"経験___、多くのことを学んだ。",quizFuri:"",
+    quizPrompt:"Pola 'melalui / lewat (media atau proses)':",
+    quizOpts:["を通して","によって","を使って","のおかげで"],quizAns:0,
+    quizExp:"〜を通して = melalui. Menunjukkan media, cara, atau proses yang dilalui. Juga bisa berarti 'sepanjang'.",stage:7,category:"formal" },
+
 ]);
 
 console.log("✅ grammar-batch3.js loaded — 35 pola pasif, formal & penutup | GRAMMAR SELESAI!");

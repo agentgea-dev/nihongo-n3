@@ -306,5 +306,31 @@ addKanji([
     mnemonic:"氵(air)+尼(biksu) → air kotor seperti jubah biksu = lumpur",
     wrongOpts:["砂","土","岩"],stage:2,category:"geografi" },
 
+
+  { jp:"桜",read:"さくら / オウ",meaning:"Bunga sakura / Pohon ceri",
+    example:"春になると桜が咲く。",exampleId:"Saat musim semi, bunga sakura mekar.",
+    mnemonic:"木(pohon)+嬰(bayi/lembut) → pohon dengan bunga lembut merah muda = sakura",
+    wrongOpts:["梅","桃","菊"],stage:1,category:"pertanian" },
+
+  { jp:"穀",read:"コク",meaning:"Biji-bijian / Sereal",
+    example:"米は日本の主な穀物だ。",exampleId:"Beras adalah biji-bijian utama Jepang.",
+    mnemonic:"禾(tanaman padi)+殳(memukul) → tanaman yang dipukul saat panen = biji-bijian",
+    wrongOpts:["粒","豆","芽"],stage:2,category:"pertanian" },
+
+  { jp:"葉",read:"は / ヨウ",meaning:"Daun",
+    example:"秋になると葉が赤くなる。",exampleId:"Saat musim gugur, daun menjadi merah.",
+    mnemonic:"艹(tumbuhan)+世(dunia)+木(pohon) → bagian tumbuhan yang menyentuh dunia = daun",
+    wrongOpts:["枝","根","幹"],stage:1,category:"pertanian" },
+
+  { jp:"霜",read:"しも / ソウ",meaning:"Embun beku / Frost",
+    example:"朝、草の上に霜が降りた。",exampleId:"Pagi hari, embun beku turun di atas rumput.",
+    mnemonic:"雨(hujan)+相(penampilan) → hujan yang terlihat beku = embun beku",
+    wrongOpts:["雪","氷","露"],stage:2,category:"cuaca" },
+
+  { jp:"丘",read:"おか / キュウ",meaning:"Bukit / Dataran tinggi kecil",
+    example:"丘の上から景色を眺める。",exampleId:"Memandang pemandangan dari atas bukit.",
+    mnemonic:"形が小さい山に似ている → bentuknya menyerupai gunung kecil = bukit",
+    wrongOpts:["山","台","峰"],stage:1,category:"geografi" },
+
 ]);
 console.log("✅ kanji-batch7-makanan.js — 65 kanji makanan, alam & cuaca");

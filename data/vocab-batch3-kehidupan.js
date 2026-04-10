@@ -293,6 +293,127 @@ addVocab([
     mnemonic:"挨=memukul perlahan + 拶=mendekat → mendekat dengan lembut = salam",
     wrongOpts:["声掛け","呼び掛け","お辞儀"],stage:3,category:"sosial" },
 
+
+  { jp:"玄関",read:"げんかん",meaning:"Pintu masuk / Teras depan rumah",type:"noun",
+    example:"玄関で靴を脱ぐ。",exampleId:"Melepas sepatu di pintu masuk.",
+    mnemonic:"玄=dalam/tersembunyi+関=pintu/batas → pintu menuju bagian dalam = teras depan",
+    wrongOpts:["入口","出口","門"],stage:3,category:"rumah" },
+
+  { jp:"台所",read:"だいどころ",meaning:"Dapur",type:"noun",
+    example:"台所で料理をする。",exampleId:"Memasak di dapur.",
+    mnemonic:"台=meja besar+所=tempat → tempat dengan meja besar untuk memasak = dapur",
+    wrongOpts:["キッチン","食堂","食卓"],stage:3,category:"rumah" },
+
+  { jp:"押し入れ",read:"おしいれ",meaning:"Lemari geser / Closet built-in Jepang",type:"noun",
+    example:"押し入れに布団をしまう。",exampleId:"Menyimpan kasur di lemari geser.",
+    mnemonic:"押=mendorong+入れ=memasukkan → tempat yang dimasukkan dengan didorong = lemari geser",
+    wrongOpts:["タンス","棚","物置"],stage:3,category:"rumah" },
+
+  { jp:"庭",read:"にわ",meaning:"Halaman / Taman rumah",type:"noun",
+    example:"庭に花を植えた。",exampleId:"Menanam bunga di halaman.",
+    mnemonic:"庭=广(atap)+廷(halaman istana) → halaman dengan atap = taman/halaman",
+    wrongOpts:["公園","花壇","外"],stage:3,category:"rumah" },
+
+  { jp:"家賃",read:"やちん",meaning:"Uang sewa rumah / Biaya sewa",type:"noun",
+    example:"毎月家賃を払う。",exampleId:"Membayar uang sewa setiap bulan.",
+    mnemonic:"家=rumah+賃=upah/sewa → upah untuk tinggal di rumah = sewa",
+    wrongOpts:["ローン","月謝","料金"],stage:3,category:"keuangan" },
+
+  { jp:"貯金",read:"ちょきん",meaning:"Tabungan / Menabung",type:"noun",
+    example:"毎月少しずつ貯金している。",exampleId:"Menabung sedikit demi sedikit setiap bulan.",
+    mnemonic:"貯=menyimpan+金=uang → menyimpan uang = menabung",
+    wrongOpts:["預金","積立","節約"],stage:3,category:"keuangan" },
+
+  { jp:"振り込む",read:"ふりこむ",meaning:"Transfer uang / Mentransfer",type:"verb",
+    example:"口座に振り込んだ。",exampleId:"Mentransfer ke rekening.",
+    mnemonic:"振り=mengayun+込む=masuk → mengayunkan uang masuk ke rekening = transfer",
+    wrongOpts:["送金する","預ける","入金する"],stage:3,category:"keuangan" },
+
+  { jp:"引き出す",read:"ひきだす",meaning:"Menarik (uang) / Mengambil dari bank",type:"verb",
+    example:"ATMでお金を引き出した。",exampleId:"Menarik uang dari ATM.",
+    mnemonic:"引き=menarik+出す=mengeluarkan → menarik dan mengeluarkan = mengambil uang",
+    wrongOpts:["出金する","下ろす","払い出す"],stage:3,category:"keuangan" },
+
+  { jp:"調味料",read:"ちょうみりょう",meaning:"Bumbu masak / Penyedap",type:"noun",
+    example:"調味料を入れすぎた。",exampleId:"Memasukkan bumbu terlalu banyak.",
+    mnemonic:"調=mengatur+味=rasa+料=bahan → bahan untuk mengatur rasa = bumbu",
+    wrongOpts:["スパイス","香辛料","薬味"],stage:3,category:"makanan" },
+
+  { jp:"冷凍",read:"れいとう",meaning:"Pembekuan / Frozen",type:"noun",
+    example:"冷凍食品を温めた。",exampleId:"Memanaskan makanan beku.",
+    mnemonic:"冷=dingin+凍=beku → dingin sampai beku = pembekuan",
+    wrongOpts:["冷蔵","冷却","冷やす"],stage:3,category:"makanan" },
+
+  { jp:"外食",read:"がいしょく",meaning:"Makan di luar / Makan di restoran",type:"noun",
+    example:"今日は外食にしよう。",exampleId:"Hari ini kita makan di luar saja.",
+    mnemonic:"外=luar+食=makan → makan di luar = makan di restoran",
+    wrongOpts:["外出","食事","夕食"],stage:3,category:"makanan" },
+
+  { jp:"定期券",read:"ていきけん",meaning:"Tiket berlangganan / Kartu transit berkala",type:"noun",
+    example:"定期券で毎日通勤する。",exampleId:"Commuting setiap hari dengan tiket berlangganan.",
+    mnemonic:"定期=berkala+券=tiket → tiket yang berlaku secara berkala",
+    wrongOpts:["回数券","乗車券","パスモ"],stage:3,category:"transport" },
+
+  { jp:"乗り換え",read:"のりかえ",meaning:"Ganti kendaraan / Transfer",type:"noun",
+    example:"渋谷で乗り換えた。",exampleId:"Ganti kereta di Shibuya.",
+    mnemonic:"乗り=naik+換え=ganti → naik lalu ganti kendaraan = transfer",
+    wrongOpts:["乗り継ぎ","乗り降り","経由"],stage:3,category:"transport" },
+
+  { jp:"渋滞",read:"じゅうたい",meaning:"Kemacetan / Macet",type:"noun",
+    example:"高速道路で渋滞に巻き込まれた。",exampleId:"Terjebak kemacetan di jalan tol.",
+    mnemonic:"渋=mentok/pekat+滞=menahan → air yang pekat dan tertahan = macet",
+    wrongOpts:["交通量","混雑","詰まり"],stage:3,category:"transport" },
+
+  { jp:"近所",read:"きんじょ",meaning:"Lingkungan sekitar / Tetangga sekitar",type:"noun",
+    example:"近所のスーパーで買い物した。",exampleId:"Belanja di supermarket dekat rumah.",
+    mnemonic:"近=dekat+所=tempat → tempat yang dekat = lingkungan sekitar",
+    wrongOpts:["周辺","付近","近隣"],stage:3,category:"sosial" },
+
+  { jp:"薬局",read:"やっきょく",meaning:"Apotek / Toko obat",type:"noun",
+    example:"薬局で薬を買った。",exampleId:"Membeli obat di apotek.",
+    mnemonic:"薬=obat+局=tempat/kantor → tempat obat = apotek",
+    wrongOpts:["病院","診療所","クリニック"],stage:3,category:"kesehatan" },
+
+  { jp:"症状",read:"しょうじょう",meaning:"Gejala penyakit / Simtom",type:"noun",
+    example:"風邪の症状が出た。",exampleId:"Muncul gejala flu.",
+    mnemonic:"症=penyakit+状=keadaan → keadaan dari penyakit = gejala",
+    wrongOpts:["病気","体調","状態"],stage:3,category:"kesehatan" },
+
+  { jp:"スーツ",read:"スーツ",meaning:"Jas / Setelan",type:"noun",
+    example:"面接にスーツを着た。",exampleId:"Memakai jas untuk wawancara.",
+    mnemonic:"suit (Inggris) → スーツ → setelan jas formal",
+    wrongOpts:["ジャケット","コート","ブレザー"],stage:3,category:"pakaian" },
+
+  { jp:"着替える",read:"きがえる",meaning:"Ganti pakaian",type:"verb",
+    example:"帰ったらすぐ着替えた。",exampleId:"Langsung ganti pakaian setelah pulang.",
+    mnemonic:"着=memakai+替える=mengganti → mengganti pakaian yang dipakai",
+    wrongOpts:["着る","脱ぐ","衣替えする"],stage:3,category:"pakaian" },
+
+  { jp:"処方箋",read:"しょほうせん",meaning:"Resep dokter",type:"noun",
+    example:"医者に処方箋をもらった。",exampleId:"Mendapat resep dari dokter.",
+    mnemonic:"処方=resep+箋=kertas → kertas resep dari dokter",
+    wrongOpts:["診断書","紹介状","薬"],stage:3,category:"kesehatan" },
+
+  { jp:"隣人",read:"りんじん",meaning:"Tetangga / Orang yang bersebelahan",type:"noun",
+    example:"隣人と仲良くしている。",exampleId:"Berteman baik dengan tetangga.",
+    mnemonic:"隣=bersebelahan+人=orang → orang yang bersebelahan = tetangga",
+    wrongOpts:["近所の人","同居人","住人"],stage:3,category:"sosial" },
+
+  { jp:"缶詰",read:"かんづめ",meaning:"Makanan kalengan",type:"noun",
+    example:"缶詰は保存食として便利だ。",exampleId:"Makanan kalengan praktis sebagai makanan cadangan.",
+    mnemonic:"缶=kaleng+詰=dikemas padat → makanan yang dikemas dalam kaleng",
+    wrongOpts:["瓶詰め","乾物","保存食"],stage:3,category:"makanan" },
+
+  { jp:"光熱費",read:"こうねつひ",meaning:"Tagihan listrik dan gas / Utility bill",type:"noun",
+    example:"光熱費が高くなった。",exampleId:"Tagihan listrik dan gas menjadi mahal.",
+    mnemonic:"光=cahaya/listrik+熱=panas/gas+費=biaya → biaya listrik dan gas",
+    wrongOpts:["電気代","ガス代","水道代"],stage:3,category:"keuangan" },
+
+  { jp:"礼服",read:"れいふく",meaning:"Pakaian resmi / Pakaian formal",type:"noun",
+    example:"結婚式に礼服を着た。",exampleId:"Memakai pakaian resmi di pernikahan.",
+    mnemonic:"礼=upacara+服=pakaian → pakaian untuk upacara = pakaian resmi",
+    wrongOpts:["スーツ","制服","正装"],stage:3,category:"pakaian" },
+
 ]);
 
 console.log("✅ vocab-batch3-kehidupan.js loaded — 80 kata kehidupan sehari-hari");
