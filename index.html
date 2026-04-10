@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="refresh" content="0; url=beranda.html">
 <title>Sakura Anki N3 – さくらアンキ N3</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -313,6 +314,10 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
 <script src="data/vocab-batch2-katakerja.js"></script>
 <script src="data/vocab-batch3-kehidupan.js"></script>
 <script src="data/vocab-batch4-alam-teknologi.js"></script>
+<script src="data/vocab-batch5-emosi.js"></script>
+<script src="data/vocab-batch6-akademik.js"></script>
+<script src="data/vocab-batch7-kuliner.js"></script>
+<script src="data/vocab-batch8-abstrak.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -898,11 +903,11 @@ function closeConfirm(){
 }
 function doReset(stageId){
   // Reset tahap yang dipilih
-  PROG[stageId] = {studied:false, att:0, best:0, ok:false, xp:0};
+  PROG[stageId] = {studied:false, att:0, best:0, ok:false, xp:0, sessions:{}};
   // Reset juga semua tahap sesudahnya (karena bergantung)
   STAGES.forEach(s=>{
     if(s.id > stageId){
-      PROG[s.id] = {studied:false, att:0, best:0, ok:false, xp:0};
+      PROG[s.id] = {studied:false, att:0, best:0, ok:false, xp:0, sessions:{}};
     }
   });
   saveP();

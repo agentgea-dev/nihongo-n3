@@ -1,5 +1,5 @@
-// loader.js — SAKURA ANKI N3 — v4
-// Update: grammar 100% ✅ | kanji 100% ✅
+// loader.js — SAKURA ANKI N3 — v5
+// Update: grammar 100% ✅ | kanji 100% ✅ | vocab batch 5-8 ✅
 window.addKanji   = e => { if(!window.KANJI_DB)  window.KANJI_DB=[];  window.KANJI_DB.push(...e);  };
 window.addGrammar = e => { if(!window.GRAMMAR_DB) window.GRAMMAR_DB=[]; window.GRAMMAR_DB.push(...e); };
 window.addVocab   = e => { if(!window.VOCAB_DB)  window.VOCAB_DB=[];  window.VOCAB_DB.push(...e);  };
@@ -22,4 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
 // GRAMMAR: grammar, grammar-batch1, grammar-batch2, grammar-batch3, grammar-final  ← 168/168 ✅
 // VOCAB  : vocabulary, vocab-kerja,
 //           vocab-batch1-sifat, vocab-batch2-katakerja,
-//           vocab-batch3-kehidupan, vocab-batch4-alam-teknologi   ← 339/3750
+//           vocab-batch3-kehidupan, vocab-batch4-alam-teknologi,
+//           vocab-batch5-emosi, vocab-batch6-akademik,
+//           vocab-batch7-kuliner, vocab-batch8-abstrak        ← 629/3750
