@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Anki N3 — Kuasai JLPT N3 dengan Cara Menyenangkan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:   '#4F46E5',
+            secondary: '#818CF8',
+            cta:       '#22C55E',
+            surface:   '#EEF2FF',
+            ink:       '#312E81',
+          },
+          fontFamily: {
+            sans:  ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Noto Serif JP"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Claymorphism helpers */
+    .clay {
+      border-radius: 20px;
+      border: 3px solid rgba(255,255,255,0.6);
+      box-shadow:
+        6px 6px 0px rgba(79,70,229,0.18),
+        inset 0 2px 4px rgba(255,255,255,0.7);
+    }
+    .clay-btn {
+      border-radius: 14px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow:
+        4px 4px 0px rgba(0,0,0,0.18),
+        inset 0 2px 3px rgba(255,255,255,0.5);
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+    }
+    .clay-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        6px 6px 0px rgba(0,0,0,0.2),
+        inset 0 2px 3px rgba(255,255,255,0.5);
+    }
+    .clay-btn:active {
+      transform: translateY(1px);
+      box-shadow:
+        2px 2px 0px rgba(0,0,0,0.18),
+        inset 0 2px 3px rgba(255,255,255,0.5);
+    }
+    .clay-card {
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,0.65);
+      box-shadow:
+        8px 8px 0px rgba(79,70,229,0.14),
+        inset 0 2px 6px rgba(255,255,255,0.75);
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+    }
+    .clay-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        12px 12px 0px rgba(79,70,229,0.18),
+        inset 0 2px 6px rgba(255,255,255,0.75);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .clay-btn, .clay-card { transition: none; }
+    }
+  </style>
+</head>
+<body class="bg-surface font-sans text-ink antialiased">
+
+  <!-- ─── Floating Navbar ─────────────────────────────────── -->
+  <header class="fixed top-4 left-4 right-4 z-50">
+    <nav class="clay bg-white/90 backdrop-blur-md px-5 py-3 flex items-center justify-between max-w-6xl mx-auto">
+      <!-- Logo -->
+      <a href="landing.html" class="flex items-center gap-2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+        </svg>
+        <span class="font-serif font-700 text-lg text-primary">桜 Sakura N3</span>
+      </a>
+      <!-- Nav links (desktop) -->
+      <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-ink/70">
+        <li><a href="#fitur" class="hover:text-primary transition-colors duration-200 cursor-pointer">Fitur</a></li>
+        <li><a href="#statistik" class="hover:text-primary transition-colors duration-200 cursor-pointer">Statistik</a></li>
+        <li><a href="#mulai" class="hover:text-primary transition-colors duration-200 cursor-pointer">Mulai Belajar</a></li>
+      </ul>
+      <!-- CTA -->
+      <a href="beranda.html" class="clay-btn bg-primary text-white text-sm font-semibold px-5 py-2 cursor-pointer">
+        Buka App
+      </a>
+    </nav>
+  </header>
+
+  <!-- ─── Hero ──────────────────────────────────────────────── -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 clay bg-white px-4 py-2 mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cta" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span class="text-sm font-medium text-ink">JLPT N3 — 650 Kanji · 168 Tata Bahasa · 3750 Kosakata</span>
+        </div>
+
+        <h1 class="font-serif font-700 text-4xl sm:text-5xl lg:text-6xl leading-tight text-ink mb-6">
+          Kuasai<br>
+          <span class="text-primary">日本語 N3</span><br>
+          Langkah demi Langkah
+        </h1>
+        <p class="text-ink/70 text-lg leading-relaxed mb-8 max-w-lg">
+          Sakura Anki N3 adalah flashcard interaktif berbasis SRS untuk lulus JLPT N3.
+          Pelajari kanji, tata bahasa, dan kosakata dengan mnemonik yang mudah diingat.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="beranda.html" class="clay-btn bg-primary text-white font-semibold px-7 py-3 text-base cursor-pointer">
+            Mulai Belajar Gratis
+          </a>
+          <a href="#fitur" class="clay-btn bg-white text-primary font-semibold px-7 py-3 text-base cursor-pointer">
+            Lihat Fitur
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex items-center gap-6 mt-10 text-sm text-ink/60">
+          <div class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cta" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Gratis selamanya
+          </div>
+          <div class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cta" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Tanpa login
+          </div>
+          <div class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cta" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Berbasis SRS
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Hero visual -->
+      <div class="flex flex-col gap-4">
+        <!-- Flashcard preview -->
+        <div class="clay-card bg-white p-8 text-center">
+          <p class="text-xs font-medium text-ink/40 uppercase tracking-widest mb-4">Kartu Belajar</p>
+          <div class="text-7xl font-serif font-700 text-primary mb-3">読</div>
+          <div class="text-lg font-medium text-ink mb-1">よむ <span class="text-ink/40 font-normal">— yomu</span></div>
+          <div class="text-ink/70 text-sm mb-5">Membaca</div>
+          <div class="clay bg-surface px-4 py-3 text-sm text-ink/70 text-left rounded-xl">
+            <span class="font-medium text-ink">例文：</span> 本を毎日<span class="text-primary font-semibold">読む</span>ことが大切です。
+          </div>
+        </div>
+
+        <!-- Progress mini-cards row -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="clay-card bg-primary/10 p-4 text-center">
+            <div class="font-serif font-700 text-2xl text-primary">650</div>
+            <div class="text-xs text-ink/60 mt-1">Kanji</div>
+          </div>
+          <div class="clay-card bg-secondary/15 p-4 text-center">
+            <div class="font-serif font-700 text-2xl text-primary">168</div>
+            <div class="text-xs text-ink/60 mt-1">Tata Bahasa</div>
+          </div>
+          <div class="clay-card bg-cta/10 p-4 text-center">
+            <div class="font-serif font-700 text-2xl text-cta">3750</div>
+            <div class="text-xs text-ink/60 mt-1">Kosakata</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Features ─────────────────────────────────────────── -->
+  <section id="fitur" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-serif font-700 text-3xl sm:text-4xl text-ink mb-4">
+          Tiga Pilar Belajar N3
+        </h2>
+        <p class="text-ink/60 text-lg max-w-xl mx-auto">
+          Setiap materi dirancang sesuai silabus resmi JLPT N3 dengan contoh kalimat dan mnemonik.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Kanji card -->
+        <div class="clay-card bg-white p-7 cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-serif font-700 text-primary mb-1">650</div>
+          <h3 class="font-serif font-700 text-xl text-ink mb-2">漢字 Kanji</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">
+            Seluruh 650 kanji N3 lengkap dengan cara baca on'yomi &amp; kun'yomi, arti, contoh kalimat, dan mnemonik visual.
+          </p>
+          <div class="mt-5 flex items-center gap-2">
+            <div class="flex-1 h-2 rounded-full bg-surface overflow-hidden">
+              <div class="h-full rounded-full bg-primary" style="width:100%"></div>
+            </div>
+            <span class="text-xs font-semibold text-primary">100%</span>
+          </div>
+        </div>
+
+        <!-- Grammar card -->
+        <div class="clay-card bg-white p-7 cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-serif font-700 text-primary mb-1">168</div>
+          <h3 class="font-serif font-700 text-xl text-ink mb-2">文法 Tata Bahasa</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">
+            168 pola tata bahasa N3 beserta cara penggunaan, contoh kalimat asli, dan latihan soal pilihan ganda.
+          </p>
+          <div class="mt-5 flex items-center gap-2">
+            <div class="flex-1 h-2 rounded-full bg-surface overflow-hidden">
+              <div class="h-full rounded-full bg-secondary" style="width:100%"></div>
+            </div>
+            <span class="text-xs font-semibold text-primary">100%</span>
+          </div>
+        </div>
+
+        <!-- Vocab card -->
+        <div class="clay-card bg-white p-7 cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-cta/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cta" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            </svg>
+          </div>
+          <div class="text-3xl font-serif font-700 text-cta mb-1">3750</div>
+          <h3 class="font-serif font-700 text-xl text-ink mb-2">語彙 Kosakata</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">
+            Target 3750 kosakata N3 tersusun dalam 7 tahap belajar SRS — dari kata paling umum hingga spesifik.
+          </p>
+          <div class="mt-5 flex items-center gap-2">
+            <div class="flex-1 h-2 rounded-full bg-surface overflow-hidden">
+              <div class="h-full rounded-full bg-cta" style="width:9%"></div>
+            </div>
+            <span class="text-xs font-semibold text-cta">339 / 3750</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ─────────────────────────────────────── -->
+  <section id="statistik" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-serif font-700 text-3xl sm:text-4xl text-ink mb-4">
+          Cara Belajar di Sakura
+        </h2>
+        <p class="text-ink/60 text-lg max-w-xl mx-auto">
+          Metode SRS terbukti membantu memori jangka panjang — belajar sedikit setiap hari, hasilnya luar biasa.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Step 1 -->
+        <div class="clay-card bg-white p-6">
+          <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-serif font-700 text-lg mb-4">1</div>
+          <h3 class="font-serif font-600 text-ink mb-2">Pilih Materi</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Pilih dari Kanji, Tata Bahasa, atau Kosakata sesuai kebutuhan belajarmu.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="clay-card bg-white p-6">
+          <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white font-serif font-700 text-lg mb-4">2</div>
+          <h3 class="font-serif font-600 text-ink mb-2">Pelajari Kartu</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Baca arti, cara baca, dan mnemonik. Lihat contoh kalimat nyata dari N3.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="clay-card bg-white p-6">
+          <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-serif font-700 text-lg mb-4">3</div>
+          <h3 class="font-serif font-600 text-ink mb-2">Jawab Soal</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Uji pemahaman dengan soal pilihan ganda. Jawab benar untuk naik tahap.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="clay-card bg-white p-6">
+          <div class="w-10 h-10 rounded-full bg-cta flex items-center justify-center text-white font-serif font-700 text-lg mb-4">4</div>
+          <h3 class="font-serif font-600 text-ink mb-2">Pantau Progress</h3>
+          <p class="text-ink/60 text-sm leading-relaxed">Lihat statistik belajarmu dan target berapa kartu yang harus diselesaikan hari ini.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA Section ───────────────────────────────────────── -->
+  <section id="mulai" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="clay-card bg-primary p-10 sm:p-14 text-center">
+        <div class="text-5xl font-serif font-700 text-white/20 mb-2">日</div>
+        <h2 class="font-serif font-700 text-3xl sm:text-4xl text-white mb-4">
+          Siap Lulus JLPT N3?
+        </h2>
+        <p class="text-white/75 text-lg mb-8 max-w-lg mx-auto leading-relaxed">
+          Mulai sekarang — gratis, tanpa login, langsung belajar. Kartu pertamamu menunggumu.
+        </p>
+        <a
+          href="beranda.html"
+          class="clay-btn inline-block bg-cta text-white font-semibold text-lg px-10 py-4 cursor-pointer"
+          style="border-color:rgba(255,255,255,0.4); box-shadow: 4px 4px 0px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.3);"
+        >
+          Mulai Belajar Sekarang →
+        </a>
+        <p class="mt-5 text-white/50 text-sm">650 kanji · 168 tata bahasa · 3750 kosakata — semua gratis</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────────── -->
+  <footer class="py-10 px-4 border-t border-ink/10 text-center text-ink/40 text-sm">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary/60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      </svg>
+      <span class="font-serif text-ink/60 font-semibold">桜 Sakura Anki N3</span>
+    </div>
+    <p>Dibuat untuk membantu pelajar Indonesia menguasai bahasa Jepang N3.</p>
+  </footer>
+
+</body>
+</html>
