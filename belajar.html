@@ -149,9 +149,20 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .quiz-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
 .q-cat{font-size:.58rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
 .q-ctr{font-size:.7rem;color:var(--amber);font-weight:600;}
-.timer-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:16px;overflow:hidden;}
-.timer-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--jade),var(--amber));transition:width .1s linear,background .5s;}
-.timer-fill.danger{background:var(--wrong);}
+/* ── ALARM TIMER ── */
+.alarm-wrap{display:flex;justify-content:center;margin-bottom:14px;}
+.alarm-ring-container{position:relative;width:54px;height:54px;}
+.alarm-svg{position:absolute;inset:0;transform:rotate(-90deg);}
+.alarm-ring-bg{fill:none;stroke:var(--border);stroke-width:4;}
+.alarm-ring-arc{fill:none;stroke:var(--jade);stroke-width:4;stroke-linecap:round;stroke-dasharray:125.66;stroke-dashoffset:0;transition:stroke-dashoffset .1s linear,stroke .4s;}
+.alarm-ring-arc.danger{stroke:var(--wrong);}
+.alarm-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;}
+.alarm-bell{flex-shrink:0;color:var(--jade);transition:color .4s;}
+.alarm-bell.danger{color:var(--wrong);}
+.alarm-secs{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:700;color:var(--text-dark);line-height:1;}
+@keyframes alarm-shake{0%,100%{transform:rotate(0);}15%{transform:rotate(-12deg);}30%{transform:rotate(12deg);}45%{transform:rotate(-10deg);}60%{transform:rotate(10deg);}75%{transform:rotate(-6deg);}90%{transform:rotate(6deg);}}
+.alarm-bell.ringing{animation:alarm-shake .5s ease-in-out infinite;}
+@media(prefers-reduced-motion:reduce){.alarm-bell.ringing{animation:none;}}
 .qdots{display:flex;justify-content:center;gap:8px;margin-bottom:16px;}
 .qdot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;border:1px solid rgba(255,255,255,.1);}
 .qdot.current{transform:scale(1.4);border-color:var(--text);}
@@ -164,7 +175,7 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .q-furi{font-family:'Noto Serif JP',serif;font-size:.87rem;color:var(--navy2);margin-bottom:4px;font-weight:600;}
 .q-prompt{font-size:.71rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:8px;margin-top:8px;}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px;}
-.opt{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 10px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.5;}
+.opt{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 12px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.88rem;line-height:1.5;}
 .opt::before{content:attr(data-l);display:inline-block;width:19px;height:19px;border-radius:3px;text-align:center;line-height:19px;font-size:.57rem;font-weight:700;margin-right:7px;background:var(--oc,rgba(255,255,255,.1));color:#fff;}
 .opt[data-l="A"]{--oc:rgba(192,57,43,.5);}
 .opt[data-l="B"]{--oc:rgba(212,160,23,.5);}
@@ -226,7 +237,7 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .btn-ghost:hover{background:var(--sky);color:var(--text-dark);}
 .unlock-flash{position:fixed;inset:0;background:rgba(26,188,156,.12);z-index:9999;pointer-events:none;animation:ufl .8s ease forwards;}
 @keyframes ufl{0%{opacity:0;}30%{opacity:1;}100%{opacity:0;}}
-@media(max-width:500px){.opts{grid-template-columns:1fr;}.home-stats{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.home-stats{grid-template-columns:repeat(2,1fr);}}
 /* ── TOMBOL RESET PER TAHAP ── */
 .btn-reset-stage{background:none;border:1px solid rgba(231,76,60,.35);color:#e74c3c;border-radius:6px;padding:4px 9px;font-size:.58rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap;}
 .btn-reset-stage:hover{background:rgba(231,76,60,.1);border-color:#e74c3c;}
@@ -518,7 +529,21 @@ rt{font-size:.52em;color:var(--sakura2);font-family:'Noto Serif JP',serif;text-a
       <button class="btn-riset" onclick="openRiset()" style="padding:4px 10px;font-size:.6rem;" title="Lihat daftar materi">📋</button>
     </div>
   </div>
-  <div class="timer-bar"><div class="timer-fill" id="t-fill" style="width:100%"></div></div>
+  <div class="alarm-wrap">
+    <div class="alarm-ring-container">
+      <svg class="alarm-svg" viewBox="0 0 48 48" width="54" height="54" aria-hidden="true">
+        <circle class="alarm-ring-bg" cx="24" cy="24" r="20"/>
+        <circle class="alarm-ring-arc" id="alarm-arc" cx="24" cy="24" r="20"/>
+      </svg>
+      <div class="alarm-inner">
+        <svg class="alarm-bell" id="alarm-bell" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <span class="alarm-secs" id="alarm-secs">20</span>
+      </div>
+    </div>
+  </div>
   <div class="qdots" id="qdots"></div>
   <div class="q-card">
     <span class="q-tag badge-kanji" id="qz-tag">漢字</span>
@@ -1230,11 +1255,22 @@ function loadQ(idx){
 
 function startT(){
   clearInterval(tIv);tVal=100;
-  const f=document.getElementById('t-fill');
-  f.style.width='100%';f.classList.remove('danger');
+  const arc=document.getElementById('alarm-arc');
+  const bell=document.getElementById('alarm-bell');
+  const secs=document.getElementById('alarm-secs');
+  const circ=125.66;
+  arc.style.strokeDashoffset='0';
+  arc.classList.remove('danger');
+  bell.classList.remove('danger','ringing');
+  secs.textContent='20';
   tIv=setInterval(()=>{
-    tVal-=.5;f.style.width=tVal+'%';
-    if(tVal<=25)f.classList.add('danger');
+    tVal-=.5;
+    arc.style.strokeDashoffset=((1-tVal/100)*circ).toFixed(2);
+    secs.textContent=Math.ceil(tVal/5);
+    if(tVal<=25){
+      arc.classList.add('danger');
+      bell.classList.add('danger','ringing');
+    }
     if(tVal<=0){clearInterval(tIv);if(!qDone)timeUp();}
   },100);
 }
