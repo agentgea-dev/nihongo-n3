@@ -555,4 +555,5 @@ function buildGrammarQuestions(grammarList) {
   }));
 }
 
+addGrammar(GRAMMAR_DB);
 console.log(`✅ Grammar DB loaded: ${GRAMMAR_DB.length} pola grammar`);

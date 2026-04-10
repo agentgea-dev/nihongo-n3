@@ -389,4 +389,5 @@ function buildVocabQuestions(vocabList) {
   }));
 }
 
+addVocab(VOCAB_DB);
 console.log(`✅ Vocab DB loaded: ${VOCAB_DB.length} kosakata`);

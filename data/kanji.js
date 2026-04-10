@@ -681,4 +681,5 @@ function buildKanjiQuestions(kanjiList) {
   }));
 }
 
+addKanji(KANJI_DB);
 console.log(`✅ Kanji DB loaded: ${KANJI_DB.length} kanji`);
