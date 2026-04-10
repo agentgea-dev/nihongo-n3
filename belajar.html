@@ -233,9 +233,6 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .unlock-flash{position:fixed;inset:0;background:rgba(26,188,156,.12);z-index:9999;pointer-events:none;animation:ufl .8s ease forwards;}
 @keyframes ufl{0%{opacity:0;}30%{opacity:1;}100%{opacity:0;}}
 @media(max-width:500px){.home-stats{grid-template-columns:repeat(2,1fr);}}
-/* ── TOMBOL RESET PER TAHAP ── */
-.btn-reset-stage{background:none;border:1px solid rgba(231,76,60,.35);color:#e74c3c;border-radius:6px;padding:4px 9px;font-size:.58rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap;}
-.btn-reset-stage:hover{background:rgba(231,76,60,.1);border-color:#e74c3c;}
 
 /* ── KONFIRMASI POPUP ── */
 
@@ -787,10 +784,6 @@ function renderHome(){
     const card=document.createElement('div');
     card.className='stage-card'+(locked?' locked':'');
     card.style.setProperty('--lv-color',s.color);
-    const hasProgress = p.studied || p.att > 0 || p.ok;
-    const resetBtn = hasProgress
-      ? `<button class="btn-reset-stage" onclick="event.stopPropagation();confirmReset(${s.id},'${s.title}')">↺ Reset</button>`
-      : '';
     card.innerHTML=`<div class="sc-inner">
       <div class="sc-badge${p.ok?' done-badge':(!locked&&!p.ok)?' active-badge':''}" style="--lv-color:${s.color}">${s.icon}</div>
       <div class="sc-info">
@@ -802,18 +795,9 @@ function renderHome(){
       <div class="sc-right">${stat}
         <div class="sc-mini"><div class="sc-mini-fill" style="width:${mini}%;background:${s.color}"></div></div>
         ${p.att>0?`<div class="sc-att">${p.att}x percobaan</div>`:''}
-        ${hasProgress?'<button class="btn-reset-stage" id="reset-btn-'+s.id+'">↺ Reset</button>':''}
       </div>
     </div>`;
     if(!locked)card.onclick=()=>enterStage(s.id);
-    // Attach reset button event AFTER innerHTML (avoid inline onclick in template)
-    if(hasProgress){
-      const rb=card.querySelector('#reset-btn-'+s.id);
-      if(rb) rb.addEventListener('click',(e)=>{
-        e.stopPropagation();
-        confirmReset(s.id, s.title);
-      });
-    }
     list.appendChild(card);
   });
 
