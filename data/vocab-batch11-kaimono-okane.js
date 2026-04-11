@@ -343,6 +343,71 @@ addVocab([
     mnemonic:"税=pajak + 別=terpisah → pajak terpisah = belum termasuk",
     wrongOpts:["税込み","税抜き","本体価格"],stage:3,category:"keuangan" },
 
+  { jp:"支払い",read:"しはらい",meaning:"Pembayaran",type:"noun",
+    example:"支払いはカードでいいですか。",exampleId:"Boleh bayar dengan kartu?",
+    mnemonic:"支=mendukung/mengeluarkan + 払い=membayar → pembayaran",
+    wrongOpts:["払い","決済","代金"],stage:3,category:"keuangan" },
+
+  { jp:"手数料",read:"てすうりょう",meaning:"Biaya administrasi / Komisi",type:"noun",
+    example:"振込手数料がかかる。",exampleId:"Ada biaya admin transfer.",
+    mnemonic:"手数=pekerjaan/usaha + 料=biaya → biaya atas usaha/pekerjaan = biaya admin",
+    wrongOpts:["手間料","処理費","管理費"],stage:3,category:"keuangan" },
+
+  { jp:"後払い",read:"あとばらい",meaning:"Bayar di belakang / Bayar nanti",type:"noun",
+    example:"後払いサービスを利用する。",exampleId:"Menggunakan layanan bayar di belakang.",
+    mnemonic:"後=belakang + 払い=bayar → bayar di belakang = bayar nanti",
+    wrongOpts:["前払い","一括払い","分割払い"],stage:3,category:"keuangan" },
+
+  { jp:"前払い",read:"まえばらい",meaning:"Bayar di muka / Bayar dulu",type:"noun",
+    example:"前払いが必要です。",exampleId:"Bayar di muka diperlukan.",
+    mnemonic:"前=depan/dulu + 払い=bayar → bayar dulu di depan = bayar di muka",
+    wrongOpts:["後払い","先払い","前金"],stage:3,category:"keuangan" },
+
+  { jp:"限定品",read:"げんていひん",meaning:"Edisi terbatas / Limited edition",type:"noun",
+    example:"限定品はすぐ売り切れる。",exampleId:"Edisi terbatas cepat habis terjual.",
+    mnemonic:"限定=terbatas + 品=produk → produk terbatas = limited edition",
+    wrongOpts:["特別品","限定版","レア商品"],stage:3,category:"belanja" },
+
+  { jp:"特売",read:"とくばい",meaning:"Penjualan spesial / Sale khusus",type:"noun",
+    example:"スーパーで特売をしている。",exampleId:"Supermarket sedang mengadakan sale khusus.",
+    mnemonic:"特=khusus + 売=jual → jual secara khusus = sale khusus",
+    wrongOpts:["セール","安売り","割引"],stage:3,category:"belanja" },
+
+  { jp:"免税",read:"めんぜい",meaning:"Bebas pajak / Tax-free",type:"noun",
+    example:"空港で免税品を買う。",exampleId:"Membeli produk bebas pajak di bandara.",
+    mnemonic:"免=bebas/dibebaskan + 税=pajak → dibebaskan dari pajak = bebas pajak",
+    wrongOpts:["非課税","税金なし","税抜き"],stage:3,category:"keuangan" },
+
+  { jp:"お得",read:"おとく",meaning:"Menguntungkan / Hemat / Worth it",type:"adj-na",
+    example:"このセットはお得だ。",exampleId:"Set ini menguntungkan/hemat.",
+    mnemonic:"お=penghormatan + 得=menguntungkan → menguntungkan = hemat/worth it",
+    wrongOpts:["安い","割安","バリュー"],stage:3,category:"belanja" },
+
+  { jp:"滞納",read:"たいのう",meaning:"Tunggakan / Belum dibayar",type:"noun",
+    example:"家賃を滞納してしまった。",exampleId:"Terlambat membayar sewa.",
+    mnemonic:"滞=tertahan + 納=membayar → pembayaran yang tertahan = tunggakan",
+    wrongOpts:["未払い","延滞","支払い遅延"],stage:6,category:"keuangan" },
+
+  { jp:"割増し",read:"わりまし",meaning:"Tambahan biaya / Surcharge",type:"noun",
+    example:"深夜は料金に割増しがある。",exampleId:"Ada tambahan biaya di dini hari.",
+    mnemonic:"割=porsi + 増し=tambah → porsi yang ditambah = biaya tambahan",
+    wrongOpts:["追加料金","割り増し","加算"],stage:6,category:"keuangan" },
+
+  { jp:"新発売",read:"しんはつばい",meaning:"Baru diluncurkan / New release",type:"noun",
+    example:"新発売の商品を試してみる。",exampleId:"Mencoba produk yang baru diluncurkan.",
+    mnemonic:"新=baru + 発売=peluncuran → produk peluncuran baru = new release",
+    wrongOpts:["新商品","新製品","発売中"],stage:3,category:"belanja" },
+
+  { jp:"均一価格",read:"きんいつかかく",meaning:"Harga seragam",type:"noun",
+    example:"百円均一の店に行く。",exampleId:"Pergi ke toko harga seragam 100 yen.",
+    mnemonic:"均一=seragam + 価格=harga → harga yang seragam = flat price",
+    wrongOpts:["定価","統一価格","一律"],stage:6,category:"belanja" },
+
+  { jp:"買い置き",read:"かいおき",meaning:"Stok pembelian / Beli untuk disimpan",type:"noun",
+    example:"特売中に買い置きする。",exampleId:"Beli untuk disimpan saat sale.",
+    mnemonic:"買い=beli + 置き=simpan → beli untuk disimpan = stok",
+    wrongOpts:["在庫","ストック","備蓄"],stage:3,category:"belanja" },
+
 ]);
 
 console.log("✅ vocab-batch11-kaimono-okane.js loaded — 80 kata belanja & uang");

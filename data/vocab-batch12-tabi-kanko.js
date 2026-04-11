@@ -330,6 +330,86 @@ addVocab([
     mnemonic:"現=nyata/ada + 地=tempat → tempat yang ada/nyata di sana = lokasi",
     wrongOpts:["地元","現場","ローカル"],stage:3,category:"wisata" },
 
+  { jp:"旅行代理店",read:"りょこうだいりてん",meaning:"Agen perjalanan",type:"noun",
+    example:"旅行代理店でツアーを申し込む。",exampleId:"Mendaftar tur di agen perjalanan.",
+    mnemonic:"旅行=perjalanan + 代理店=agen → agen untuk perjalanan",
+    wrongOpts:["観光局","旅行会社","ツアー会社"],stage:3,category:"wisata" },
+
+  { jp:"外貨両替",read:"がいかりょうがえ",meaning:"Penukaran mata uang asing",type:"noun",
+    example:"空港で外貨両替をする。",exampleId:"Menukar mata uang asing di bandara.",
+    mnemonic:"外貨=mata uang asing + 両替=menukar → menukar mata uang asing",
+    wrongOpts:["為替","通貨交換","外貨換算"],stage:3,category:"perjalanan" },
+
+  { jp:"入場料",read:"にゅうじょうりょう",meaning:"Tiket masuk / Biaya masuk",type:"noun",
+    example:"博物館の入場料を払う。",exampleId:"Membayar tiket masuk museum.",
+    mnemonic:"入場=masuk + 料=biaya → biaya untuk masuk = tiket masuk",
+    wrongOpts:["参加費","観覧料","拝観料"],stage:3,category:"wisata" },
+
+  { jp:"名産品",read:"めいさんひん",meaning:"Produk unggulan daerah",type:"noun",
+    example:"地元の名産品を買って帰る。",exampleId:"Membeli produk unggulan daerah untuk dibawa pulang.",
+    mnemonic:"名産=produksi terkenal + 品=produk → produk terkenal daerah",
+    wrongOpts:["特産品","名物","お土産"],stage:3,category:"wisata" },
+
+  { jp:"記念撮影",read:"きねんさつえい",meaning:"Foto kenangan",type:"noun",
+    example:"観光地で記念撮影をする。",exampleId:"Mengambil foto kenangan di tempat wisata.",
+    mnemonic:"記念=kenangan + 撮影=pengambilan foto → foto untuk kenangan",
+    wrongOpts:["写真撮影","集合写真","スナップ"],stage:3,category:"wisata" },
+
+  { jp:"旅行保険",read:"りょこうほけん",meaning:"Asuransi perjalanan",type:"noun",
+    example:"海外旅行前に旅行保険に入る。",exampleId:"Mengambil asuransi perjalanan sebelum ke luar negeri.",
+    mnemonic:"旅行=perjalanan + 保険=asuransi → asuransi untuk perjalanan",
+    wrongOpts:["海外保険","トラベル保険","損害保険"],stage:3,category:"perjalanan" },
+
+  { jp:"日程",read:"にってい",meaning:"Jadwal harian / Itinerary",type:"noun",
+    example:"旅行の日程を確認する。",exampleId:"Memastikan jadwal perjalanan.",
+    mnemonic:"日=hari + 程=jadwal/urutan → urutan harian = jadwal harian",
+    wrongOpts:["スケジュール","旅程","行程"],stage:3,category:"wisata" },
+
+  { jp:"集合時間",read:"しゅうごうじかん",meaning:"Waktu berkumpul",type:"noun",
+    example:"集合時間は朝8時です。",exampleId:"Waktu berkumpul pukul 8 pagi.",
+    mnemonic:"集合=berkumpul + 時間=waktu → waktu untuk berkumpul",
+    wrongOpts:["出発時間","待ち合わせ時間","開始時間"],stage:3,category:"wisata" },
+
+  { jp:"観光スポット",read:"かんこうスポット",meaning:"Spot wisata / Tempat menarik",type:"noun",
+    example:"有名な観光スポットを巡る。",exampleId:"Mengunjungi spot wisata terkenal.",
+    mnemonic:"観光=wisata + スポット=tempat menarik → tempat menarik untuk wisata",
+    wrongOpts:["名所","観光地","見どころ"],stage:3,category:"wisata" },
+
+  { jp:"遊覧船",read:"ゆうらんせん",meaning:"Kapal wisata / Cruise kecil",type:"noun",
+    example:"川で遊覧船に乗る。",exampleId:"Naik kapal wisata di sungai.",
+    mnemonic:"遊覧=berwisata/menikmati + 船=kapal → kapal untuk berwisata = kapal wisata",
+    wrongOpts:["観光船","フェリー","クルーズ"],stage:3,category:"wisata" },
+
+  { jp:"自由時間",read:"じゆうじかん",meaning:"Waktu bebas",type:"noun",
+    example:"ツアー中に二時間の自由時間がある。",exampleId:"Ada waktu bebas dua jam dalam tur.",
+    mnemonic:"自由=bebas + 時間=waktu → waktu bebas = free time",
+    wrongOpts:["フリータイム","休憩時間","空き時間"],stage:3,category:"wisata" },
+
+  { jp:"行程",read:"こうてい",meaning:"Rencana perjalanan / Jadwal tur",type:"noun",
+    example:"三泊四日の行程を組む。",exampleId:"Menyusun rencana perjalanan 3 malam 4 hari.",
+    mnemonic:"行=pergi + 程=urutan/jadwal → urutan perjalanan = rencana perjalanan",
+    wrongOpts:["日程","旅程","スケジュール"],stage:3,category:"wisata" },
+
+  { jp:"出発前",read:"しゅっぱつまえ",meaning:"Sebelum keberangkatan",type:"noun",
+    example:"出発前に荷物を確認する。",exampleId:"Mengecek barang bawaan sebelum berangkat.",
+    mnemonic:"出発=keberangkatan + 前=sebelum → sebelum keberangkatan",
+    wrongOpts:["出発後","出国前","搭乗前"],stage:3,category:"perjalanan" },
+
+  { jp:"帰国",read:"きこく",meaning:"Kembali ke negara asal",type:"noun",
+    example:"帰国後すぐ仕事に戻った。",exampleId:"Langsung kembali bekerja setelah pulang ke negara asal.",
+    mnemonic:"帰=kembali + 国=negara → kembali ke negara = pulang ke negara asal",
+    wrongOpts:["帰宅","帰郷","귀국"],stage:3,category:"perjalanan" },
+
+  { jp:"絵葉書",read:"えはがき",meaning:"Kartu pos bergambar",type:"noun",
+    example:"旅先から絵葉書を送る。",exampleId:"Mengirim kartu pos bergambar dari tempat wisata.",
+    mnemonic:"絵=gambar + 葉書=kartu pos → kartu pos bergambar",
+    wrongOpts:["はがき","ポストカード","手紙"],stage:3,category:"wisata" },
+
+  { jp:"滞在",read:"たいざい",meaning:"Tinggal (sementara) / Menginap",type:"noun",
+    example:"東京に三日間滞在した。",exampleId:"Tinggal di Tokyo selama tiga hari.",
+    mnemonic:"滞=tertahan/tetap + 在=berada → berada dan tetap di suatu tempat = tinggal sementara",
+    wrongOpts:["宿泊","居住","泊まる"],stage:3,category:"wisata" },
+
 ]);
 
 console.log("✅ vocab-batch12-tabi-kanko.js loaded — 80 kata perjalanan & wisata");

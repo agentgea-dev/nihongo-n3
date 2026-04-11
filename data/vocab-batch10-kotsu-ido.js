@@ -339,6 +339,76 @@ addVocab([
     mnemonic:"距=jarak + 離=pisah → jarak pemisahan = jarak",
     wrongOpts:["長さ","間隔","スペース"],stage:3,category:"transportasi" },
 
+  { jp:"ホーム",read:"ほーむ",meaning:"Peron",type:"noun",
+    example:"三番ホームで電車を待つ。",exampleId:"Menunggu kereta di peron tiga.",
+    mnemonic:"ホーム = platform (disingkat) = peron stasiun",
+    wrongOpts:["乗り場","待合室","構内"],stage:3,category:"transportasi" },
+
+  { jp:"待合室",read:"まちあいしつ",meaning:"Ruang tunggu",type:"noun",
+    example:"待合室でバスを待つ。",exampleId:"Menunggu bus di ruang tunggu.",
+    mnemonic:"待ち合い=menunggu + 室=ruangan → ruangan menunggu = ruang tunggu",
+    wrongOpts:["ロビー","休憩室","控え室"],stage:3,category:"transportasi" },
+
+  { jp:"窓口",read:"まどぐち",meaning:"Loket / Meja pelayanan",type:"noun",
+    example:"窓口で切符を買う。",exampleId:"Membeli tiket di loket.",
+    mnemonic:"窓=jendela + 口=mulut/lubang → lubang jendela = loket",
+    wrongOpts:["カウンター","受付","サービス"],stage:3,category:"transportasi" },
+
+  { jp:"車両",read:"しゃりょう",meaning:"Gerbong / Kendaraan (kereta)",type:"noun",
+    example:"五号車両に乗る。",exampleId:"Naik gerbong nomor lima.",
+    mnemonic:"車=kendaraan + 両=dua sisi → kendaraan roda dua sisi = gerbong",
+    wrongOpts:["車","電車","列車"],stage:3,category:"transportasi" },
+
+  { jp:"駐輪場",read:"ちゅうりんじょう",meaning:"Tempat parkir sepeda",type:"noun",
+    example:"駅の駐輪場に自転車を止める。",exampleId:"Memarkirkan sepeda di tempat parkir stasiun.",
+    mnemonic:"駐=parkir + 輪=roda/sepeda + 場=tempat → tempat parkir sepeda",
+    wrongOpts:["駐車場","自転車置き場","ガレージ"],stage:3,category:"transportasi" },
+
+  { jp:"エスカレーター",read:"えすかれーたー",meaning:"Eskalator",type:"noun",
+    example:"エスカレーターで上の階へ行く。",exampleId:"Naik eskalator ke lantai atas.",
+    mnemonic:"エスカレーター = escalator (kata pinjaman Inggris)",
+    wrongOpts:["エレベーター","階段","リフト"],stage:3,category:"transportasi" },
+
+  { jp:"エレベーター",read:"えれべーたー",meaning:"Lift / Elevator",type:"noun",
+    example:"エレベーターで十階へ行く。",exampleId:"Naik lift ke lantai sepuluh.",
+    mnemonic:"エレベーター = elevator (kata pinjaman Inggris)",
+    wrongOpts:["エスカレーター","リフト","昇降機"],stage:3,category:"transportasi" },
+
+  { jp:"入口",read:"いりぐち",meaning:"Pintu masuk",type:"noun",
+    example:"入口から入ってください。",exampleId:"Tolong masuk dari pintu masuk.",
+    mnemonic:"入=masuk + 口=mulut/lubang → lubang untuk masuk = pintu masuk",
+    wrongOpts:["出口","玄関","ゲート"],stage:3,category:"transportasi" },
+
+  { jp:"出口",read:"でぐち",meaning:"Pintu keluar",type:"noun",
+    example:"非常口は右側の出口です。",exampleId:"Pintu darurat ada di pintu keluar kanan.",
+    mnemonic:"出=keluar + 口=mulut/lubang → lubang untuk keluar = pintu keluar",
+    wrongOpts:["入口","非常口","ゲート"],stage:3,category:"transportasi" },
+
+  { jp:"階段",read:"かいだん",meaning:"Tangga",type:"noun",
+    example:"エレベーターが混んでいるので階段を使う。",exampleId:"Pakai tangga karena lift penuh.",
+    mnemonic:"階=lantai/tingkat + 段=anak tangga → anak tangga berlantai = tangga",
+    wrongOpts:["エスカレーター","坂","斜面"],stage:3,category:"transportasi" },
+
+  { jp:"自動改札",read:"じどうかいさつ",meaning:"Gate tiket otomatis",type:"noun",
+    example:"自動改札にカードをタッチする。",exampleId:"Menempelkan kartu ke gate tiket otomatis.",
+    mnemonic:"自動=otomatis + 改札=gate tiket → gate tiket yang otomatis",
+    wrongOpts:["改札口","ゲート","カードリーダー"],stage:3,category:"transportasi" },
+
+  { jp:"バリアフリー",read:"ばりあふりー",meaning:"Aksesibel / Tanpa hambatan",type:"adj-na",
+    example:"この駅はバリアフリー設計だ。",exampleId:"Stasiun ini dirancang aksesibel.",
+    mnemonic:"バリアフリー = barrier-free (kata pinjaman Inggris) = tanpa hambatan",
+    wrongOpts:["ユニバーサルデザイン","アクセシブル","無障壁"],stage:6,category:"transportasi" },
+
+  { jp:"終夜運転",read:"しゅうやうんてん",meaning:"Operasi sepanjang malam",type:"noun",
+    example:"大晦日は電車が終夜運転をする。",exampleId:"Kereta beroperasi sepanjang malam di malam tahun baru.",
+    mnemonic:"終夜=sepanjang malam + 運転=operasi → operasi sepanjang malam",
+    wrongOpts:["深夜運転","夜間運行","24時間運転"],stage:6,category:"transportasi" },
+
+  { jp:"運行",read:"うんこう",meaning:"Operasi (layanan transportasi)",type:"noun",
+    example:"台風で電車の運行が止まった。",exampleId:"Operasi kereta terhenti karena topan.",
+    mnemonic:"運=mengoperasikan + 行=berjalan → berjalan mengoperasikan = operasi layanan",
+    wrongOpts:["運転","走行","運航"],stage:3,category:"transportasi" },
+
 ]);
 
 console.log("✅ vocab-batch10-kotsu-ido.js loaded — 80 kata transportasi & pergerakan");

@@ -297,6 +297,121 @@ addVocab([
     mnemonic:"条=pasal/ketentuan + 件=hal → hal yang menjadi ketentuan = syarat",
     wrongOpts:["前提","資格","基準"],stage:3,category:"abstrak" },
 
+  { jp:"財務",read:"ざいむ",meaning:"Keuangan (administrasi) / Urusan keuangan",type:"noun",
+    example:"財務省が予算を管理する。",exampleId:"Kementerian Keuangan mengelola anggaran.",
+    mnemonic:"財=harta/keuangan + 務=tugas → tugas keuangan = administrasi keuangan",
+    wrongOpts:["財政","金融","経理"],stage:6,category:"ekonomi" },
+
+  { jp:"会計",read:"かいけい",meaning:"Akuntansi / Pembukuan",type:"noun",
+    example:"会計士に決算書を作ってもらう。",exampleId:"Meminta akuntan membuat laporan keuangan.",
+    mnemonic:"会=berkumpul + 計=menghitung → menghitung yang terkumpul = akuntansi",
+    wrongOpts:["経理","財務","簿記"],stage:3,category:"ekonomi" },
+
+  { jp:"金利",read:"きんり",meaning:"Suku bunga / Tingkat bunga",type:"noun",
+    example:"金利が下がると借りやすくなる。",exampleId:"Ketika suku bunga turun, lebih mudah meminjam.",
+    mnemonic:"金=uang + 利=keuntungan/bunga → bunga dari uang = suku bunga",
+    wrongOpts:["利息","利率","配当"],stage:6,category:"ekonomi" },
+
+  { jp:"供給",read:"きょうきゅう",meaning:"Pasokan / Suplai",type:"noun",
+    example:"電力の供給が不足している。",exampleId:"Pasokan listrik tidak mencukupi.",
+    mnemonic:"供=menyediakan + 給=memberi → menyediakan dan memberi = pasokan",
+    wrongOpts:["需要","提供","配給"],stage:6,category:"ekonomi" },
+
+  { jp:"需要",read:"じゅよう",meaning:"Permintaan / Demand",type:"noun",
+    example:"需要と供給のバランスが大切だ。",exampleId:"Keseimbangan permintaan dan pasokan sangat penting.",
+    mnemonic:"需=membutuhkan + 要=perlu → membutuhkan dan perlu = permintaan",
+    wrongOpts:["供給","要求","需要量"],stage:6,category:"ekonomi" },
+
+  { jp:"独占",read:"どくせん",meaning:"Monopoli",type:"noun",
+    example:"市場の独占を防ぐ法律がある。",exampleId:"Ada undang-undang yang mencegah monopoli pasar.",
+    mnemonic:"独=sendiri/monopoli + 占=menduduki → menduduki sendiri = monopoli",
+    wrongOpts:["寡占","競争","占有"],stage:7,category:"ekonomi" },
+
+  { jp:"規制",read:"きせい",meaning:"Regulasi / Peraturan",type:"noun",
+    example:"環境規制が強化された。",exampleId:"Regulasi lingkungan diperketat.",
+    mnemonic:"規=aturan/standar + 制=mengatur → mengatur dengan standar = regulasi",
+    wrongOpts:["規則","法律","制限"],stage:6,category:"hukum" },
+
+  { jp:"民営化",read:"みんえいか",meaning:"Privatisasi",type:"noun",
+    example:"郵便局が民営化された。",exampleId:"Kantor pos diprivatisasi.",
+    mnemonic:"民=rakyat/swasta + 営=mengelola + 化=menjadi → menjadi dikelola swasta = privatisasi",
+    wrongOpts:["国営化","公営化","自由化"],stage:7,category:"ekonomi" },
+
+  { jp:"行政",read:"ぎょうせい",meaning:"Administrasi pemerintahan",type:"noun",
+    example:"行政の効率化が求められている。",exampleId:"Efisiensi administrasi pemerintahan dituntut.",
+    mnemonic:"行=menjalankan + 政=pemerintahan → menjalankan pemerintahan = administrasi pemerintahan",
+    wrongOpts:["立法","司法","政治"],stage:6,category:"politik" },
+
+  { jp:"中央銀行",read:"ちゅうおうぎんこう",meaning:"Bank sentral",type:"noun",
+    example:"中央銀行が金利を決める。",exampleId:"Bank sentral menentukan suku bunga.",
+    mnemonic:"中央=pusat + 銀行=bank → bank yang di pusat = bank sentral",
+    wrongOpts:["市中銀行","地方銀行","都市銀行"],stage:7,category:"ekonomi" },
+
+  { jp:"株式市場",read:"かぶしきしじょう",meaning:"Pasar saham / Bursa efek",type:"noun",
+    example:"株式市場が大きく変動した。",exampleId:"Pasar saham berfluktuasi besar.",
+    mnemonic:"株式=saham + 市場=pasar → pasar saham = bursa efek",
+    wrongOpts:["証券市場","金融市場","為替市場"],stage:7,category:"ekonomi" },
+
+  { jp:"為替レート",read:"かわせれーと",meaning:"Kurs / Nilai tukar mata uang",type:"noun",
+    example:"為替レートが急変した。",exampleId:"Kurs berubah drastis.",
+    mnemonic:"為替=pertukaran mata uang + レート=rate → tingkat pertukaran = kurs",
+    wrongOpts:["金利","株価","物価"],stage:7,category:"ekonomi" },
+
+  { jp:"財政政策",read:"ざいせいせいさく",meaning:"Kebijakan fiskal",type:"noun",
+    example:"財政政策で景気を刺激する。",exampleId:"Merangsang perekonomian dengan kebijakan fiskal.",
+    mnemonic:"財政=keuangan negara + 政策=kebijakan → kebijakan keuangan negara = kebijakan fiskal",
+    wrongOpts:["金融政策","経済政策","税制改革"],stage:7,category:"ekonomi" },
+
+  { jp:"国際貿易",read:"こくさいぼうえき",meaning:"Perdagangan internasional",type:"noun",
+    example:"国際貿易が経済成長を促す。",exampleId:"Perdagangan internasional mendorong pertumbuhan ekonomi.",
+    mnemonic:"国際=internasional + 貿易=perdagangan → perdagangan antar negara = perdagangan internasional",
+    wrongOpts:["外国貿易","輸出入","通商"],stage:6,category:"ekonomi" },
+
+  { jp:"消費者",read:"しょうひしゃ",meaning:"Konsumen",type:"noun",
+    example:"消費者の権利を守る法律がある。",exampleId:"Ada undang-undang yang melindungi hak konsumen.",
+    mnemonic:"消費=konsumsi + 者=orang → orang yang mengkonsumsi = konsumen",
+    wrongOpts:["生産者","購買者","利用者"],stage:3,category:"ekonomi" },
+
+  { jp:"生産者",read:"せいさんしゃ",meaning:"Produsen",type:"noun",
+    example:"生産者と消費者をつなぐ。",exampleId:"Menghubungkan produsen dan konsumen.",
+    mnemonic:"生産=produksi + 者=orang → orang yang memproduksi = produsen",
+    wrongOpts:["消費者","製造者","供給者"],stage:6,category:"ekonomi" },
+
+  { jp:"経済格差",read:"けいざいかくさ",meaning:"Kesenjangan ekonomi",type:"noun",
+    example:"経済格差が社会問題になっている。",exampleId:"Kesenjangan ekonomi menjadi masalah sosial.",
+    mnemonic:"経済=ekonomi + 格差=perbedaan/kesenjangan → perbedaan di bidang ekonomi = kesenjangan ekonomi",
+    wrongOpts:["貧富の差","所得格差","社会格差"],stage:7,category:"ekonomi" },
+
+  { jp:"公共",read:"こうきょう",meaning:"Publik / Umum",type:"noun",
+    example:"公共施設は誰でも使える。",exampleId:"Fasilitas publik bisa digunakan siapa saja.",
+    mnemonic:"公=umum/publik + 共=bersama → milik bersama publik = publik",
+    wrongOpts:["公的","公営","共有"],stage:3,category:"politik" },
+
+  { jp:"規制緩和",read:"きせいかんわ",meaning:"Deregulasi / Pelonggaran regulasi",type:"noun",
+    example:"規制緩和で新しいビジネスが生まれた。",exampleId:"Bisnis baru lahir dari deregulasi.",
+    mnemonic:"規制=regulasi + 緩和=pelonggaran → melonggarkan regulasi = deregulasi",
+    wrongOpts:["規制強化","自由化","民営化"],stage:7,category:"ekonomi" },
+
+  { jp:"国内総生産",read:"こくないそうせいさん",meaning:"GDP / Produk Domestik Bruto",type:"noun",
+    example:"国内総生産が増加した。",exampleId:"GDP meningkat.",
+    mnemonic:"国内=dalam negeri + 総=total + 生産=produksi → total produksi dalam negeri = GDP",
+    wrongOpts:["国民総生産","経済成長率","貿易収支"],stage:7,category:"ekonomi" },
+
+  { jp:"インフレ",read:"いんふれ",meaning:"Inflasi",type:"noun",
+    example:"インフレで物価が上がった。",exampleId:"Harga naik karena inflasi.",
+    mnemonic:"インフレ = inflation (kata pinjaman) = inflasi",
+    wrongOpts:["デフレ","スタグフレーション","物価上昇"],stage:6,category:"ekonomi" },
+
+  { jp:"デフレ",read:"でふれ",meaning:"Deflasi",type:"noun",
+    example:"長期のデフレが続いている。",exampleId:"Deflasi jangka panjang terus berlanjut.",
+    mnemonic:"デフレ = deflation (kata pinjaman) = deflasi",
+    wrongOpts:["インフレ","景気後退","不況"],stage:7,category:"ekonomi" },
+
+  { jp:"景気",read:"けいき",meaning:"Kondisi ekonomi / Keadaan bisnis",type:"noun",
+    example:"景気が回復してきた。",exampleId:"Kondisi ekonomi mulai pulih.",
+    mnemonic:"景=pemandangan/kondisi + 気=suasana → suasana kondisi = keadaan ekonomi",
+    wrongOpts:["経済","好況","不況"],stage:3,category:"ekonomi" },
+
 ]);
 
 console.log("✅ vocab-batch16-keizai-seiji.js loaded — 80 kata ekonomi & politik");

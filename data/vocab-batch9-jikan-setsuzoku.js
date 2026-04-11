@@ -394,6 +394,21 @@ addVocab([
     mnemonic:"課=membebankan + 題=topik/masalah → masalah yang dibebankan = tugas/tantangan",
     wrongOpts:["問題","宿題","テーマ"],stage:3,category:"abstrak" },
 
+  { jp:"以降",read:"いこう",meaning:"Sejak / Setelah (titik waktu tertentu)",type:"adv",
+    example:"来月以降に連絡します。",exampleId:"Akan menghubungi sejak bulan depan.",
+    mnemonic:"以=sejak + 降=turun/berlanjut → berlanjut sejak titik itu = sejak/setelah",
+    wrongOpts:["以後","以来","それ以降"],stage:3,category:"waktu" },
+
+  { jp:"もはや",read:"もはや",meaning:"Sudah tidak lagi / Tidak bisa lagi",type:"adv",
+    example:"もはや取り返しがつかない。",exampleId:"Sudah tidak bisa diperbaiki lagi.",
+    mnemonic:"最早 → 'mohaya' → sudah terlalu jauh berlalu = tidak bisa lagi",
+    wrongOpts:["もう","すでに","今さら"],stage:6,category:"waktu" },
+
+  { jp:"いっそ",read:"いっそ",meaning:"Sekalian / Lebih baik sekalian",type:"adv",
+    example:"いっそ辞めてしまおう。",exampleId:"Sekalian saja berhenti.",
+    mnemonic:"一層 → 'isso' → satu lapisan/tingkat lebih jauh = sekalian saja",
+    wrongOpts:["むしろ","せっかく","いっそのこと"],stage:6,category:"konjungsi" },
+
 ]);
 
 console.log("✅ vocab-batch9-jikan-setsuzoku.js loaded — 80 kata waktu & konjungsi");

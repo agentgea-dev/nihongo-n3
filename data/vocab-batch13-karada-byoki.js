@@ -303,6 +303,111 @@ addVocab([
     mnemonic:"通=rutin + 院=rumah sakit → ke RS secara rutin = berobat jalan",
     wrongOpts:["外来","受診","訪問"],stage:3,category:"medis" },
 
+  { jp:"骨",read:"ほね",meaning:"Tulang",type:"noun",
+    example:"骨が折れた。",exampleId:"Tulang patah.",
+    mnemonic:"骨 → 'hone' = bagian keras tubuh = tulang",
+    wrongOpts:["骨格","軟骨","骨折"],stage:3,category:"tubuh" },
+
+  { jp:"筋肉",read:"きんにく",meaning:"Otot",type:"noun",
+    example:"筋肉痛がひどい。",exampleId:"Otot pegal parah.",
+    mnemonic:"筋=urat/otot + 肉=daging → daging berserat = otot",
+    wrongOpts:["筋","腱","脂肪"],stage:3,category:"tubuh" },
+
+  { jp:"神経",read:"しんけい",meaning:"Saraf / Syaraf",type:"noun",
+    example:"神経が過敏になっている。",exampleId:"Saraf sedang sensitif.",
+    mnemonic:"神=dewa/luar biasa + 経=jalur → jalur yang menakjubkan = saraf",
+    wrongOpts:["血管","筋肉","繊維"],stage:3,category:"tubuh" },
+
+  { jp:"心臓",read:"しんぞう",meaning:"Jantung",type:"noun",
+    example:"心臓がどきどきする。",exampleId:"Jantung berdebar-debar.",
+    mnemonic:"心=hati + 臓=organ dalam → organ hati = jantung",
+    wrongOpts:["肺","胃","肝臓"],stage:3,category:"tubuh" },
+
+  { jp:"肺",read:"はい",meaning:"Paru-paru",type:"noun",
+    example:"肺の検査をする。",exampleId:"Melakukan pemeriksaan paru-paru.",
+    mnemonic:"肺 → 'hai' = organ pernapasan = paru-paru",
+    wrongOpts:["心臓","胃","気管"],stage:3,category:"tubuh" },
+
+  { jp:"胃",read:"い",meaning:"Lambung / Perut (organ)",type:"noun",
+    example:"胃が痛い。",exampleId:"Lambung sakit.",
+    mnemonic:"胃 → 'i' = organ pencernaan utama = lambung",
+    wrongOpts:["腸","肝臓","膵臓"],stage:3,category:"tubuh" },
+
+  { jp:"腸",read:"ちょう",meaning:"Usus",type:"noun",
+    example:"腸の調子が悪い。",exampleId:"Kondisi usus tidak baik.",
+    mnemonic:"腸 → 'cho' = organ setelah lambung = usus",
+    wrongOpts:["胃","肝臓","腹"],stage:3,category:"tubuh" },
+
+  { jp:"脳",read:"のう",meaning:"Otak",type:"noun",
+    example:"脳の働きを高める。",exampleId:"Meningkatkan fungsi otak.",
+    mnemonic:"脳 → 'no' = pusat kontrol tubuh = otak",
+    wrongOpts:["頭","心臓","神経"],stage:3,category:"tubuh" },
+
+  { jp:"呼吸",read:"こきゅう",meaning:"Pernapasan / Bernapas",type:"noun",
+    example:"深呼吸をしてリラックスする。",exampleId:"Relaksasi dengan napas dalam.",
+    mnemonic:"呼=memanggil/menghembuskan + 吸=menghirup → menghembuskan dan menghirup = bernapas",
+    wrongOpts:["息","吸気","換気"],stage:3,category:"tubuh" },
+
+  { jp:"消化",read:"しょうか",meaning:"Pencernaan",type:"noun",
+    example:"消化の良い食べ物を食べる。",exampleId:"Makan makanan yang mudah dicerna.",
+    mnemonic:"消=mencerna/menghilangkan + 化=mengubah → mengubah makanan = pencernaan",
+    wrongOpts:["代謝","吸収","分解"],stage:3,category:"kesehatan" },
+
+  { jp:"姿勢",read:"しせい",meaning:"Postur tubuh / Sikap",type:"noun",
+    example:"姿勢を正しく保つ。",exampleId:"Menjaga postur tubuh yang benar.",
+    mnemonic:"姿=bentuk tubuh + 勢=gaya → gaya bentuk tubuh = postur",
+    wrongOpts:["体勢","立ち姿","フォーム"],stage:3,category:"kesehatan" },
+
+  { jp:"健康保険",read:"けんこうほけん",meaning:"Asuransi kesehatan",type:"noun",
+    example:"健康保険に加入している。",exampleId:"Terdaftar dalam asuransi kesehatan.",
+    mnemonic:"健康=kesehatan + 保険=asuransi → asuransi untuk kesehatan",
+    wrongOpts:["医療保険","社会保険","生命保険"],stage:3,category:"medis" },
+
+  { jp:"肌",read:"はだ",meaning:"Kulit (permukaan halus)",type:"noun",
+    example:"肌が荒れている。",exampleId:"Kulit sedang kasar.",
+    mnemonic:"肌 → 'hada' = permukaan kulit yang terlihat = kulit",
+    wrongOpts:["皮膚","表皮","皮"],stage:3,category:"tubuh" },
+
+  { jp:"血行",read:"けっこう",meaning:"Sirkulasi darah / Aliran darah",type:"noun",
+    example:"血行が良くなると体が温まる。",exampleId:"Tubuh memanas saat sirkulasi darah lancar.",
+    mnemonic:"血=darah + 行=berjalan → darah yang berjalan = sirkulasi darah",
+    wrongOpts:["血流","血液循環","血圧"],stage:6,category:"kesehatan" },
+
+  { jp:"代謝",read:"たいしゃ",meaning:"Metabolisme",type:"noun",
+    example:"代謝が下がると太りやすい。",exampleId:"Mudah gemuk jika metabolisme turun.",
+    mnemonic:"代=mengganti + 謝=mengalirkan → mengalirkan penggantian energi = metabolisme",
+    wrongOpts:["消化","吸収","エネルギー"],stage:6,category:"kesehatan" },
+
+  { jp:"内臓",read:"ないぞう",meaning:"Organ dalam",type:"noun",
+    example:"内臓の健康を保つ。",exampleId:"Menjaga kesehatan organ dalam.",
+    mnemonic:"内=dalam + 臓=organ → organ yang ada di dalam = organ dalam",
+    wrongOpts:["臓器","内部","器官"],stage:6,category:"tubuh" },
+
+  { jp:"ストレッチ",read:"すとれっち",meaning:"Peregangan",type:"noun",
+    example:"運動前にストレッチをする。",exampleId:"Melakukan peregangan sebelum olahraga.",
+    mnemonic:"ストレッチ = stretch (kata pinjaman Inggris) = peregangan",
+    wrongOpts:["準備体操","柔軟体操","ウォームアップ"],stage:3,category:"kesehatan" },
+
+  { jp:"手洗い",read:"てあらい",meaning:"Mencuci tangan",type:"noun",
+    example:"食事前に手洗いをする。",exampleId:"Mencuci tangan sebelum makan.",
+    mnemonic:"手=tangan + 洗い=mencuci → mencuci tangan = hand washing",
+    wrongOpts:["消毒","うがい","清潔"],stage:3,category:"kesehatan" },
+
+  { jp:"うがい",read:"うがい",meaning:"Berkumur / Gargle",type:"noun",
+    example:"帰宅後は手洗いとうがいをする。",exampleId:"Cuci tangan dan berkumur setelah pulang.",
+    mnemonic:"うがい → suara air saat berkumur = berkumur",
+    wrongOpts:["手洗い","洗顔","清潔"],stage:3,category:"kesehatan" },
+
+  { jp:"体温",read:"たいおん",meaning:"Suhu tubuh / Temperatur badan",type:"noun",
+    example:"体温を測ると37度あった。",exampleId:"Saat diukur suhu tubuhnya 37 derajat.",
+    mnemonic:"体=tubuh + 温=panas/hangat → panas tubuh = suhu tubuh",
+    wrongOpts:["気温","熱","温度"],stage:3,category:"kesehatan" },
+
+  { jp:"免疫",read:"めんえき",meaning:"Imunitas / Kekebalan tubuh",type:"noun",
+    example:"免疫力を高める食事をする。",exampleId:"Makan makanan yang meningkatkan kekebalan tubuh.",
+    mnemonic:"免=bebas/terbebas + 疫=penyakit → terbebas dari penyakit = imunitas",
+    wrongOpts:["抵抗力","体力","防衛"],stage:6,category:"kesehatan" },
+
 ]);
 
 console.log("✅ vocab-batch13-karada-byoki.js loaded — 80 kata tubuh & penyakit");

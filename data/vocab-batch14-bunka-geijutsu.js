@@ -299,6 +299,116 @@ addVocab([
     mnemonic:"精=murni/inti + 神=dewa/roh → roh/inti yang murni = jiwa/semangat",
     wrongOpts:["心","魂","気持ち"],stage:3,category:"abstrak" },
 
+  { jp:"芸能",read:"げいのう",meaning:"Seni pertunjukan / Entertainment",type:"noun",
+    example:"芸能界に入りたい。",exampleId:"Ingin masuk dunia entertainment.",
+    mnemonic:"芸=seni + 能=kemampuan → kemampuan seni = seni pertunjukan",
+    wrongOpts:["芸術","演芸","エンタメ"],stage:3,category:"seni" },
+
+  { jp:"能",read:"のう",meaning:"Noh (seni teater tradisional)",type:"noun",
+    example:"能を初めて観た。",exampleId:"Pertama kali menonton Noh.",
+    mnemonic:"能 → 'no' = seni teater tradisional Jepang = Noh",
+    wrongOpts:["歌舞伎","狂言","落語"],stage:6,category:"seni" },
+
+  { jp:"落語",read:"らくご",meaning:"Rakugo (seni bercerita solo)",type:"noun",
+    example:"落語の寄席に行った。",exampleId:"Pergi ke pertunjukan rakugo.",
+    mnemonic:"落=jatuh + 語=cerita → cerita yang jatuh mengundang tawa = rakugo",
+    wrongOpts:["漫才","漫談","コメディ"],stage:6,category:"seni" },
+
+  { jp:"陶芸",read:"とうげい",meaning:"Keramik / Tembikar",type:"noun",
+    example:"陶芸教室で茶碗を作る。",exampleId:"Membuat mangkuk teh di kelas keramik.",
+    mnemonic:"陶=keramik + 芸=seni → seni keramik = tembikar",
+    wrongOpts:["工芸","焼き物","pottery"],stage:3,category:"seni" },
+
+  { jp:"折り紙",read:"おりがみ",meaning:"Origami",type:"noun",
+    example:"折り紙で鶴を折る。",exampleId:"Melipat burung bangau dari origami.",
+    mnemonic:"折り=melipat + 紙=kertas → melipat kertas = origami",
+    wrongOpts:["工作","切り紙","ペーパークラフト"],stage:3,category:"seni" },
+
+  { jp:"漫画",read:"まんが",meaning:"Komik / Manga",type:"noun",
+    example:"漫画を読むのが好きだ。",exampleId:"Suka membaca komik.",
+    mnemonic:"漫=bebas/tak terbatas + 画=gambar → gambar bebas = komik/manga",
+    wrongOpts:["アニメ","イラスト","コミック"],stage:3,category:"hiburan" },
+
+  { jp:"アニメ",read:"あにめ",meaning:"Anime / Animasi Jepang",type:"noun",
+    example:"日本のアニメが世界で人気だ。",exampleId:"Anime Jepang populer di seluruh dunia.",
+    mnemonic:"アニメ = animation (disingkat) = animasi gaya Jepang",
+    wrongOpts:["漫画","アニメーション","カートゥーン"],stage:3,category:"hiburan" },
+
+  { jp:"工芸",read:"こうげい",meaning:"Kerajinan seni / Craft",type:"noun",
+    example:"伝統工芸品を買った。",exampleId:"Membeli produk kerajinan tradisional.",
+    mnemonic:"工=keahlian/kerja + 芸=seni → seni keahlian = kerajinan",
+    wrongOpts:["陶芸","民芸","手芸"],stage:3,category:"seni" },
+
+  { jp:"和紙",read:"わし",meaning:"Kertas tradisional Jepang",type:"noun",
+    example:"和紙で作った作品は美しい。",exampleId:"Karya yang dibuat dari washi sangat indah.",
+    mnemonic:"和=Jepang + 紙=kertas → kertas Jepang = washi",
+    wrongOpts:["洋紙","紙","ペーパー"],stage:6,category:"budaya" },
+
+  { jp:"衣装",read:"いしょう",meaning:"Kostum / Pakaian pertunjukan",type:"noun",
+    example:"劇の衣装を着た。",exampleId:"Memakai kostum drama.",
+    mnemonic:"衣=pakaian + 装=hiasan/dekorasi → pakaian yang didekorasi = kostum",
+    wrongOpts:["服装","コスチューム","着物"],stage:3,category:"seni" },
+
+  { jp:"伝統芸能",read:"でんとうげいのう",meaning:"Seni tradisional",type:"noun",
+    example:"伝統芸能を次の世代に伝える。",exampleId:"Meneruskan seni tradisional ke generasi berikutnya.",
+    mnemonic:"伝統=tradisi + 芸能=seni pertunjukan → seni pertunjukan tradisional",
+    wrongOpts:["古典芸術","伝統文化","民俗芸能"],stage:6,category:"budaya" },
+
+  { jp:"和食",read:"わしょく",meaning:"Masakan Jepang",type:"noun",
+    example:"和食はユネスコ無形文化遺産だ。",exampleId:"Masakan Jepang adalah warisan budaya takbenda UNESCO.",
+    mnemonic:"和=Jepang + 食=makanan → makanan Jepang = masakan Jepang",
+    wrongOpts:["洋食","日本料理","和風料理"],stage:3,category:"budaya" },
+
+  { jp:"洋食",read:"ようしょく",meaning:"Masakan Barat",type:"noun",
+    example:"今日は洋食が食べたい。",exampleId:"Hari ini ingin makan masakan Barat.",
+    mnemonic:"洋=Barat/Eropa + 食=makanan → makanan bergaya Barat = masakan Barat",
+    wrongOpts:["和食","中華","エスニック"],stage:3,category:"budaya" },
+
+  { jp:"民芸",read:"みんげい",meaning:"Kerajinan rakyat",type:"noun",
+    example:"民芸品を旅のお土産に買う。",exampleId:"Membeli kerajinan rakyat sebagai oleh-oleh perjalanan.",
+    mnemonic:"民=rakyat + 芸=seni/keahlian → seni rakyat = kerajinan rakyat",
+    wrongOpts:["工芸","民具","郷土芸術"],stage:6,category:"budaya" },
+
+  { jp:"コスプレ",read:"こすぷれ",meaning:"Cosplay",type:"noun",
+    example:"アニメのコスプレをする。",exampleId:"Melakukan cosplay anime.",
+    mnemonic:"コスプレ = costume play (disingkat) = berpakaian seperti karakter",
+    wrongOpts:["仮装","変装","コスチューム"],stage:3,category:"hiburan" },
+
+  { jp:"文房具",read:"ぶんぼうぐ",meaning:"Alat tulis",type:"noun",
+    example:"文房具店で鉛筆を買う。",exampleId:"Membeli pensil di toko alat tulis.",
+    mnemonic:"文房=ruang belajar/menulis + 具=peralatan → peralatan menulis = alat tulis",
+    wrongOpts:["事務用品","筆記用具","ステーショナリー"],stage:3,category:"budaya" },
+
+  { jp:"出版社",read:"しゅっぱんしゃ",meaning:"Penerbit",type:"noun",
+    example:"有名な出版社から本を出した。",exampleId:"Menerbitkan buku dari penerbit terkenal.",
+    mnemonic:"出版=penerbitan + 社=perusahaan → perusahaan penerbitan = penerbit",
+    wrongOpts:["印刷会社","出版元","編集部"],stage:3,category:"media" },
+
+  { jp:"台本",read:"だいほん",meaning:"Naskah / Skrip",type:"noun",
+    example:"俳優が台本を暗記する。",exampleId:"Aktor menghafal naskah.",
+    mnemonic:"台=platform/dasar + 本=buku → buku dasar = naskah",
+    wrongOpts:["脚本","シナリオ","原稿"],stage:6,category:"seni" },
+
+  { jp:"美術館",read:"びじゅつかん",meaning:"Museum seni",type:"noun",
+    example:"有名な絵画が美術館に展示されている。",exampleId:"Lukisan terkenal dipamerkan di museum seni.",
+    mnemonic:"美術=seni rupa + 館=gedung → gedung seni rupa = museum seni",
+    wrongOpts:["博物館","ギャラリー","展覧会"],stage:3,category:"seni" },
+
+  { jp:"彫刻",read:"ちょうこく",meaning:"Patung / Ukiran",type:"noun",
+    example:"大理石で彫刻を作る。",exampleId:"Membuat patung dari marmer.",
+    mnemonic:"彫=mengukir + 刻=memahat → mengukir dan memahat = patung/ukiran",
+    wrongOpts:["絵画","陶芸","工芸"],stage:6,category:"seni" },
+
+  { jp:"演出",read:"えんしゅつ",meaning:"Penyutradaraan / Pengaturan pentas",type:"noun",
+    example:"舞台の演出が素晴らしかった。",exampleId:"Penyutradaraan panggung sangat luar biasa.",
+    mnemonic:"演=penampilan/pertunjukan + 出=mengeluarkan → mengeluarkan pertunjukan = penyutradaraan",
+    wrongOpts:["演技","演奏","上演"],stage:6,category:"seni" },
+
+  { jp:"民謡",read:"みんよう",meaning:"Lagu rakyat / Musik tradisional",type:"noun",
+    example:"地元の民謡を歌い継ぐ。",exampleId:"Meneruskan nyanyian lagu rakyat setempat.",
+    mnemonic:"民=rakyat + 謡=nyanyian → nyanyian rakyat = lagu rakyat",
+    wrongOpts:["童謡","歌謡","演歌"],stage:6,category:"budaya" },
+
 ]);
 
 console.log("✅ vocab-batch14-bunka-geijutsu.js loaded — 80 kata budaya & seni");

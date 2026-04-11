@@ -297,6 +297,121 @@ addVocab([
     mnemonic:"引き=menarik + 分け=membagi → membagi kemenangan = seri",
     wrongOpts:["同点","タイ","スコアレスドロー"],stage:3,category:"olahraga" },
 
+  { jp:"マラソン",read:"まらそん",meaning:"Maraton",type:"noun",
+    example:"フルマラソンを完走した。",exampleId:"Berhasil menyelesaikan maraton penuh.",
+    mnemonic:"マラソン = marathon (kata pinjaman) = maraton",
+    wrongOpts:["駅伝","長距離走","トライアスロン"],stage:3,category:"olahraga" },
+
+  { jp:"サッカー",read:"さっかー",meaning:"Sepak bola",type:"noun",
+    example:"週末にサッカーの試合がある。",exampleId:"Ada pertandingan sepak bola akhir pekan.",
+    mnemonic:"サッカー = soccer (kata pinjaman) = sepak bola",
+    wrongOpts:["フットボール","ラグビー","アメフト"],stage:3,category:"olahraga" },
+
+  { jp:"野球",read:"やきゅう",meaning:"Baseball / Bisbol",type:"noun",
+    example:"子どもの頃から野球が好きだ。",exampleId:"Suka baseball sejak kecil.",
+    mnemonic:"野=ladang + 球=bola → bola di lapangan terbuka = baseball",
+    wrongOpts:["ソフトボール","クリケット","テニス"],stage:3,category:"olahraga" },
+
+  { jp:"バスケットボール",read:"ばすけっとぼーる",meaning:"Bola basket",type:"noun",
+    example:"バスケットボールの練習は毎日ある。",exampleId:"Latihan bola basket ada setiap hari.",
+    mnemonic:"バスケットボール = basketball (kata pinjaman) = bola basket",
+    wrongOpts:["バレーボール","ハンドボール","水球"],stage:3,category:"olahraga" },
+
+  { jp:"テニス",read:"てにす",meaning:"Tenis",type:"noun",
+    example:"テニスコートで練習する。",exampleId:"Berlatih di lapangan tenis.",
+    mnemonic:"テニス = tennis (kata pinjaman) = tenis",
+    wrongOpts:["バドミントン","卓球","スカッシュ"],stage:3,category:"olahraga" },
+
+  { jp:"ゴルフ",read:"ごるふ",meaning:"Golf",type:"noun",
+    example:"ゴルフの練習場に行く。",exampleId:"Pergi ke tempat latihan golf.",
+    mnemonic:"ゴルフ = golf (kata pinjaman) = golf",
+    wrongOpts:["クロッケー","ポロ","クリケット"],stage:3,category:"olahraga" },
+
+  { jp:"スキー",read:"すきー",meaning:"Ski",type:"noun",
+    example:"冬になるとスキーをしに行く。",exampleId:"Pergi bermain ski saat musim dingin.",
+    mnemonic:"スキー = ski (kata pinjaman) = ski",
+    wrongOpts:["スノーボード","スケート","そり"],stage:3,category:"olahraga" },
+
+  { jp:"スノーボード",read:"すのーぼーど",meaning:"Snowboard",type:"noun",
+    example:"スノーボードは難しいが面白い。",exampleId:"Snowboard sulit tapi menyenangkan.",
+    mnemonic:"スノーボード = snowboard (kata pinjaman) = snowboard",
+    wrongOpts:["スキー","そり","スケート"],stage:3,category:"olahraga" },
+
+  { jp:"バレーボール",read:"ばれーぼーる",meaning:"Bola voli",type:"noun",
+    example:"バレーボールの試合を観戦した。",exampleId:"Menonton pertandingan bola voli.",
+    mnemonic:"バレーボール = volleyball (kata pinjaman) = bola voli",
+    wrongOpts:["バスケットボール","ハンドボール","水球"],stage:3,category:"olahraga" },
+
+  { jp:"卓球",read:"たっきゅう",meaning:"Tenis meja / Pingpong",type:"noun",
+    example:"卓球は室内スポーツだ。",exampleId:"Tenis meja adalah olahraga dalam ruangan.",
+    mnemonic:"卓=meja + 球=bola → bola di atas meja = tenis meja",
+    wrongOpts:["テニス","バドミントン","スカッシュ"],stage:3,category:"olahraga" },
+
+  { jp:"空手",read:"からて",meaning:"Karate",type:"noun",
+    example:"空手の黒帯を取得した。",exampleId:"Mendapatkan sabuk hitam karate.",
+    mnemonic:"空=kosong/tangan kosong + 手=tangan → bertarung tangan kosong = karate",
+    wrongOpts:["柔道","剣道","合気道"],stage:3,category:"olahraga" },
+
+  { jp:"弓道",read:"きゅうどう",meaning:"Kyudo / Panahan tradisional Jepang",type:"noun",
+    example:"弓道は精神修行でもある。",exampleId:"Kyudo juga merupakan latihan spiritual.",
+    mnemonic:"弓=busur panah + 道=jalan/cara → jalan busur panah = kyudo",
+    wrongOpts:["アーチェリー","射撃","吹き矢"],stage:6,category:"olahraga" },
+
+  { jp:"乗馬",read:"じょうば",meaning:"Berkuda",type:"noun",
+    example:"乗馬クラブに通っている。",exampleId:"Mengikuti club berkuda.",
+    mnemonic:"乗=naik + 馬=kuda → naik kuda = berkuda",
+    wrongOpts:["馬術","競馬","馬車"],stage:6,category:"olahraga" },
+
+  { jp:"ラグビー",read:"らぐびー",meaning:"Rugby",type:"noun",
+    example:"ラグビーワールドカップが開催される。",exampleId:"Piala Dunia Rugby diselenggarakan.",
+    mnemonic:"ラグビー = rugby (kata pinjaman) = rugby",
+    wrongOpts:["アメフト","サッカー","フットボール"],stage:3,category:"olahraga" },
+
+  { jp:"バドミントン",read:"ばどみんとん",meaning:"Bulu tangkis",type:"noun",
+    example:"バドミントンのシャトルを打つ。",exampleId:"Memukul shuttlecock bulu tangkis.",
+    mnemonic:"バドミントン = badminton (kata pinjaman) = bulu tangkis",
+    wrongOpts:["テニス","卓球","スカッシュ"],stage:3,category:"olahraga" },
+
+  { jp:"ボクシング",read:"ぼくしんぐ",meaning:"Tinju / Boksin",type:"noun",
+    example:"ボクシングの世界チャンピオンになった。",exampleId:"Menjadi juara dunia tinju.",
+    mnemonic:"ボクシング = boxing (kata pinjaman) = tinju",
+    wrongOpts:["空手","格闘技","レスリング"],stage:3,category:"olahraga" },
+
+  { jp:"格闘技",read:"かくとうぎ",meaning:"Seni bela diri / Olahraga tempur",type:"noun",
+    example:"格闘技の試合をテレビで見る。",exampleId:"Menonton pertandingan bela diri di TV.",
+    mnemonic:"格=bergulat + 闘=bertarung + 技=teknik → teknik bertarung = seni bela diri",
+    wrongOpts:["武道","武術","スポーツ"],stage:6,category:"olahraga" },
+
+  { jp:"アーチェリー",read:"あーちぇりー",meaning:"Panahan",type:"noun",
+    example:"アーチェリーは集中力が必要だ。",exampleId:"Panahan membutuhkan konsentrasi.",
+    mnemonic:"アーチェリー = archery (kata pinjaman) = panahan",
+    wrongOpts:["弓道","射撃","クロスボウ"],stage:6,category:"olahraga" },
+
+  { jp:"体育",read:"たいいく",meaning:"Pendidikan jasmani / Olahraga sekolah",type:"noun",
+    example:"今日は体育の授業でサッカーをした。",exampleId:"Hari ini pelajaran olahraga bermain sepak bola.",
+    mnemonic:"体=tubuh + 育=mendidik/merawat → mendidik tubuh = pendidikan jasmani",
+    wrongOpts:["スポーツ","運動","体操"],stage:3,category:"olahraga" },
+
+  { jp:"ハンドボール",read:"はんどぼーる",meaning:"Bola tangan / Handball",type:"noun",
+    example:"ハンドボールはチームスポーツだ。",exampleId:"Handball adalah olahraga tim.",
+    mnemonic:"ハンドボール = handball (kata pinjaman) = bola tangan",
+    wrongOpts:["バスケットボール","バレーボール","サッカー"],stage:6,category:"olahraga" },
+
+  { jp:"水泳",read:"すいえい",meaning:"Renang",type:"noun",
+    example:"夏は毎日水泳の練習をする。",exampleId:"Musim panas latihan renang setiap hari.",
+    mnemonic:"水=air + 泳=berenang → berenang di air = renang",
+    wrongOpts:["水上スキー","ダイビング","シュノーケリング"],stage:3,category:"olahraga" },
+
+  { jp:"柔道",read:"じゅうどう",meaning:"Judo",type:"noun",
+    example:"柔道で金メダルを取った。",exampleId:"Meraih medali emas di judo.",
+    mnemonic:"柔=lembut/fleksibel + 道=jalan → jalan kelembutan = judo",
+    wrongOpts:["空手","合気道","レスリング"],stage:3,category:"olahraga" },
+
+  { jp:"剣道",read:"けんどう",meaning:"Kendo",type:"noun",
+    example:"剣道の稽古は厳しい。",exampleId:"Latihan kendo sangat ketat.",
+    mnemonic:"剣=pedang + 道=jalan → jalan pedang = kendo",
+    wrongOpts:["空手","柔道","合気道"],stage:6,category:"olahraga" },
+
 ]);
 
 console.log("✅ vocab-batch15-sport-shumi.js loaded — 80 kata olahraga & hobi");
