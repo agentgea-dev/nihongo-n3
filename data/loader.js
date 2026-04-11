@@ -1,5 +1,5 @@
-// loader.js — SAKURA ANKI N3 — v5
-// Update: grammar 100% ✅ | kanji 100% ✅ | vocab batch 5-8 ✅
+// loader.js — SAKURA ANKI N3 — v6
+// Update: grammar 100% ✅ | kanji 100% ✅ | vocab batch 1-16 ✅
 window.addKanji   = e => { if(!window.KANJI_DB)  window.KANJI_DB=[];  window.KANJI_DB.push(...e);  };
 window.addGrammar = e => { if(!window.GRAMMAR_DB) window.GRAMMAR_DB=[]; window.GRAMMAR_DB.push(...e); };
 window.addVocab   = e => { if(!window.VOCAB_DB)  window.VOCAB_DB=[];  window.VOCAB_DB.push(...e);  };
@@ -24,4 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch1-sifat, vocab-batch2-katakerja,
 //           vocab-batch3-kehidupan, vocab-batch4-alam-teknologi,
 //           vocab-batch5-emosi, vocab-batch6-akademik,
-//           vocab-batch7-kuliner, vocab-batch8-abstrak        ← 629/3750
+//           vocab-batch7-kuliner, vocab-batch8-abstrak,
+//           vocab-batch9-jikan-setsuzoku, vocab-batch10-kotsu-ido,
+//           vocab-batch11-kaimono-okane, vocab-batch12-tabi-kanko,
+//           vocab-batch13-karada-byoki, vocab-batch14-bunka-geijutsu,
+//           vocab-batch15-sport-shumi, vocab-batch16-keizai-seiji  ← 1347/3750
