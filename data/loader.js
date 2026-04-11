@@ -30,4 +30,4 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch13-karada-byoki, vocab-batch14-bunka-geijutsu,
 //           vocab-batch15-sport-shumi, vocab-batch16-keizai-seiji,
 //           vocab-batch17-kazoku-kankei, vocab-batch18-tenki-kisetsu,
-//           vocab-batch19-gakko-kyoiku  ← 1722/3750
+//           vocab-batch19-gakko-kyoiku, vocab-batch20-jutaku-kenchiku  ← 1802/3750
