@@ -28,4 +28,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch9-jikan-setsuzoku, vocab-batch10-kotsu-ido,
 //           vocab-batch11-kaimono-okane, vocab-batch12-tabi-kanko,
 //           vocab-batch13-karada-byoki, vocab-batch14-bunka-geijutsu,
-//           vocab-batch15-sport-shumi, vocab-batch16-keizai-seiji  ← 1347/3750
+//           vocab-batch15-sport-shumi, vocab-batch16-keizai-seiji,
+//           vocab-batch17-kazoku-kankei  ← 1562/3750
