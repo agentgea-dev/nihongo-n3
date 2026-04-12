@@ -33,4 +33,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch19-gakko-kyoiku, vocab-batch20-jutaku-kenchiku,
 //           vocab-batch21-shokuji-inshoku, vocab-batch22-fasshon-fuku,
 //           vocab-batch23-gijutsu-intanetto, vocab-batch24-shizen-kankyo,
-//           vocab-batch25-media-nyusu  ← 2202/3750
+//           vocab-batch25-media-nyusu,
+//           vocab-batch26-kanji-suji  ← 2282/3750
