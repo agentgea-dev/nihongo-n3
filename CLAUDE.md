@@ -12,7 +12,7 @@ Vanilla HTML/CSS/JS — tidak ada framework
 ## Status Database
 - Kanji: 650/650 SELESAI
 - Grammar: 168/168 SELESAI  
-- Vocab: 2042/3750 — batch 1-23 selesai, perlu batch 24-46 (≈1708 kata lagi)
+- Vocab: 2202/3750 — batch 1-25 selesai, perlu batch 26-46 (≈1548 kata lagi)
 
 ## Commit Convention
 git commit -m "Tambah vocab-batch-X kategori (N kata)"
