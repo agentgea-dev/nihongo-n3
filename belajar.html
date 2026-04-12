@@ -724,8 +724,16 @@ const STAGES=[
 
 // ── STATE ──
 function initP(){const p={};STAGES.forEach(s=>{p[s.id]={studied:false,att:0,best:0,ok:false,xp:0,sessions:{}};});return p;}
-function loadP(){const r=localStorage.getItem('n3_7v2');if(!r)return initP();const s=JSON.parse(r);const p=initP();Object.keys(p).forEach(k=>{if(s[k])p[k]=s[k];});return p;}
-function saveP(){localStorage.setItem('n3_7v2',JSON.stringify(PROG));}
+function loadP(){
+  // Hapus data versi lama jika ada (distribusi kartu berubah di v8)
+  localStorage.removeItem('n3_7v2');
+  const r=localStorage.getItem('n3_8v1');
+  if(!r)return initP();
+  const s=JSON.parse(r);const p=initP();
+  Object.keys(p).forEach(k=>{if(s[k])p[k]=s[k];});
+  return p;
+}
+function saveP(){localStorage.setItem('n3_8v1',JSON.stringify(PROG));}
 
 let PROG=loadP();
 let curS=null,siIdx=0,siFlip=false;
@@ -1061,22 +1069,18 @@ function nextCard(){
   loadCard(siIdx);
 }
 
-// Kuis sesi: test dari kartu yang baru dipelajari di sesi ini
+// Kuis sesi: test dari kartu yang baru dipelajari di sesi ini (max 20 soal)
 function startSessionQuiz(){
   isSessionQuiz=true;
   const sesCards=curCards.slice(sessionStartIdx, sessionEndIdx);
   const sesSize=sesCards.length;
   const totalSes=getTotalSessions(curCards.length);
-  // Generate soal dari kartu sesi ini saja, jumlah = sesSize (semua)
-  const hardQ=curS.questions.filter((_,i)=>{
-    // ambil soal hardcode yang relevan proporsional
-    return Math.random()<0.3;
-  });
-  const genQ=generateQuestionsFromCards(sesCards, 0, sesSize*2);
-  const allQ=[...genQ,...hardQ].sort(()=>Math.random()-.5).slice(0,sesSize);
+  const maxSesQ=Math.min(sesSize, 20); // max 20 soal per kuis sesi
+  const genQ=generateQuestionsFromCards(sesCards, 0, maxSesQ*2);
+  const allQ=[...genQ].sort(()=>Math.random()-.5).slice(0,maxSesQ);
   qSess=allQ;qCur=0;qAns=[];
   document.getElementById('qz-cat').textContent=
-    `Sesi ${curSession+1}/${totalSes} · ${sesSize} Soal`;
+    `Sesi ${curSession+1}/${totalSes} · ${allQ.length} Soal`;
   showScreen('s-quiz');
   buildQDots();
   loadQ(0);
@@ -1114,13 +1118,12 @@ function showGate(){
 
 // ── QUIZ ──
 function startQuiz(){
-  // Kuis Final — test semua kartu tahap ini
+  // Kuis Final — 40 soal acak dari seluruh kartu tahap
   isSessionQuiz=false;
-  const allQ=generateQuestionsFromCards(curCards, 0, curCards.length*2);
+  const allQ=generateQuestionsFromCards(curCards, 0, 80);
   const hardQ=[...curS.questions];
   const combined=[...hardQ,...allQ].sort(()=>Math.random()-.5);
-  // Kuis final: min 20 soal, max semua kartu
-  const quizCount=Math.min(Math.max(curCards.length, 20), combined.length);
+  const quizCount=Math.min(40, combined.length);
   qSess=combined.slice(0,quizCount);
   qCur=0;qAns=[];
   document.getElementById('qz-cat').textContent=`🏆 Kuis Final Tahap ${curS.id} · ${qSess.length} Soal`;
@@ -1129,13 +1132,30 @@ function startQuiz(){
   loadQ(0);
 }
 
-// Ambil kartu dari DB global sesuai stage
+// Gabungkan semua DB dengan interleave kanji+grammar+vocab
+function getDBCardsInterleaved(){
+  const k=window.KANJI_DB||[];
+  const g=window.GRAMMAR_DB||[];
+  const v=window.VOCAB_DB||[];
+  const result=[];
+  const max=Math.max(k.length,g.length,v.length);
+  for(let i=0;i<max;i++){
+    if(i<k.length)result.push(k[i]);
+    if(i<g.length)result.push(g[i]);
+    if(i<v.length)result.push(v[i]);
+  }
+  return result;
+}
+
+// Bagi semua DB secara merata ke 7 tahap — semua kartu pasti masuk
 function getDBCardsForStage(stageId){
-  const all=[];
-  if(window.KANJI_DB) all.push(...KANJI_DB.filter(k=>k.stage===stageId));
-  if(window.GRAMMAR_DB) all.push(...GRAMMAR_DB.filter(g=>g.stage===stageId));
-  if(window.VOCAB_DB) all.push(...VOCAB_DB.filter(v=>v.stage===stageId));
-  return all;
+  const all=getDBCardsInterleaved();
+  const total=all.length;
+  if(total===0)return[];
+  const chunkSize=Math.ceil(total/7);
+  const start=(stageId-1)*chunkSize;
+  const end=Math.min(start+chunkSize,total);
+  return all.slice(start,end);
 }
 
 // Generate soal otomatis dari kartu DB
