@@ -36,4 +36,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch25-media-nyusu,
 //           vocab-batch26-kanji-suji,
 //           vocab-batch27-shigoto-shokugyo,
-//           vocab-batch28-horitsu-shakai  ← 2442/3750
+//           vocab-batch28-horitsu-shakai,
+//           vocab-batch29-kanjo-ningen  ← 2522/3750
