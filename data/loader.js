@@ -47,4 +47,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch36-shukyo-dento,
 //           vocab-batch37-rekishi-bunmei,
 //           vocab-batch38-kagaku-kenkyu,
-//           vocab-batch39-igaku-kenko  ← 3322/3750
+//           vocab-batch39-igaku-kenko,
+//           vocab-batch40-setsuzoku-fukushi  ← 3402/3750
