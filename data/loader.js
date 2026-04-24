@@ -43,4 +43,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch32-doushokubutsu,
 //           vocab-batch33-sozai-zairyo,
 //           vocab-batch34-iro-katachi,
-//           vocab-batch35-basho-hoko  ← 3002/3750
+//           vocab-batch35-basho-hoko,
+//           vocab-batch36-shukyo-dento  ← 3082/3750
