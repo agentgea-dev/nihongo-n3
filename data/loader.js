@@ -40,4 +40,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch29-kanjo-ningen,
 //           vocab-batch30-geijutsu-bungaku,
 //           vocab-batch31-sports-kyogi,
-//           vocab-batch32-doushokubutsu  ← 2762/3750
+//           vocab-batch32-doushokubutsu,
+//           vocab-batch33-sozai-zairyo  ← 2842/3750
