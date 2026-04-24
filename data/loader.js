@@ -42,4 +42,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch31-sports-kyogi,
 //           vocab-batch32-doushokubutsu,
 //           vocab-batch33-sozai-zairyo,
-//           vocab-batch34-iro-katachi  ← 2922/3750
+//           vocab-batch34-iro-katachi,
+//           vocab-batch35-basho-hoko  ← 3002/3750
