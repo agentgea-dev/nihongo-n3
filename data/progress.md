@@ -1,58 +1,58 @@
 # 🌸 SAKURA ANKI N3 — Progress Log
 
-## Struktur Folder
-
-```
-nihongo-n3/
-├── index.html
-├── beranda.html
-├── statistik.html
-├── data/progress.md
-└── data/
-    ├── loader.js                         ← v5, semua file terdaftar
-    ├── _TEMPLATE.js
-    ├── kanji.js                          ← 124
-    ├── kanji-alam.js                     ← 50
-    ├── kanji-batch1-kerja.js             ← 60
-    ├── kanji-batch2-kesehatan.js         ← 60
-    ├── kanji-batch3-pendidikan.js        ← 61
-    ├── kanji-batch4-sosial.js            ← 60
-    ├── kanji-batch5-waktu.js             ← 55
-    ├── kanji-batch6-pikiran.js           ← 58
-    ├── kanji-batch7-makanan.js           ← 65
-    ├── kanji-batch8-final.js             ← 57
-    ├── grammar.js                        ← 55
-    ├── grammar-batch1.js                 ← 36
-    ├── grammar-batch2.js                 ← 35
-    ├── grammar-batch3.js                 ← 32
-    ├── grammar-final.js                  ← 10
-    ├── vocabulary.js                     ← 69
-    ├── vocab-kerja.js                    ← 41
-    ├── vocab-batch1-sifat.js             ← 62
-    ├── vocab-batch2-katakerja.js         ← 62
-    ├── vocab-batch3-kehidupan.js         ← 56
-    ├── vocab-batch4-alam-teknologi.js    ← 49
-    ├── vocab-batch5-emosi.js             ← 73  ← BARU
-    ├── vocab-batch6-akademik.js          ← 73  ← BARU
-    ├── vocab-batch7-kuliner.js           ← 68  ← BARU
-    └── vocab-batch8-abstrak.js           ← 76  ← BARU
-```
-
-## Database Status
+## Database Status (per April 2026)
 
 | Kategori | Ada | Target | % | Status |
 |---|---|---|---|---|
-| 漢字 Kanji | **650** | 650 | **100%** | ✅ SELESAI |
-| 文法 Grammar | **168** | 168 | **100%** | ✅ SELESAI |
-| 語彙 Vocab | **629** | 3750 | **17%** | 🔄 Ongoing |
-| **TOTAL** | **1447** | **4568** | **32%** | |
+| 漢字 Kanji | **661** | 650 | **102%** | ✅ SELESAI |
+| 文法 Grammar | **180** | 168 | **107%** | ✅ SELESAI |
+| 語彙 Vocab | **3.802** | 3.750 | **101%** | ✅ SELESAI |
+| **TOTAL** | **4.643** | **4.568** | **102%** | ✅ TERCAPAI |
 
-## Rencana Selanjutnya
+## Sistem Belajar v2 — April 2026
 
-- [ ] Vocab batch 9–12 (bisnis, perjalanan, teknologi, kesehatan)
-- [ ] Update beranda.html — db counter real
-- [ ] Streak harian & notifikasi Telegram Bot
+Major upgrade dari v1 (hardcoded STAGES → DB-driven):
+
+### Sebelum (v1)
+- Tiap stage punya `cards[]` dan `questions[]` hardcode (~6 kartu / 5-8 soal)
+- DB hanya digabung secara opsional via `getDBCardsForStage()`
+- Generator soal: 3 tipe (kanji/meaning/fill-blank), pilih random
+- Tidak ada SRS, tidak ada tracking weak cards
+
+### Sesudah (v2)
+- 100% DB terpakai: 4.643 kartu di-chunk merata ke 7 stage
+- 7 tipe soal: kanji-from-meaning, meaning-from-kanji, reading-from-kanji,
+  fill-blank, grammar-context, synonym-antonym, translation-id-jp
+- Distribusi proporsional per sesi (cap 40% per tipe)
+- SRS sederhana: interval 1→2→4→8→16→32→64 hari, reset jika salah
+- Adaptive difficulty: streak 3→naik tipe, salah 2x→hint mnemonic, salah 3x→weak set
+- UI: 7 badge warna, suara WebAudio, flash hijau/merah, tombol delay 2 detik
+- Result analytics: breakdown per tipe, weak cards list, estimasi SRS, tombol review
+
+## Struktur Folder
+```
+nihongo-n3/
+├── index.html          # redirect ke landing
+├── landing.html
+├── beranda.html
+├── belajar.html        # main app (1700+ baris)
+├── statistik.html
+├── CLAUDE.md           # instruksi proyek
+└── data/
+    ├── loader.js       # v7 — helper SRS + getCardsByStage/All/Due/Weak
+    ├── progress.md     # file ini
+    ├── _TEMPLATE.js
+    ├── kanji*.js       # 10 file → 661 kanji
+    ├── grammar*.js     # 5 file → 180 grammar
+    └── vocab*.js       # 47 file → 3.802 vocab
+```
 
 ## Deploy
 - GitHub: `https://github.com/agentgea-dev/nihongo-n3`
 - Vercel: `https://nihongo-n3.vercel.app`
+
+## Rencana Selanjutnya
+- [ ] UI dashboard SRS di beranda.html (kartu due hari ini, weak cards count)
+- [ ] Stage adaptif berdasarkan SRS (bukan chunking statis)
+- [ ] Mode "Review Harian" yang ambil semua due cards
+- [ ] Streak harian + notifikasi Telegram Bot

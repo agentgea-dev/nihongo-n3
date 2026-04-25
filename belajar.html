@@ -240,6 +240,31 @@ body::after{content:'🌸';position:fixed;bottom:90px;right:16px;font-size:1.8re
 .qt-meaning{background:rgba(26,188,156,.15);color:var(--jade);}
 .qt-kanji{background:rgba(212,160,23,.15);color:var(--gold);}
 .qt-fill{background:rgba(41,128,185,.15);color:#2980b9;}
+.qt-read{background:rgba(155,89,182,.15);color:#8e44ad;}
+.qt-grammar{background:rgba(231,126,34,.15);color:#d35400;}
+.qt-syn{background:rgba(52,152,219,.15);color:#2980b9;}
+.qt-trans{background:rgba(192,57,43,.15);color:#c0392b;}
+.hint-box{background:linear-gradient(135deg,rgba(212,160,23,.12),rgba(212,160,23,.04));border:1px dashed rgba(212,160,23,.4);border-radius:8px;padding:8px 12px;margin-top:8px;font-size:.7rem;color:var(--text-mid);line-height:1.6;animation:fadeUp .35s ease;}
+.hint-box strong{color:var(--gold);}
+@keyframes flash-c{0%{background-color:rgba(39,174,96,.0);}30%{background-color:rgba(39,174,96,.18);}100%{background-color:rgba(39,174,96,0);}}
+@keyframes flash-w{0%{background-color:rgba(231,76,60,.0);}30%{background-color:rgba(231,76,60,.20);}100%{background-color:rgba(231,76,60,0);}}
+body.flash-correct{animation:flash-c .38s ease;}
+body.flash-wrong{animation:flash-w .38s ease;}
+.btn-nq:disabled{opacity:.5;cursor:not-allowed;}
+.r-breakdown{background:var(--white);border:1px solid var(--sky2);border-radius:10px;padding:14px 16px;margin-bottom:14px;text-align:left;}
+.r-bh{font-size:.62rem;letter-spacing:.18em;color:var(--text-light);text-transform:uppercase;margin-bottom:10px;}
+.r-row{display:flex;align-items:center;gap:10px;font-size:.7rem;padding:5px 0;border-bottom:1px solid var(--sky2);}
+.r-row:last-child{border-bottom:none;}
+.r-row-label{flex:1;color:var(--text-dark);}
+.r-row-bar{flex:1;height:6px;background:var(--sky2);border-radius:3px;overflow:hidden;}
+.r-row-bar-fill{height:100%;background:linear-gradient(90deg,var(--navy2),var(--jade));border-radius:3px;}
+.r-row-frac{color:var(--text-light);font-size:.65rem;min-width:48px;text-align:right;}
+.r-weak{background:rgba(231,76,60,.06);border:1px solid rgba(231,76,60,.18);border-radius:10px;padding:14px 16px;margin-bottom:14px;text-align:left;}
+.r-weak-hdr{font-size:.62rem;letter-spacing:.18em;color:var(--wrong);text-transform:uppercase;margin-bottom:8px;font-weight:700;}
+.r-weak-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(231,76,60,.1);font-size:.68rem;}
+.r-weak-item:last-child{border-bottom:none;}
+.r-weak-jp{font-family:'Noto Serif JP',serif;font-size:.95rem;color:var(--wrong);min-width:54px;}
+.r-srs-info{background:rgba(26,188,156,.06);border:1px solid rgba(26,188,156,.18);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.66rem;color:var(--jade);text-align:left;}
 .q-card-count{font-size:.6rem;color:var(--text-light);text-align:right;margin-bottom:4px;}
 
 .confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:600;display:none;align-items:center;justify-content:center;padding:20px;}
@@ -886,46 +911,10 @@ function enterStage(id){
   }
 }
 
-function goHome(){clearInterval(tIv);showScreen('s-home');
-// ── RISET MODAL ──
-function openRiset(){
-  if(!curS){alert('Pilih tahap dulu dari Peta!');return;}
-  // Pastikan curCards sudah terisi
-  if(curCards.length===0){
-    const hard=[...curS.cards];
-    const db=getDBCardsForStage(curS.id);
-    const seen=new Set(hard.map(c=>c.jp));
-    curCards=[...hard,...db.filter(c=>!seen.has(c.jp))];
-  }
-  document.getElementById('riset-stage-num').textContent=curS.id+' — '+curS.title;
-  const body=document.getElementById('riset-body');
-  body.innerHTML='';
-  const cards=curCards.length>0?curCards:curS.cards;
-  body.innerHTML=`<div style="background:var(--sky);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:.7rem;color:var(--mid);">
-    📚 Total <strong>${cards.length} item</strong> di Tahap ${curS.id}</div>`;
-  cards.forEach((fc,i)=>{
-    const d=document.createElement('div');
-    d.className='riset-item';
-    d.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-      <span style="background:var(--navy);color:#fff;border-radius:6px;padding:3px 9px;font-size:.6rem;font-weight:700">${i+1}</span>
-      <span class="riset-jp">${fc.jp}</span>
-    </div>
-    ${fc.read?`<div class="riset-read">📖 ${fc.read}</div>`:''}
-    <div class="riset-meaning">🇮🇩 ${fc.meaning}</div>
-    <div class="riset-ex">${fc.exampleFuri||fc.example}</div>
-    <div class="riset-exid">${fc.exampleId}</div>
-    <div class="riset-mnemonic">💡 ${fc.mnemonic}</div>`;
-    body.appendChild(d);
-  });
-  document.getElementById('riset-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeRiset(){
-  document.getElementById('riset-overlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-function closeRisetOutside(e){
-  if(e.target.id==='riset-overlay')closeRiset();
+function goHome(){
+  clearInterval(tIv);
+  showScreen('s-home');
+  renderHome();
 }
 
 // ── RESET PROGRESS ──
@@ -968,7 +957,6 @@ function doReset(stageId){
   renderHome();
 }
 
-renderHome();}
 function quickStart(){const next=STAGES.find(s=>!PROG[s.id].ok);if(next){enterStage(next.id);}else{goHome();}}
 
 // ── STUDY ──
@@ -1094,18 +1082,17 @@ function nextCard(){
   loadCard(siIdx);
 }
 
-// Kuis sesi: test dari kartu yang baru dipelajari di sesi ini (max 20 soal)
+// Kuis sesi: test dari kartu yang baru dipelajari di sesi ini
+// Distribusi proporsional via buildQuizSession()
 function startSessionQuiz(){
   isSessionQuiz=true;
   const sesCards=curCards.slice(sessionStartIdx, sessionEndIdx);
-  const sesSize=sesCards.length;
   const totalSes=getTotalSessions(curCards.length);
-  const maxSesQ=Math.min(sesSize, 20); // max 20 soal per kuis sesi
-  const genQ=generateQuestionsFromCards(sesCards, 0, maxSesQ*2);
-  const allQ=[...genQ].sort(()=>Math.random()-.5).slice(0,maxSesQ);
-  qSess=allQ;qCur=0;qAns=[];
-  document.getElementById('qz-cat').textContent=
-    `Sesi ${curSession+1}/${totalSes} · ${allQ.length} Soal`;
+  const sessionNum = curSession + 1; // 1-based untuk buildQuizSession
+  qSess = buildQuizSession(sesCards, sessionNum, false);
+  qCur=0; qAns=[]; _streak=0; _wrongStreak=0; _hintShown=false; _wrongPerCard={};
+  document.getElementById('qz-cat').textContent =
+    `Sesi ${sessionNum}/${totalSes} · ${qSess.length} Soal`;
   showScreen('s-quiz');
   buildQDots();
   loadQ(0);
@@ -1143,18 +1130,42 @@ function showGate(){
 
 // ── QUIZ ──
 function startQuiz(){
-  // Kuis Final — 40 soal acak dari seluruh kartu tahap
+  // Kuis Final — pakai semua 7 tipe, max 100 soal
   isSessionQuiz=false;
-  const allQ=generateQuestionsFromCards(curCards, 0, 80);
-  const hardQ=[...curS.questions];
-  const combined=[...hardQ,...allQ].sort(()=>Math.random()-.5);
-  const quizCount=Math.min(40, combined.length);
-  qSess=combined.slice(0,quizCount);
-  qCur=0;qAns=[];
-  document.getElementById('qz-cat').textContent=`🏆 Kuis Final Tahap ${curS.id} · ${qSess.length} Soal`;
+  const finalQ = buildQuizSession(curCards, 99, true);
+  const hardQ = (curS.questions||[]).map(q=>({...q, _type:q._type||QTYPE.FILL_BLANK_SENTENCE}));
+  const combined = _shuffle([...hardQ, ...finalQ]);
+  const quizCount = Math.min(100, combined.length);
+  qSess = combined.slice(0, quizCount);
+  qCur=0; qAns=[]; _streak=0; _wrongStreak=0; _hintShown=false; _wrongPerCard={};
+  document.getElementById('qz-cat').textContent = `🏆 Kuis Final Tahap ${curS.id} · ${qSess.length} Soal`;
   showScreen('s-quiz');
   buildQDots();
   loadQ(0);
+}
+
+// ── ADAPTIVE DIFFICULTY STATE ──
+let _streak=0, _wrongStreak=0, _hintShown=false, _wrongPerCard={};
+const _typeDifficulty = {
+  [QTYPE.MEANING_FROM_KANJI]:1, [QTYPE.KANJI_FROM_MEANING]:1, [QTYPE.FILL_BLANK_SENTENCE]:2,
+  [QTYPE.READING_FROM_KANJI]:2, [QTYPE.GRAMMAR_CONTEXT]:3, [QTYPE.SYNONYM_ANTONYM]:3,
+  [QTYPE.TRANSLATION_ID_JP]:4
+};
+// Geser tipe soal berikut ke yang lebih sulit jika sudah streak benar 3x
+function _bumpDifficulty(idx){
+  if(idx>=qSess.length-1) return;
+  const cur = qSess[idx]?._type;
+  const curLv = _typeDifficulty[cur]||1;
+  // Cari soal di antrian yang tipe-nya lebih sulit & swap ke depan
+  for(let j=idx+2; j<Math.min(qSess.length, idx+8); j++){
+    const tj = qSess[j]?._type;
+    if((_typeDifficulty[tj]||1) > curLv){
+      const tmp = qSess[idx+1];
+      qSess[idx+1] = qSess[j];
+      qSess[j] = tmp;
+      return;
+    }
+  }
 }
 
 // Gabungkan semua DB dengan interleave kanji+grammar+vocab
@@ -1183,73 +1194,238 @@ function getDBCardsForStage(stageId){
   return all.slice(start,end);
 }
 
-// Generate soal otomatis dari kartu DB
-function generateQuestionsFromCards(cards, skipFirst=0, maxQ=0){
-  if(!cards||cards.length===0) return [];
-  const pool=cards.map(c=>c.jp).filter(Boolean);
-  const questions=[];
-  const shuffled=[...cards].sort(()=>Math.random()-.5);
-  const limit=maxQ>0?Math.min(shuffled.length,maxQ):shuffled.length;
-  for(let i=0;i<limit;i++){
-    const fc=shuffled[i];
-    if(!fc.jp||!fc.meaning) continue;
-    // Buat 3 pilihan salah dari pool
-    const wrongs=fc.wrongOpts||pool.filter(p=>p!==fc.jp).sort(()=>Math.random()-.5).slice(0,3);
-    const w3=wrongs.slice(0,3);
-    while(w3.length<3) w3.push('—');
-    // Pilih tipe soal secara acak
-    const qtype=Math.floor(Math.random()*3);
-    let q;
-    if(qtype===0){
-      // Tipe 1: Tebak Kanji dari Arti
-      q={
-        jp:`Apa kanji/kata untuk: "${fc.meaning.split('/')[0].trim()}"?`,
-        furi:fc.read||'',
-        prompt:'Pilih kanji/kata yang tepat:',
-        opts:[fc.jp,...w3],ans:0,
-        exp:`${fc.jp}${fc.read?'（'+fc.read+'）':''} = ${fc.meaning}. ${fc.mnemonic||''}`,
-        _type:'kanji-from-meaning'
-      };
-    } else if(qtype===1){
-      // Tipe 2: Tebak Arti dari Kanji
-      const meaningWrongs=cards.filter(x=>x!==fc&&x.meaning).sort(()=>Math.random()-.5).slice(0,3).map(x=>x.meaning.split('/')[0].trim());
-      while(meaningWrongs.length<3) meaningWrongs.push('Tidak ada');
-      const correctMeaning=fc.meaning.split('/')[0].trim();
-      q={
-        jp:fc.jp,
-        furi:fc.read||'',
-        prompt:`Apa arti dari ${fc.jp}${fc.read?' ('+fc.read+')':''}?`,
-        opts:[correctMeaning,...meaningWrongs],ans:0,
-        exp:`${fc.jp}${fc.read?'（'+fc.read+'）':''} = ${fc.meaning}. ${fc.mnemonic||''}`,
-        _type:'meaning-from-kanji'
-      };
-    } else {
-      // Tipe 3: Contoh kalimat dengan bagian kosong
-      if(fc.example&&fc.jp&&fc.example.includes(fc.jp)){
-        const blanked=fc.example.replace(fc.jp,'___');
-        q={
-          jp:blanked,
-          furi:'',
-          prompt:`Lengkapi kalimat (${fc.meaning.split('/')[0].trim()}):`,
-          opts:[fc.jp,...w3],ans:0,
-          exp:`${fc.jp}${fc.read?'（'+fc.read+'）':''} = ${fc.meaning}. Contoh: ${fc.example} → ${fc.exampleId}`,
-          _type:'fill-blank'
-        };
-      } else {
-        // Fallback ke tipe 1
-        q={
-          jp:`Apa kanji/kata untuk: "${fc.meaning.split('/')[0].trim()}"?`,
-          furi:fc.read||'',
-          prompt:'Pilih kanji/kata yang tepat:',
-          opts:[fc.jp,...w3],ans:0,
-          exp:`${fc.jp}${fc.read?'（'+fc.read+'）':''} = ${fc.meaning}. ${fc.mnemonic||''}`,
-          _type:'kanji-from-meaning'
-        };
-      }
+// ═══════════════════════════════════════════════════════════════
+//  GENERATOR 7-TIPE SOAL — variasi penuh untuk JLPT N3
+// ═══════════════════════════════════════════════════════════════
+// Tipe soal:
+//   1. KANJI_FROM_MEANING  — arti ID → pilih kanji/kata
+//   2. MEANING_FROM_KANJI  — kanji   → pilih arti
+//   3. READING_FROM_KANJI  — kanji   → pilih cara baca
+//   4. FILL_BLANK_SENTENCE — kalimat ___ → pilih kata
+//   5. GRAMMAR_CONTEXT     — kalimat dgn pola → pilih pola benar
+//   6. SYNONYM_ANTONYM     — sinonim / antonim
+//   7. TRANSLATION_ID_JP   — ID lengkap → pilih terjemahan JP
+
+const QTYPE = {
+  KANJI_FROM_MEANING : 'kanji-from-meaning',
+  MEANING_FROM_KANJI : 'meaning-from-kanji',
+  READING_FROM_KANJI : 'reading-from-kanji',
+  FILL_BLANK_SENTENCE: 'fill-blank',
+  GRAMMAR_CONTEXT    : 'grammar-context',
+  SYNONYM_ANTONYM    : 'synonym-antonym',
+  TRANSLATION_ID_JP  : 'translation-id-jp',
+};
+const QTYPE_LABEL = {
+  [QTYPE.KANJI_FROM_MEANING] :'🇮🇩→🇯🇵 Tebak Kanji',
+  [QTYPE.MEANING_FROM_KANJI] :'🇯🇵→🇮🇩 Tebak Arti',
+  [QTYPE.READING_FROM_KANJI] :'🔊 Cara Baca',
+  [QTYPE.FILL_BLANK_SENTENCE]:'📝 Isi Kalimat',
+  [QTYPE.GRAMMAR_CONTEXT]    :'📖 Pola Grammar',
+  [QTYPE.SYNONYM_ANTONYM]    :'⇄ Sinonim/Antonim',
+  [QTYPE.TRANSLATION_ID_JP]  :'🌐 Terjemahan',
+};
+const QTYPE_CLASS = {
+  [QTYPE.KANJI_FROM_MEANING] :'qt-kanji',
+  [QTYPE.MEANING_FROM_KANJI] :'qt-meaning',
+  [QTYPE.READING_FROM_KANJI] :'qt-read',
+  [QTYPE.FILL_BLANK_SENTENCE]:'qt-fill',
+  [QTYPE.GRAMMAR_CONTEXT]    :'qt-grammar',
+  [QTYPE.SYNONYM_ANTONYM]    :'qt-syn',
+  [QTYPE.TRANSLATION_ID_JP]  :'qt-trans',
+};
+
+const _firstSeg = s => (s||'').split('/')[0].trim();
+const _shuffle  = a => a.slice().sort(()=>Math.random()-.5);
+
+// Bangun 1 soal untuk tipe tertentu. Return null jika kartu tidak cocok.
+function makeQuestion(type, fc, pool, allCards){
+  if(!fc||!fc.jp) return null;
+  const meaning = _firstSeg(fc.meaning);
+  const wrongJp = (fc.wrongOpts||[]).filter(Boolean);
+  // Fallback wrongOpts dari pool
+  const fillJp = () => {
+    const w = wrongJp.slice();
+    if(w.length<3){
+      const candidates = pool.filter(p=>p!==fc.jp && !w.includes(p));
+      _shuffle(candidates).slice(0,3-w.length).forEach(p=>w.push(p));
     }
-    questions.push(q);
+    while(w.length<3) w.push('—');
+    return w.slice(0,3);
+  };
+  const fillMeanings = () => {
+    const others = allCards.filter(x=>x!==fc && x.meaning && _firstSeg(x.meaning)!==meaning);
+    return _shuffle(others).slice(0,3).map(x=>_firstSeg(x.meaning));
+  };
+  const fillReadings = () => {
+    const others = allCards.filter(x=>x!==fc && x.read && x.read!==fc.read);
+    return _shuffle(others).slice(0,3).map(x=>x.read);
+  };
+  const baseExp = `${fc.jp}${fc.read?'（'+fc.read+'）':''} = ${fc.meaning}.${fc.mnemonic?' '+fc.mnemonic:''}`;
+
+  if(type===QTYPE.KANJI_FROM_MEANING){
+    return {
+      jp:`Apa kanji/kata untuk: "${meaning}"?`,
+      furi:fc.read||'', prompt:'Pilih kanji/kata yang tepat:',
+      opts:[fc.jp, ...fillJp()], ans:0, exp:baseExp, _type:type, _cardId:window.getCardId(fc)
+    };
   }
-  return questions;
+  if(type===QTYPE.MEANING_FROM_KANJI){
+    const wrongs = fillMeanings();
+    if(wrongs.length<3) return null;
+    return {
+      jp:fc.jp, furi:fc.read||'',
+      prompt:`Apa arti dari ${fc.jp}${fc.read?' ('+fc.read+')':''}?`,
+      opts:[meaning, ...wrongs], ans:0, exp:baseExp, _type:type, _cardId:window.getCardId(fc)
+    };
+  }
+  if(type===QTYPE.READING_FROM_KANJI){
+    if(!fc.read) return null;
+    const wrongs = fillReadings();
+    if(wrongs.length<3) return null;
+    return {
+      jp:fc.jp, furi:'',
+      prompt:`Bagaimana cara baca ${fc.jp}?`,
+      opts:[fc.read, ...wrongs], ans:0, exp:baseExp, _type:type, _cardId:window.getCardId(fc)
+    };
+  }
+  if(type===QTYPE.FILL_BLANK_SENTENCE){
+    if(!fc.example||!fc.example.includes(fc.jp)) return null;
+    const blanked = fc.example.replace(fc.jp,'＿＿＿');
+    return {
+      jp:blanked, furi:'',
+      prompt:`Lengkapi kalimat dengan kata yang tepat (${meaning}):`,
+      opts:[fc.jp, ...fillJp()], ans:0,
+      exp:`${baseExp} Contoh: ${fc.example} → ${fc.exampleId||''}`,
+      _type:type, _cardId:window.getCardId(fc)
+    };
+  }
+  if(type===QTYPE.GRAMMAR_CONTEXT){
+    // Hanya untuk kartu grammar
+    if(window.getCardType(fc)!=='grammar' && !(fc.jp||'').includes('〜')) return null;
+    // Gunakan field quizSentence/quizOpts/quizAns/quizExp jika ada
+    if(fc.quizSentence && Array.isArray(fc.quizOpts) && fc.quizOpts.length>=4){
+      return {
+        jp:fc.quizSentence, furi:fc.quizFuri||'',
+        prompt:fc.quizPrompt||'Pilih pola grammar yang tepat:',
+        opts:fc.quizOpts.slice(0,4), ans:fc.quizAns||0,
+        exp:fc.quizExp||baseExp, _type:type, _cardId:window.getCardId(fc)
+      };
+    }
+    // Fallback: pakai example dengan blank
+    if(fc.example && fc.example.includes(fc.jp.replace(/^〜/,''))){
+      const stem = fc.jp.replace(/^〜/,'');
+      const blanked = fc.example.replace(stem,'＿＿＿');
+      const wrongs = _shuffle(allCards.filter(x=>window.getCardType(x)==='grammar' && x!==fc && x.jp))
+        .slice(0,3).map(x=>x.jp.replace(/^〜/,''));
+      if(wrongs.length<3) return null;
+      return {
+        jp:blanked, furi:'',
+        prompt:`Pilih pola grammar (${meaning}):`,
+        opts:[stem, ...wrongs], ans:0,
+        exp:`${fc.jp} = ${fc.meaning}. ${fc.mnemonic||''} Contoh: ${fc.example}`,
+        _type:type, _cardId:window.getCardId(fc)
+      };
+    }
+    return null;
+  }
+  if(type===QTYPE.SYNONYM_ANTONYM){
+    // Cari kartu lain dengan kategori sama → kandidat sinonim
+    if(!fc.category) return null;
+    const sameCat = allCards.filter(x=>x!==fc && x.category===fc.category && x.meaning);
+    if(sameCat.length<1) return null;
+    // Pilih satu sinonim & 3 pengganggu beda kategori
+    const synCard = sameCat[Math.floor(Math.random()*sameCat.length)];
+    const distractors = _shuffle(allCards.filter(x=>x!==fc && x!==synCard && x.category!==fc.category && x.meaning))
+      .slice(0,3).map(x=>x.jp);
+    if(distractors.length<3) return null;
+    return {
+      jp:fc.jp, furi:fc.read||'',
+      prompt:`Pilih kata yang paling mirip artinya dengan "${fc.jp}" (${meaning}):`,
+      opts:[synCard.jp, ...distractors], ans:0,
+      exp:`${fc.jp} (${meaning}) — sinonim dekat: ${synCard.jp} (${_firstSeg(synCard.meaning)}). Keduanya kategori "${fc.category}".`,
+      _type:type, _cardId:window.getCardId(fc)
+    };
+  }
+  if(type===QTYPE.TRANSLATION_ID_JP){
+    if(!fc.example || !fc.exampleId) return null;
+    // 3 pengganggu: example dari kartu lain
+    const others = _shuffle(allCards.filter(x=>x!==fc && x.example && x.example!==fc.example))
+      .slice(0,3).map(x=>x.example);
+    if(others.length<3) return null;
+    return {
+      jp:fc.exampleId, furi:'',
+      prompt:'Pilih terjemahan Jepang yang paling tepat:',
+      opts:[fc.example, ...others], ans:0,
+      exp:`Terjemahan: "${fc.exampleId}" → ${fc.example}. Kunci: ${fc.jp} = ${meaning}.`,
+      _type:type, _cardId:window.getCardId(fc)
+    };
+  }
+  return null;
+}
+
+// Generate soal — backward compatible dengan signature lama (cards, skipFirst, maxQ)
+// Acak tipe per kartu, fallback ke tipe lain jika tipe tertentu tidak cocok.
+function generateQuestionsFromCards(cards, skipFirst=0, maxQ=0, opts={}){
+  if(!cards||cards.length===0) return [];
+  const pool = cards.map(c=>c.jp).filter(Boolean);
+  const all = window.getAllCards ? window.getAllCards() : cards;
+  // allowedTypes default = semua 7 tipe
+  const allowed = opts.allowedTypes || Object.values(QTYPE);
+  const shuffled = _shuffle(cards);
+  const limit = maxQ>0 ? Math.min(shuffled.length, maxQ) : shuffled.length;
+  const out = [];
+  for(let i=0; i<limit; i++){
+    const fc = shuffled[i];
+    if(!fc || !fc.jp || !fc.meaning) continue;
+    // Coba tipe acak dari allowed; fallback ke MEANING_FROM_KANJI
+    const tryOrder = _shuffle(allowed).concat([QTYPE.MEANING_FROM_KANJI, QTYPE.KANJI_FROM_MEANING]);
+    let q = null;
+    for(const t of tryOrder){
+      q = makeQuestion(t, fc, pool, cards.length>10?cards:all);
+      if(q) break;
+    }
+    if(q) out.push(q);
+  }
+  return out;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  buildQuizSession — distribusi proporsional sesuai sesi
+// ═══════════════════════════════════════════════════════════════
+// sessionNum: 1=20 kartu/20 soal, 2=40/35, 3=60/50, 4+=80/70, FINAL=100
+function buildQuizSession(cards, sessionNum, isFinal=false){
+  if(!cards||cards.length===0) return [];
+  let qCount, allowed;
+  if(isFinal){
+    qCount = Math.min(cards.length*2, 100);
+    allowed = Object.values(QTYPE);
+  } else if(sessionNum===1){
+    qCount = 20;
+    allowed = [QTYPE.KANJI_FROM_MEANING, QTYPE.MEANING_FROM_KANJI, QTYPE.FILL_BLANK_SENTENCE];
+  } else if(sessionNum===2){
+    qCount = 35;
+    allowed = [QTYPE.KANJI_FROM_MEANING, QTYPE.MEANING_FROM_KANJI, QTYPE.READING_FROM_KANJI, QTYPE.FILL_BLANK_SENTENCE];
+  } else if(sessionNum===3){
+    qCount = 50;
+    allowed = [QTYPE.KANJI_FROM_MEANING, QTYPE.MEANING_FROM_KANJI, QTYPE.READING_FROM_KANJI, QTYPE.FILL_BLANK_SENTENCE, QTYPE.GRAMMAR_CONTEXT];
+  } else {
+    qCount = 70;
+    allowed = Object.values(QTYPE);
+  }
+  // Generate ~ 2x untuk filtering & cap distribusi
+  const raw = generateQuestionsFromCards(cards, 0, qCount*2, {allowedTypes:allowed});
+  // Cap distribusi: tidak boleh ada tipe >40% dari total soal
+  const cap = Math.ceil(qCount * 0.4);
+  const counts = {};
+  const out = [];
+  for(const q of raw){
+    counts[q._type] = (counts[q._type]||0);
+    if(counts[q._type] >= cap) continue;
+    counts[q._type]++;
+    out.push(q);
+    if(out.length>=qCount) break;
+  }
+  return _shuffle(out);
 }
 
 function buildQDots(){
@@ -1268,11 +1444,21 @@ function loadQ(idx){
   document.getElementById('qz-jp').textContent=q.jp;
   document.getElementById('qz-furi').textContent=q.furi||'';
   document.getElementById('qz-furi').style.display=q.furi?'block':'none';
-  // Tampilkan label tipe soal
-  const typeMap={'kanji-from-meaning':'🇮🇩→🇯🇵 Tebak Kanji','meaning-from-kanji':'🇯🇵→🇮🇩 Tebak Arti','fill-blank':'📝 Isi Kalimat'};
-  const typeLabel=q._type?typeMap[q._type]:'📝 Soal';
-  const typeCls=q._type==='meaning-from-kanji'?'qt-meaning':q._type==='fill-blank'?'qt-fill':'qt-kanji';
-  document.getElementById('qz-prompt').innerHTML=`<span class="q-type-badge ${typeCls}">${typeLabel}</span><br>${q.prompt}`;
+  // Badge tipe soal (7 tipe)
+  const typeLabel = QTYPE_LABEL[q._type] || '📝 Soal';
+  const typeCls = QTYPE_CLASS[q._type] || 'qt-kanji';
+  // Hint mnemonic muncul jika 2x salah berturut-turut & q punya cardId
+  let hintHTML = '';
+  if(_wrongStreak>=2 && q._cardId){
+    const allCards = window.getAllCards ? window.getAllCards() : [];
+    const c = allCards.find(x=>window.getCardId(x)===q._cardId);
+    if(c && c.mnemonic){
+      hintHTML = `<div class="hint-box">💡 <strong>Hint:</strong> ${c.mnemonic}</div>`;
+    }
+  }
+  document.getElementById('qz-prompt').innerHTML=
+    `<span class="q-type-badge ${typeCls}">${typeLabel}</span>`+
+    `<br>${q.prompt}`+hintHTML;
   document.getElementById('qz-tag').className='q-tag '+curS.badgeClass;
   document.getElementById('qz-tag').textContent=curS.typeLabel;
   const sh=q.opts.map((o,i)=>({t:o,orig:i})).sort(()=>Math.random()-.5);
@@ -1315,10 +1501,16 @@ function startT(){
 
 function timeUp(){
   qDone=true;
-  qAns.push({ok:false,skip:true,q:qSess[qCur]});
+  const q=qSess[qCur];
+  qAns.push({ok:false,skip:true,q});
   markD(qCur,false);
-  document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(parseInt(b.dataset.orig)===qSess[qCur].ans)b.classList.add('correct');});
-  showE(qSess[qCur].exp);
+  document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(parseInt(b.dataset.orig)===q.ans)b.classList.add('correct');});
+  showE(q.exp, q);
+  if(q && q._cardId && window.updateCardSRS){ window.updateCardSRS(q._cardId, false); }
+  _streak=0; _wrongStreak++;
+  try{ playFx(false); }catch(e){}
+  flashScreen(false);
+  startNextDelay();
 }
 
 function pick(btn,orig,ans,exp,q){
@@ -1329,8 +1521,78 @@ function pick(btn,orig,ans,exp,q){
   btn.classList.add(ok?'correct':'wrong');
   if(!ok){document.querySelectorAll('.opt').forEach(b=>{if(parseInt(b.dataset.orig)===ans)b.classList.add('correct');});}
   document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-  showE(exp);
+  showE(exp, q);
   if(tg)tg.HapticFeedback?.impactOccurred(ok?'medium':'heavy');
+  // Suara feedback (Web Audio sederhana)
+  try{ playFx(ok); }catch(e){}
+  // Animasi flash
+  flashScreen(ok);
+  // Update SRS per-kartu
+  if(q && q._cardId && window.updateCardSRS){ window.updateCardSRS(q._cardId, ok); }
+  // Adaptive difficulty
+  if(ok){
+    _streak++; _wrongStreak=0;
+    if(_streak>=3){ _bumpDifficulty(qCur); _streak=0; }
+  } else {
+    _streak=0; _wrongStreak++;
+    if(q && q._cardId){
+      _wrongPerCard[q._cardId] = (_wrongPerCard[q._cardId]||0)+1;
+    }
+  }
+  // Mulai 2-detik timer untuk tombol Lanjut
+  startNextDelay();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  Web Audio: nada singkat untuk benar (440Hz) / salah (220Hz)
+// ═══════════════════════════════════════════════════════════════
+let _audioCtx = null;
+function getAudioCtx(){
+  if(_audioCtx) return _audioCtx;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC) return null;
+  _audioCtx = new AC();
+  return _audioCtx;
+}
+function playFx(ok){
+  const ctx = getAudioCtx();
+  if(!ctx) return;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.connect(g); g.connect(ctx.destination);
+  if(ok){ o.frequency.setValueAtTime(880, ctx.currentTime);
+          o.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime+0.12); }
+  else  { o.frequency.setValueAtTime(220, ctx.currentTime);
+          o.frequency.exponentialRampToValueAtTime(120, ctx.currentTime+0.18); }
+  g.gain.setValueAtTime(0.18, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.22);
+  o.start(); o.stop(ctx.currentTime+0.25);
+}
+function flashScreen(ok){
+  const cls = ok ? 'flash-correct' : 'flash-wrong';
+  document.body.classList.add(cls);
+  setTimeout(()=>document.body.classList.remove(cls), 380);
+}
+
+// Tombol Lanjut: hanya muncul setelah 2 detik (paksa user baca penjelasan)
+let _nextTimer = null;
+function startNextDelay(){
+  const btn = document.getElementById('btn-nq');
+  if(!btn) return;
+  btn.disabled = true;
+  btn.textContent = '次へ → tunggu 2 detik...';
+  let s = 2;
+  if(_nextTimer) clearInterval(_nextTimer);
+  _nextTimer = setInterval(()=>{
+    s--;
+    if(s<=0){
+      clearInterval(_nextTimer); _nextTimer=null;
+      btn.disabled = false;
+      btn.textContent = '次へ → Soal Berikutnya';
+    } else {
+      btn.textContent = `次へ → tunggu ${s} detik...`;
+    }
+  }, 1000);
 }
 
 function markD(idx,ok){
@@ -1355,6 +1617,36 @@ function showE(txt){
 }
 
 function nextQ(){qCur++;if(qCur>=qSess.length)showResult();else loadQ(qCur);}
+
+// ── REVIEW KARTU LEMAH: kuis ulang khusus dari kartu yang baru saja salah ≥2x ──
+function reviewWeakCards(){
+  const weakIds = Object.entries(_wrongPerCard).filter(([id,n])=>n>=2).map(([id])=>id);
+  // Tambah kartu weak dari localStorage juga
+  const stored = window.loadWeakSet ? [...window.loadWeakSet()] : [];
+  const allWeakIds = [...new Set([...weakIds, ...stored])];
+  if(!allWeakIds.length){
+    alert('Tidak ada kartu lemah saat ini. Mantap! 🎉');
+    return;
+  }
+  const allCards = window.getAllCards ? window.getAllCards() : [];
+  const cards = allWeakIds.map(id=>allCards.find(c=>window.getCardId(c)===id)).filter(Boolean);
+  if(!cards.length){
+    alert('Kartu lemah tidak ditemukan di database.');
+    return;
+  }
+  // Bangun kuis review: semua tipe yang cocok, max 30 soal
+  isSessionQuiz = false;
+  qSess = buildQuizSession(cards, 4, false).slice(0,30);
+  if(qSess.length===0){
+    alert('Kartu lemah belum cukup info untuk dijadikan soal.');
+    return;
+  }
+  qCur=0; qAns=[]; _streak=0; _wrongStreak=0; _wrongPerCard={};
+  document.getElementById('qz-cat').textContent = `⚠️ Review Kartu Lemah · ${qSess.length} Soal`;
+  showScreen('s-quiz');
+  buildQDots();
+  loadQ(0);
+}
 
 // ── RESULT ──
 function showResult(){
@@ -1408,20 +1700,77 @@ function showResult(){
     </div>`;
   } else perfEl.style.display='none';
 
+  // ── BREAKDOWN PER TIPE SOAL ──
+  const breakdown = {};
+  qSess.forEach((q,i)=>{
+    const t = q._type || 'other';
+    if(!breakdown[t]) breakdown[t] = {ok:0, total:0};
+    breakdown[t].total++;
+    if(qAns[i]?.ok) breakdown[t].ok++;
+  });
+  // Render breakdown ke r-retry slot
   const retEl=document.getElementById('r-retry');
+  let breakdownHTML = `<div class="r-breakdown">
+    <div class="r-bh">📊 Breakdown per Tipe Soal</div>
+    ${Object.entries(breakdown).map(([t,s])=>{
+      const lbl = QTYPE_LABEL[t] || '📝 Soal';
+      const bp = Math.round((s.ok/s.total)*100);
+      return `<div class="r-row">
+        <div class="r-row-label">${lbl}</div>
+        <div class="r-row-bar"><div class="r-row-bar-fill" style="width:${bp}%"></div></div>
+        <div class="r-row-frac">${s.ok}/${s.total} · ${bp}%</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+  // Weak cards (kartu salah ≥3x dari _wrongPerCard atau localStorage)
+  const sessionWeak = Object.entries(_wrongPerCard).filter(([id,n])=>n>=2).map(([id])=>id);
+  const allCardsRef = window.getAllCards ? window.getAllCards() : [];
+  const weakCards = sessionWeak.map(id=>allCardsRef.find(c=>window.getCardId(c)===id)).filter(Boolean);
+  let weakHTML = '';
+  if(weakCards.length){
+    weakHTML = `<div class="r-weak">
+      <div class="r-weak-hdr">⚠️ Kartu Lemah (perlu ulang)</div>
+      ${weakCards.slice(0,8).map(c=>`<div class="r-weak-item">
+        <span class="r-weak-jp">${c.jp}</span>
+        <span style="color:var(--text-mid)">${c.read?'('+c.read+') ':''}${_firstSeg(c.meaning)}</span>
+      </div>`).join('')}
+      ${weakCards.length>8?`<div style="font-size:.6rem;color:var(--text-light);margin-top:6px">+${weakCards.length-8} kartu lain</div>`:''}
+    </div>`;
+  }
+  // Estimasi review SRS berikutnya
+  let srsHTML = '';
+  if(window.loadCardProg){
+    const allProg = window.loadCardProg();
+    const now = Date.now();
+    const dueIn = Object.values(allProg).filter(e=>e.nextReview && e.nextReview > now).map(e=>e.nextReview-now);
+    if(dueIn.length){
+      const minMs = Math.min(...dueIn);
+      const days = Math.ceil(minMs/(24*60*60*1000));
+      const learning = Object.values(allProg).filter(e=>e.status==='learning').length;
+      const mastered = Object.values(allProg).filter(e=>e.status==='mastered').length;
+      srsHTML = `<div class="r-srs-info">
+        🌱 SRS aktif — Belajar: <strong>${learning}</strong> · Dikuasai: <strong>${mastered}</strong> · Review berikut: ~${days} hari
+      </div>`;
+    }
+  }
+  // Tampilkan breakdown + weak + srs untuk SEMUA hasil
   if(!perfect){
-    retEl.style.display='block';
     const wrongs=qAns.filter(a=>!a.ok);
+    retEl.style.display='block';
     retEl.innerHTML=`<div class="att-bar">Percobaan ke <span>${p.att}</span> — Skor: <span>${pct}%</span> | Terbaik: <span>${p.best}%</span></div>
+    ${breakdownHTML}${weakHTML}${srsHTML}
     <div class="retry-box">
       <div class="rb-hdr">❌ Soal yang Perlu Dipelajari Ulang</div>
       ${wrongs.map(a=>`<div class="rb-row">
-        <div class="rb-jp">${(a.q.jp||'').replace('___','＿').slice(0,10)}</div>
+        <div class="rb-jp">${(a.q.jp||'').replace('＿＿＿','＿').replace('___','＿').slice(0,12)}</div>
         <div><div class="rb-ans">✓ ${a.q.opts[a.q.ans]}</div>
         <div class="rb-note">${(a.q.exp||'').split('.')[0]}</div></div>
       </div>`).join('')}
     </div>`;
-  } else retEl.style.display='none';
+  } else {
+    retEl.style.display='block';
+    retEl.innerHTML = breakdownHTML + srsHTML;
+  }
 
   const rev=document.getElementById('r-review');
   rev.innerHTML='';
@@ -1445,7 +1794,9 @@ function showResult(){
          <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">🗺️ Lihat Peta Tahap</button>`
       :`<button class="btn-a" style="background:linear-gradient(135deg,#1abc9c,#16a085);color:#fff;" onclick="goHome()">🏆 Kembali ke Peta — Kamu Master!</button>`;
   } else {
+    const hasWeak = weakCards.length > 0;
     btns.innerHTML=`
+      ${hasWeak?`<button class="btn-a" style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;box-shadow:0 4px 16px rgba(231,76,60,.3);" onclick="reviewWeakCards()">⚠️ Review ${weakCards.length} Kartu Lemah</button>`:''}
       <button class="btn-a" style="background:linear-gradient(135deg,#1a2744,#223060);color:#fff;box-shadow:0 4px 16px rgba(26,39,68,.3);" onclick="startStudy(true)">📖 Pelajari Ulang → Kuis Lagi</button>
       <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="startQuiz()">⚡ Langsung Kuis Ulang</button>
       <button class="btn-a" style="background:#fff;border:2px solid #b8ddf5;color:#4a5a7a;font-weight:600;" onclick="goHome()">← Kembali ke Peta</button>`;
