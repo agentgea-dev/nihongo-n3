@@ -52,4 +52,5 @@ window.addEventListener('DOMContentLoaded', () => {
 //           vocab-batch41-giongo-gitaigo,
 //           vocab-batch42-keigo-aratamari,
 //           vocab-batch43-n3-hinshutu-a,
-//           vocab-batch44-n3-hinshutu-b  ← 3722/3750
+//           vocab-batch44-n3-hinshutu-b,
+//           vocab-batch45-n3-hinshutu-c  ← 3802/3750 ✅ TARGET SELESAI
