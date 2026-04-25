@@ -1,5 +1,5 @@
 // loader.js — SAKURA ANKI N3 — v6
-// Update: grammar 100% ✅ | kanji 100% ✅ | vocab batch 1-16 ✅
+// Update: grammar 100% ✅ | kanji 100% ✅ | vocab 3802/3750 ✅ SELESAI
 window.addKanji   = e => { if(!window.KANJI_DB)  window.KANJI_DB=[];  window.KANJI_DB.push(...e);  };
 window.addGrammar = e => { if(!window.GRAMMAR_DB) window.GRAMMAR_DB=[]; window.GRAMMAR_DB.push(...e); };
 window.addVocab   = e => { if(!window.VOCAB_DB)  window.VOCAB_DB=[];  window.VOCAB_DB.push(...e);  };
